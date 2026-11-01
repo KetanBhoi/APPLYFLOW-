@@ -1130,5 +1130,83 @@ export async function evaluateStarDefense(payload: {
   }
 }
 
+export async function reviewTechnicalCode(payload: {
+  challengeTitle: string;
+  description: string;
+  userCode: string;
+  language?: string;
+  companyTarget?: string;
+}): Promise<{
+  result: {
+    timeComplexity: string;
+    timeDerivation: string;
+    spaceComplexity: string;
+    spaceDerivation: string;
+    overallScore: number;
+    verdict: string;
+    strengths: string[];
+    edgeCaseVulnerabilities: string[];
+    staffRefactoringCode: string;
+    interviewerFollowUps: Array<{
+      question: string;
+      whyAsk: string;
+      expectedAnswer: string;
+    }>;
+  };
+  source: string;
+}> {
+  try {
+    const res = await fetch('/api/gemini/code-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      throw new Error(`Server returned ${res.status}`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.warn('Failed to perform code review with Gemini:', err);
+    throw err;
+  }
+}
 
-
+export async function generateTakeHomeSpec(payload: {
+  projectTitle: string;
+  requirements: string;
+  targetRole?: string;
+  company?: string;
+}): Promise<{
+  result: {
+    projectTitle: string;
+    scopeSummary: string;
+    estimatedHours: string;
+    directoryStructure: string;
+    coreArchitectureComponents: Array<{
+      name: string;
+      responsibility: string;
+      keyTradeoff: string;
+    }>;
+    packageDependencies: Array<{
+      name: string;
+      reason: string;
+    }>;
+    submissionReadmeNotes: string;
+  };
+  source: string;
+}> {
+  try {
+    const res = await fetch('/api/gemini/take-home-spec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      throw new Error(`Server returned ${res.status}`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.warn('Failed to generate take-home spec with Gemini:', err);
+    throw err;
+  }
+}

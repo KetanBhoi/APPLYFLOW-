@@ -43,6 +43,7 @@ import { InterviewDebriefModal } from './components/InterviewDebriefModal';
 import { AtsKeywordGapModal } from './components/AtsKeywordGapModal';
 import { LinkedInWarmOutreachHub } from './components/LinkedInWarmOutreachHub';
 import { StarStoryVaultHub } from './components/StarStoryVaultHub';
+import { TechnicalCodeLab } from './components/TechnicalCodeLab';
 import { checkServerHealth } from './services/geminiService';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
@@ -381,6 +382,7 @@ function ApplyFlowApp() {
             onNavigateToOffers={() => setCurrentTab('offers')}
             onNavigateToWarmOutreach={() => setCurrentTab('warm-outreach')}
             onNavigateToStarVault={() => setCurrentTab('star-vault')}
+            onNavigateToCodeStudio={() => setCurrentTab('code-studio')}
             onOpenJobClipper={() => setShowJobClipperModal(true)}
           />
         )}
@@ -403,6 +405,15 @@ function ApplyFlowApp() {
         {/* Tab 0.8: System Design Scalability Studio */}
         {currentTab === 'system-design' && (
           <SystemDesignStudio />
+        )}
+
+        {/* Tab 0.9: Technical Code Lab & Take-Home Studio */}
+        {currentTab === 'code-studio' && (
+          <TechnicalCodeLab
+            applications={applications}
+            userProfile={userProfile}
+            onSelectApplicationForDetail={setSelectedApp}
+          />
         )}
 
         {/* Tab 1: Pipeline Board */}

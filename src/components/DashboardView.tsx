@@ -17,7 +17,9 @@ import {
   ShieldCheck,
   Award,
   Linkedin,
-  Users
+  Users,
+  Code2,
+  Play
 } from 'lucide-react';
 import { ApplicationStatusPieChart } from './ApplicationStatusPieChart';
 import { CareerVelocityVisualizer } from './CareerVelocityVisualizer';
@@ -34,6 +36,7 @@ interface DashboardViewProps {
   onNavigateToOffers?: () => void;
   onNavigateToWarmOutreach?: () => void;
   onNavigateToStarVault?: () => void;
+  onNavigateToCodeStudio?: () => void;
   onOpenJobClipper?: () => void;
 }
 
@@ -48,6 +51,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onNavigateToOffers,
   onNavigateToWarmOutreach,
   onNavigateToStarVault,
+  onNavigateToCodeStudio,
   onOpenJobClipper,
 }) => {
   // Compute analytics dynamically from the user's actual applications
@@ -438,6 +442,35 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           >
             <Users className="w-3.5 h-3.5" />
             <span>Launch Warm Outreach Assistant</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Live Technical Coding & Take-Home Studio Callout */}
+        <div className="p-5 rounded-2xl bg-gradient-to-r from-stone-900 via-stone-950 to-emerald-950 border border-emerald-500/30 text-white shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <Code2 className="w-4 h-4" />
+              </span>
+              <h3 className="font-serif text-base font-bold text-white tracking-tight flex items-center gap-2">
+                <span>Technical Code Lab & Take-Home Studio</span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase tracking-wider font-sans border border-emerald-500/30">
+                  Live Test Runner + Staff AI Review
+                </span>
+              </h3>
+            </div>
+            <p className="text-xs text-stone-300">
+              Simulate 45-minute live technical screens (LRU Cache, Token Bucket Rate Limiter, Async Debounce), execute automated test assertions in-browser, and obtain Gemini 3.8 Flash Staff Engineer Big-O complexity audits.
+            </p>
+          </div>
+
+          <button
+            onClick={onNavigateToCodeStudio || onNavigateToPipeline}
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-all shadow-md shadow-emerald-700/30 cursor-pointer shrink-0"
+          >
+            <Play className="w-3.5 h-3.5" />
+            <span>Open Technical Code Lab</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

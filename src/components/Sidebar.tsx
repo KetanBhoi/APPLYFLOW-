@@ -22,7 +22,8 @@ import {
   Cpu,
   Link,
   GraduationCap,
-  Linkedin
+  Linkedin,
+  Code2
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -31,6 +32,7 @@ export type NavTab =
   | 'chat'
   | 'ai-lab'
   | 'system-design'
+  | 'code-studio'
   | 'pipeline'
   | 'warm-outreach'
   | 'star-vault'
@@ -86,6 +88,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       label: 'System Design Studio',
       icon: <Cpu className="w-4 h-4" />,
       badge: 'Scale'
+    },
+    {
+      id: 'code-studio',
+      label: 'Technical Code Lab',
+      icon: <Code2 className="w-4 h-4 text-emerald-400" />,
+      badge: 'Live Code'
     },
     {
       id: 'pipeline',

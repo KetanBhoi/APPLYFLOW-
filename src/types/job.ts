@@ -502,3 +502,78 @@ export interface StarStoryVaultItem {
   createdAt: string;
   updatedAt: string;
 }
+
+export type CodeChallengeDifficulty = 'Easy' | 'Medium' | 'Hard';
+export type CodeChallengeCategory =
+  | 'Frontend & Async UI'
+  | 'Distributed Systems & Concurrency'
+  | 'Data Structures & Algorithms'
+  | 'System Utilities & Polyfills'
+  | 'Take-Home Project Architecture';
+
+export interface CodeTestCase {
+  id: string;
+  name: string;
+  inputDescription: string;
+  codeSnippet: string; // JavaScript assertion code to evaluate
+  isEdgeCase?: boolean;
+}
+
+export interface CodeTestResult {
+  testId: string;
+  name: string;
+  passed: boolean;
+  actual?: any;
+  expected?: any;
+  executionTimeMs?: number;
+  errorMessage?: string;
+}
+
+export interface CodeChallenge {
+  id: string;
+  title: string;
+  difficulty: CodeChallengeDifficulty;
+  category: CodeChallengeCategory;
+  tags: string[];
+  companyTargets: string[];
+  description: string;
+  starterCode: string;
+  solutionCode: string;
+  hints: string[];
+  testCases: CodeTestCase[];
+  timeLimitMinutes: number;
+}
+
+export interface CodeReviewAnalysis {
+  timeComplexity: string;
+  timeDerivation: string;
+  spaceComplexity: string;
+  spaceDerivation: string;
+  overallScore: number; // 0 - 100
+  verdict: 'Ready for Staff Screen' | 'Meets Senior Bar' | 'Needs Optimization' | 'Bug / Runtime Error';
+  strengths: string[];
+  edgeCaseVulnerabilities: string[];
+  staffRefactoringCode: string;
+  interviewerFollowUps: {
+    question: string;
+    whyAsk: string;
+    expectedAnswer: string;
+  }[];
+}
+
+export interface TakeHomeProjectSpec {
+  projectTitle: string;
+  scopeSummary: string;
+  estimatedHours: string;
+  directoryStructure: string;
+  coreArchitectureComponents: {
+    name: string;
+    responsibility: string;
+    keyTradeoff: string;
+  }[];
+  packageDependencies: {
+    name: string;
+    reason: string;
+  }[];
+  submissionReadmeNotes: string;
+}
