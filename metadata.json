@@ -1,0 +1,6 @@
+{
+  "name": "ApplyFlow — Job Search & Application Command Center",
+  "description": "Vibe-code repetitive application workflows: parse job postings, tailor resume bullets with permanent standing rules, generate outreach & interview STAR prep, and track your pipeline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
