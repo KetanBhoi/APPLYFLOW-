@@ -24,7 +24,8 @@ import {
   GraduationCap,
   Linkedin,
   Code2,
-  BadgeDollarSign
+  BadgeDollarSign,
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -55,6 +56,7 @@ interface SidebarProps {
   onOpenJobClipper?: () => void;
   activeRulesCount?: number;
   totalApplicationsCount?: number;
+  onCloseMobileMenu?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -63,7 +65,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onOpenNewJob,
   onOpenJobClipper,
   activeRulesCount = 0,
-  totalApplicationsCount = 0
+  totalApplicationsCount = 0,
+  onCloseMobileMenu
 }) => {
   const { user, openAuthModal, logout } = useAuth();
 
@@ -171,32 +174,48 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className="w-64 shrink-0 bg-[#FAF9F7] border-r border-[#EBE8E3] flex flex-col justify-between min-h-screen select-none">
+    <aside className="w-80 sm:w-64 max-w-[85vw] shrink-0 bg-[#FAF9F7] border-r border-[#EBE8E3] flex flex-col justify-between h-screen h-dvh max-h-screen overflow-hidden shadow-2xl md:shadow-none">
       {/* Brand Header */}
-      <div className="p-5">
-        <div className="flex items-center gap-3 px-2 py-1">
-          <div className="w-9 h-9 rounded-xl bg-[#0F4A3E] flex items-center justify-center text-emerald-200 shadow-sm shrink-0">
-            {/* Elegant brand spark icon */}
-            <svg
-              className="w-5 h-5 text-emerald-100"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+      <div
+        className="p-4 sm:p-5 flex-1 overflow-y-auto overscroll-contain touch-pan-y"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
+        <div className="flex items-center justify-between px-1 py-1">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#0F4A3E] flex items-center justify-center text-emerald-200 shadow-sm shrink-0">
+              {/* Elegant brand spark icon */}
+              <svg
+                className="w-5 h-5 text-emerald-100"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="font-serif font-bold text-stone-900 text-base leading-tight tracking-tight">
+                ApplyFlow
+              </h1>
+              <p className="text-[11px] text-stone-500 font-medium tracking-tight">
+                Job Search Command Center
+              </p>
+            </div>
+          </div>
+
+          {onCloseMobileMenu && (
+            <button
+              onClick={onCloseMobileMenu}
+              className="md:hidden p-1.5 text-stone-500 hover:text-stone-800 hover:bg-stone-200/60 rounded-xl transition-colors cursor-pointer"
+              title="Close menu"
+              aria-label="Close menu"
             >
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-          </div>
-          <div>
-            <h1 className="font-serif font-bold text-stone-900 text-base leading-tight tracking-tight">
-              ApplyFlow
-            </h1>
-            <p className="text-[11px] text-stone-500 font-medium tracking-tight">
-              Job Search Command Center
-            </p>
-          </div>
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {/* Quick Action: 1-Click Job Clipper */}

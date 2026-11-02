@@ -136,6 +136,46 @@ function ApplyFlowApp() {
   const [warmOutreachTargetAppId, setWarmOutreachTargetAppId] = useState<string | undefined>(undefined);
 
   // Sync state to LocalStorage
+  // Prevent background scrolling on mobile when mobile drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const scrollY = window.scrollY;
+      const originalBodyOverscroll = document.body.style.overscrollBehavior;
+      const originalHtmlOverscroll = document.documentElement.style.overscrollBehavior;
+      const originalBodyOverscrollY = document.body.style.overscrollBehaviorY;
+      const originalHtmlOverscrollY = document.documentElement.style.overscrollBehaviorY;
+
+      // Specifically check and disable overscroll-behavior on body and html elements
+      if (document.body.style.overscrollBehavior !== 'none') {
+        document.body.style.overscrollBehavior = 'none';
+      }
+      if (document.documentElement.style.overscrollBehavior !== 'none') {
+        document.documentElement.style.overscrollBehavior = 'none';
+      }
+      document.body.style.overscrollBehaviorY = 'none';
+      document.documentElement.style.overscrollBehaviorY = 'none';
+
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overscrollBehavior = originalBodyOverscroll;
+        document.documentElement.style.overscrollBehavior = originalHtmlOverscroll;
+        document.body.style.overscrollBehaviorY = originalBodyOverscrollY;
+        document.documentElement.style.overscrollBehaviorY = originalHtmlOverscrollY;
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isMobileMenuOpen]);
+
   useEffect(() => {
     try {
       localStorage.setItem('applyflow_apps', JSON.stringify(applications));
@@ -311,11 +351,11 @@ function ApplyFlowApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFBFA] text-stone-900 flex flex-col md:flex-row antialiased">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#FBFBFA] text-stone-900 flex flex-col md:flex-row antialiased">
       {/* Mobile Topbar */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-[#FAF9F7] border-b border-[#EBE8E3]">
+      <header className="sticky top-0 z-30 md:hidden flex items-center justify-between px-4 py-3 bg-[#FAF9F7]/95 backdrop-blur-md border-b border-[#EBE8E3] shadow-xs">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-[#0F4A3E] flex items-center justify-center text-white">
+          <div className="w-8 h-8 rounded-xl bg-[#0F4A3E] flex items-center justify-center text-white shrink-0 shadow-xs">
             <svg
               className="w-4 h-4 text-emerald-200"
               viewBox="0 0 24 24"
@@ -328,18 +368,26 @@ function ApplyFlowApp() {
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
           </div>
-          <span className="font-serif font-bold text-base text-stone-900">ApplyFlow</span>
+          <div>
+            <span className="font-serif font-bold text-base text-stone-900 block leading-tight">ApplyFlow</span>
+            <span className="text-[10px] text-stone-500 font-mono">Job Command Center</span>
+          </div>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 rounded-xl text-stone-600 hover:bg-stone-200/60 cursor-pointer"
+          className="p-2 rounded-xl text-stone-700 hover:text-stone-900 hover:bg-stone-200/60 cursor-pointer transition-colors"
+          aria-label="Toggle Navigation Menu"
         >
-          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-      </div>
+      </header>
 
       {/* Sidebar for Desktop & Mobile Overlay */}
-      <div className={`fixed inset-y-0 left-0 z-40 md:static md:block ${isMobileMenuOpen ? 'block shadow-2xl' : 'hidden'}`}>
+      <div
+        className={`fixed inset-y-0 left-0 z-50 md:sticky md:top-0 md:h-screen md:z-20 transform transition-transform duration-300 ease-in-out md:transform-none ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        }`}
+      >
         <Sidebar
           currentTab={currentTab}
           onSelectTab={(tab) => {
@@ -357,6 +405,7 @@ function ApplyFlowApp() {
           }}
           activeRulesCount={standingRules.filter((r) => r.enabled).length}
           totalApplicationsCount={applications.length}
+          onCloseMobileMenu={() => setIsMobileMenuOpen(false)}
         />
       </div>
 
@@ -364,12 +413,13 @@ function ApplyFlowApp() {
       {isMobileMenuOpen && (
         <div
           onClick={() => setIsMobileMenuOpen(false)}
-          className="fixed inset-0 bg-stone-900/40 z-30 md:hidden"
+          onTouchStart={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-40 md:hidden touch-none overscroll-none"
         />
       )}
 
       {/* Main Container */}
-      <main className="flex-1 p-5 sm:p-8 lg:p-10 overflow-y-auto">
+      <main className="flex-1 min-w-0 w-full max-w-full p-4 sm:p-6 lg:p-10 overflow-y-auto overflow-x-hidden">
         {/* Tab 0: Dashboard (Exact Screenshot match) */}
         {currentTab === 'dashboard' && (
           <DashboardView
