@@ -621,7 +621,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#EBE8E3]">
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="p-2 rounded-xl bg-stone-900 text-emerald-400 border border-stone-800">
+            <span className="p-2 rounded-xl bg-emerald-100 text-[#0F4A3E] border border-emerald-300">
               <Code2 className="w-5 h-5" />
             </span>
             <h1 className="font-serif text-3xl font-bold text-stone-900 tracking-tight">
@@ -801,7 +801,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
                       ? 'bg-rose-950 text-rose-300 border border-rose-800 animate-pulse'
                       : timerSeconds < 900
                       ? 'bg-amber-950 text-amber-300 border border-amber-800'
-                      : 'bg-stone-800 text-emerald-400 border border-stone-700'
+                      : 'bg-emerald-950/60 text-emerald-300 border border-emerald-800'
                   }`}
                 >
                   <Clock className="w-3.5 h-3.5" />
@@ -832,7 +832,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
                   title="Copy Code"
                 >
                   {copiedKey === 'editor-code' ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-emerald-300" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -854,12 +854,12 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
             </div>
 
             {/* Run Tests & Gemini Audit Action Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-stone-200 rounded-2xl p-4 shadow-xs">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-stone-200 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={handleRunTests}
                   disabled={isRunningTests}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer disabled:opacity-50"
+                  className="h-9 inline-flex items-center gap-1.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold transition-all shadow-xs cursor-pointer disabled:opacity-50 shrink-0"
                 >
                   <Play className="w-3.5 h-3.5" />
                   <span>{isRunningTests ? 'Executing Tests...' : 'Run Test Cases'}</span>
@@ -869,7 +869,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
                   onClick={() => {
                     setUserCode(activeChallenge.solutionCode);
                   }}
-                  className="px-3 py-2 rounded-xl border border-stone-200 hover:bg-stone-50 text-stone-600 text-xs font-medium cursor-pointer"
+                  className="h-9 inline-flex items-center gap-1.5 px-4 rounded-xl border border-stone-200 hover:bg-stone-50 text-stone-700 text-xs font-semibold cursor-pointer transition-colors shrink-0"
                 >
                   Load Reference Solution
                 </button>
@@ -878,7 +878,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
               <button
                 onClick={handleRequestCodeReview}
                 disabled={isAuditingCode}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-bold transition-all shadow-xs cursor-pointer disabled:opacity-50"
+                className="h-9 inline-flex items-center gap-1.5 px-4 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-all shadow-xs cursor-pointer disabled:opacity-50 shrink-0"
               >
                 <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
                 <span>{isAuditingCode ? 'Auditing with Gemini 3.8...' : 'Staff Engineer Code Review'}</span>
@@ -890,7 +890,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
               <div className="rounded-2xl bg-stone-950 border border-stone-800 p-4 font-mono text-xs space-y-1.5 shadow-md">
                 <div className="flex items-center justify-between pb-2 border-b border-stone-800 text-stone-400">
                   <span className="flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                    <Terminal className="w-3.5 h-3.5 text-emerald-300" />
                     <span>Test Execution Console</span>
                   </span>
                   <span className="text-[10px] text-stone-500">
@@ -902,7 +902,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
                     key={idx}
                     className={
                       log.startsWith('✓')
-                        ? 'text-emerald-400'
+                        ? 'text-emerald-300'
                         : 'text-rose-400 font-semibold'
                     }
                   >
@@ -1118,7 +1118,7 @@ export const TechnicalCodeLab: React.FC<TechnicalCodeLabProps> = ({
                   <FolderGit2 className="w-3.5 h-3.5 text-emerald-700" />
                   <span>Recommended Directory Structure</span>
                 </span>
-                <pre className="p-4 rounded-xl bg-stone-900 text-emerald-400 font-mono text-xs overflow-x-auto leading-relaxed">
+                <pre className="p-4 rounded-xl bg-stone-900 text-emerald-200 font-mono text-xs overflow-x-auto leading-relaxed">
                   {takeHomeSpec.directoryStructure}
                 </pre>
               </div>

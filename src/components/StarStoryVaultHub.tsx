@@ -1195,19 +1195,21 @@ export const StarStoryVaultHub: React.FC<StarStoryVaultHubProps> = ({
       {/* TAB 3: DUAL-MONITOR INTERVIEW DAY SCREEN */}
       {activeTab === 'cheatsheet' && (
         <div className="space-y-4">
-          <div className="p-4 rounded-2xl bg-stone-900 text-white flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Monitor className="w-5 h-5 text-emerald-400" />
+          <div className="p-4 rounded-2xl bg-white border border-[#EBE8E3] text-stone-900 shadow-xs flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="p-2 rounded-xl bg-emerald-100 text-[#0F4A3E] border border-emerald-300">
+                <Monitor className="w-4 h-4" />
+              </span>
               <div>
-                <h2 className="font-serif text-base font-bold text-white">
-                  Dual-Monitor Virtual Interview Mode
+                <h2 className="font-serif text-base font-bold text-stone-900">
+                  Virtual Interview Quick-Reference Screen
                 </h2>
-                <p className="text-xs text-stone-400">
-                  Keep this high-contrast screen open on your second monitor or iPad during virtual interview loops.
+                <p className="text-xs text-stone-500">
+                  High-readability cheat sheet to keep open on your second monitor during virtual interview loops.
                 </p>
               </div>
             </div>
-            <div className="text-xs font-mono text-emerald-400 font-semibold">
+            <div className="text-xs font-mono text-[#0F4A3E] bg-[#DDF3EA] border border-emerald-300 px-2.5 py-1 rounded-full font-bold">
               LIVE CHEAT SHEET
             </div>
           </div>
@@ -1216,36 +1218,36 @@ export const StarStoryVaultHub: React.FC<StarStoryVaultHubProps> = ({
             {stories.map((story) => (
               <div
                 key={story.id}
-                className="bg-stone-900 border border-stone-800 rounded-2xl p-5 text-stone-100 shadow-lg space-y-3"
+                className="bg-white border border-[#EBE8E3] rounded-2xl p-5 text-stone-900 shadow-xs space-y-3"
               >
-                <div className="flex items-start justify-between gap-2 border-b border-stone-800 pb-2">
+                <div className="flex items-start justify-between gap-2 border-b border-stone-100 pb-2">
                   <div>
-                    <h3 className="font-serif text-base font-bold text-emerald-400">
+                    <h3 className="font-serif text-base font-bold text-stone-900">
                       {story.title}
                     </h3>
-                    <p className="text-[11px] text-stone-400 font-mono">
+                    <p className="text-[11px] text-stone-500 font-mono">
                       {story.companyContext} · {story.roleContext}
                     </p>
                   </div>
                   <button
                     onClick={() => handleCopy(story.spokenPitch90s, `pitch-${story.id}`)}
-                    className="p-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs flex items-center gap-1 cursor-pointer"
+                    className="p-1.5 rounded-lg border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 text-xs flex items-center gap-1 cursor-pointer transition-colors shadow-xs"
                   >
                     {copiedField === `pitch-${story.id}` ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
                     ) : (
-                      <Copy className="w-3.5 h-3.5" />
+                      <Copy className="w-3.5 h-3.5 text-stone-500" />
                     )}
                     <span>Copy 90s</span>
                   </button>
                 </div>
 
                 {/* Soundbite Hook */}
-                <div className="bg-stone-950 p-2.5 rounded-xl border border-stone-800">
-                  <p className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">
+                <div className="bg-amber-50/60 p-2.5 rounded-xl border border-amber-200">
+                  <p className="text-[10px] text-amber-900 font-bold uppercase tracking-wider">
                     Opening Hook (15s):
                   </p>
-                  <p className="text-xs text-stone-200 italic mt-0.5 font-serif">
+                  <p className="text-xs text-amber-950 italic mt-0.5 font-serif">
                     "{story.hookSoundbite}"
                   </p>
                 </div>
@@ -1255,7 +1257,7 @@ export const StarStoryVaultHub: React.FC<StarStoryVaultHubProps> = ({
                   {story.quantifiedMetrics.map((m, i) => (
                     <span
                       key={i}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-800 font-bold"
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-50 text-[#0F4A3E] border border-emerald-200 font-bold"
                     >
                       {m}
                     </span>
@@ -1263,25 +1265,25 @@ export const StarStoryVaultHub: React.FC<StarStoryVaultHubProps> = ({
                 </div>
 
                 {/* Quick STAR Bullets */}
-                <div className="space-y-1.5 text-xs text-stone-300 leading-snug">
+                <div className="space-y-1.5 text-xs text-stone-700 leading-snug">
                   <p>
-                    <strong className="text-amber-400">S:</strong> {story.situation}
+                    <strong className="text-amber-800">S:</strong> {story.situation}
                   </p>
                   <p>
-                    <strong className="text-indigo-400">T:</strong> {story.task}
+                    <strong className="text-indigo-800">T:</strong> {story.task}
                   </p>
                   <p>
-                    <strong className="text-emerald-400">A:</strong> {story.action}
+                    <strong className="text-emerald-800">A:</strong> {story.action}
                   </p>
                   <p>
-                    <strong className="text-blue-400">R:</strong> {story.result}
+                    <strong className="text-blue-800">R:</strong> {story.result}
                   </p>
                 </div>
 
                 {/* Follow-up reflection */}
                 {story.whatIdDoDifferently && (
-                  <div className="pt-2 border-t border-stone-800 text-[11px] text-stone-400">
-                    <strong className="text-stone-300">"What I'd do differently":</strong> {story.whatIdDoDifferently}
+                  <div className="pt-2 border-t border-stone-100 text-[11px] text-stone-500">
+                    <strong className="text-stone-700">"What I'd do differently":</strong> {story.whatIdDoDifferently}
                   </div>
                 )}
               </div>

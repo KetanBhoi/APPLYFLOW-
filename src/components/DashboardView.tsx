@@ -19,7 +19,8 @@ import {
   Linkedin,
   Users,
   Code2,
-  Play
+  Play,
+  BadgeDollarSign
 } from 'lucide-react';
 import { ApplicationStatusPieChart } from './ApplicationStatusPieChart';
 import { CareerVelocityVisualizer } from './CareerVelocityVisualizer';
@@ -37,6 +38,7 @@ interface DashboardViewProps {
   onNavigateToWarmOutreach?: () => void;
   onNavigateToStarVault?: () => void;
   onNavigateToCodeStudio?: () => void;
+  onNavigateToSalaryAnalytics?: () => void;
   onOpenJobClipper?: () => void;
 }
 
@@ -52,6 +54,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onNavigateToWarmOutreach,
   onNavigateToStarVault,
   onNavigateToCodeStudio,
+  onNavigateToSalaryAnalytics,
   onOpenJobClipper,
 }) => {
   // Compute analytics dynamically from the user's actual applications
@@ -119,6 +122,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             >
               <Sparkles className="w-4 h-4 text-emerald-600" />
               <span>1-Click Job Clipper</span>
+            </button>
+          )}
+
+          {onNavigateToSalaryAnalytics && (
+            <button
+              onClick={onNavigateToSalaryAnalytics}
+              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-emerald-300 bg-emerald-50/50 hover:bg-emerald-100/60 text-emerald-900 text-sm font-semibold transition-all shadow-xs cursor-pointer"
+            >
+              <BadgeDollarSign className="w-4 h-4 text-emerald-700" />
+              <span>Salary Analytics (D3)</span>
             </button>
           )}
 
@@ -411,22 +424,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Active Interviewing Stage LinkedIn Warm Outreach Callout */}
-        <div className="p-5 rounded-2xl bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 border border-blue-500/30 text-white shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/30">
+        <div className="p-6 rounded-2xl bg-white border border-[#EBE8E3] text-stone-900 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="p-2 rounded-xl bg-emerald-100 text-[#0F4A3E] border border-emerald-300">
                 <Linkedin className="w-4 h-4" />
               </span>
-              <h3 className="font-serif text-base font-bold text-white tracking-tight flex items-center gap-2">
+              <h3 className="font-serif text-base font-bold text-stone-900 tracking-tight flex items-center gap-2">
                 <span>LinkedIn Alumni & Warm Outreach Assistant</span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold uppercase tracking-wider font-sans border border-amber-500/30">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 font-bold uppercase tracking-wider font-sans border border-amber-200">
                   {applications.filter((a) => a.status === 'interviewing').length} Companies Interviewing
                 </span>
               </h3>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-stone-600 leading-relaxed">
               Identify common university alumni, former colleagues, and engineering leads at{' '}
-              <strong>
+              <strong className="text-stone-900">
                 {applications
                   .filter((a) => a.status === 'interviewing')
                   .map((a) => a.company)
@@ -438,7 +451,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
           <button
             onClick={onNavigateToWarmOutreach || onNavigateToPipeline}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all shadow-md shadow-blue-600/30 cursor-pointer shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-all shadow-xs cursor-pointer shrink-0"
           >
             <Users className="w-3.5 h-3.5" />
             <span>Launch Warm Outreach Assistant</span>
@@ -447,27 +460,27 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Live Technical Coding & Take-Home Studio Callout */}
-        <div className="p-5 rounded-2xl bg-gradient-to-r from-stone-900 via-stone-950 to-emerald-950 border border-emerald-500/30 text-white shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <div className="p-6 rounded-2xl bg-white border border-[#EBE8E3] text-stone-900 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="p-2 rounded-xl bg-emerald-100 text-[#0F4A3E] border border-emerald-300">
                 <Code2 className="w-4 h-4" />
               </span>
-              <h3 className="font-serif text-base font-bold text-white tracking-tight flex items-center gap-2">
+              <h3 className="font-serif text-base font-bold text-stone-900 tracking-tight flex items-center gap-2">
                 <span>Technical Code Lab & Take-Home Studio</span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase tracking-wider font-sans border border-emerald-500/30">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] font-bold uppercase tracking-wider font-sans border border-emerald-200">
                   Live Test Runner + Staff AI Review
                 </span>
               </h3>
             </div>
-            <p className="text-xs text-stone-300">
+            <p className="text-xs text-stone-600 leading-relaxed">
               Simulate 45-minute live technical screens (LRU Cache, Token Bucket Rate Limiter, Async Debounce), execute automated test assertions in-browser, and obtain Gemini 3.8 Flash Staff Engineer Big-O complexity audits.
             </p>
           </div>
 
           <button
             onClick={onNavigateToCodeStudio || onNavigateToPipeline}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-all shadow-md shadow-emerald-700/30 cursor-pointer shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-all shadow-xs cursor-pointer shrink-0"
           >
             <Play className="w-3.5 h-3.5" />
             <span>Open Technical Code Lab</span>

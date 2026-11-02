@@ -66,81 +66,83 @@ export const ExportModal: React.FC<ExportModalProps> = ({ applications, onClose 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs">
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-lg p-6 shadow-xl space-y-5">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Download className="w-5 h-5 text-indigo-400" />
+          <h3 className="text-lg font-serif font-bold text-stone-900 flex items-center gap-2">
+            <Download className="w-5 h-5 text-[#0F4A3E]" />
             Export Pipeline Data ({applications.length} roles)
           </h3>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 rounded-lg"
+            className="text-stone-400 hover:text-stone-700 p-1 rounded-lg"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <p className="text-xs text-slate-400 leading-relaxed">
+        <p className="text-xs text-stone-500 leading-relaxed">
           Take your job applications anywhere. Export to spreadsheet format for Google Sheets / Excel, backup raw JSON, or copy a markdown table for your personal notes.
         </p>
 
         <div className="space-y-3">
           {/* CSV */}
-          <div className="bg-slate-850 border border-slate-800 rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="p-2.5 rounded-xl bg-emerald-50 text-[#0F4A3E] border border-emerald-200">
                 <FileSpreadsheet className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">CSV Spreadsheet</h4>
-                <p className="text-xs text-slate-400">Compatible with Google Sheets, Excel, Notion</p>
+                <h4 className="text-sm font-semibold text-stone-900">CSV Spreadsheet</h4>
+                <p className="text-xs text-stone-500">Compatible with Google Sheets, Excel, Notion</p>
               </div>
             </div>
             <button
               onClick={handleExportCSV}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors cursor-pointer"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-4 rounded-xl bg-white hover:bg-stone-100 text-stone-800 text-xs font-semibold border border-stone-200 transition-colors cursor-pointer shadow-xs shrink-0"
             >
-              Download
+              <Download className="w-3.5 h-3.5 text-[#0F4A3E]" />
+              <span>Download CSV</span>
             </button>
           </div>
 
           {/* JSON */}
-          <div className="bg-slate-850 border border-slate-800 rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <div className="p-2.5 rounded-xl bg-emerald-50 text-[#0F4A3E] border border-emerald-200">
                 <FileCode className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">Complete JSON Backup</h4>
-                <p className="text-xs text-slate-400">Includes all tailored bullets, drafts, and STAR prep</p>
+                <h4 className="text-sm font-semibold text-stone-900">Complete JSON Backup</h4>
+                <p className="text-xs text-stone-500">Includes all tailored bullets, drafts, and STAR prep</p>
               </div>
             </div>
             <button
               onClick={handleExportJSON}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors cursor-pointer"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-4 rounded-xl bg-white hover:bg-stone-100 text-stone-800 text-xs font-semibold border border-stone-200 transition-colors cursor-pointer shadow-xs shrink-0"
             >
-              Download
+              <Download className="w-3.5 h-3.5 text-[#0F4A3E]" />
+              <span>Download JSON</span>
             </button>
           </div>
 
           {/* Markdown Table */}
-          <div className="bg-slate-850 border border-slate-800 rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+              <div className="p-2.5 rounded-xl bg-emerald-50 text-[#0F4A3E] border border-emerald-200">
                 <FileText className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">Markdown Table</h4>
-                <p className="text-xs text-slate-400">Formatted summary for Obsidian, Notion, or GitHub</p>
+                <h4 className="text-sm font-semibold text-stone-900">Markdown Table</h4>
+                <p className="text-xs text-stone-500">Formatted summary for Obsidian, Notion, or GitHub</p>
               </div>
             </div>
             <button
               onClick={handleCopyMarkdown}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="h-9 inline-flex items-center justify-center px-4 rounded-xl bg-white hover:bg-stone-100 text-stone-800 text-xs font-semibold border border-stone-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs shrink-0"
             >
-              {copiedMd ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedMd ? 'Copied!' : 'Copy'}</span>
+              {copiedMd ? <Check className="w-3.5 h-3.5 text-[#0F4A3E]" /> : <Copy className="w-3.5 h-3.5 text-stone-500" />}
+              <span>{copiedMd ? 'Copied!' : 'Copy Table'}</span>
             </button>
           </div>
         </div>
@@ -148,7 +150,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ applications, onClose 
         <div className="pt-2 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs hover:bg-slate-700"
+            className="h-9 inline-flex items-center justify-center px-5 rounded-xl bg-stone-100 text-stone-700 text-xs font-semibold hover:bg-stone-200 transition-colors cursor-pointer"
           >
             Close
           </button>

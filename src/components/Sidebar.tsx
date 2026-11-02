@@ -23,12 +23,14 @@ import {
   Link,
   GraduationCap,
   Linkedin,
-  Code2
+  Code2,
+  BadgeDollarSign
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export type NavTab =
   | 'dashboard'
+  | 'salary-analytics'
   | 'chat'
   | 'ai-lab'
   | 'system-design'
@@ -72,6 +74,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       icon: <LayoutGrid className="w-4 h-4" />
     },
     {
+      id: 'salary-analytics',
+      label: 'Salary Analytics',
+      icon: <BadgeDollarSign className="w-4 h-4 text-emerald-500" />,
+      badge: 'D3'
+    },
+    {
       id: 'chat',
       label: 'Gemini Career AI',
       icon: <Bot className="w-4 h-4" />,
@@ -92,7 +100,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     {
       id: 'code-studio',
       label: 'Technical Code Lab',
-      icon: <Code2 className="w-4 h-4 text-emerald-400" />,
+      icon: <Code2 className="w-4 h-4 text-[#0F4A3E]" />,
       badge: 'Live Code'
     },
     {
@@ -104,13 +112,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
     {
       id: 'warm-outreach',
       label: 'LinkedIn Assistant',
-      icon: <Linkedin className="w-4 h-4 text-blue-400" />,
+      icon: <Linkedin className="w-4 h-4 text-[#0F4A3E]" />,
       badge: 'Alumni'
     },
     {
       id: 'star-vault',
       label: 'STAR Story Vault',
-      icon: <Award className="w-4 h-4 text-amber-500" />,
+      icon: <Award className="w-4 h-4 text-amber-700" />,
       badge: 'LPs'
     },
     {

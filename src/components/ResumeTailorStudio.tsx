@@ -1247,19 +1247,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
   return (
     <div className="space-y-6">
       {/* Studio Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
-              <Zap className="w-3.5 h-3.5 text-cyan-300" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#0F4A3E] text-xs font-semibold border border-emerald-200">
+              <Zap className="w-3.5 h-3.5 text-[#0F4A3E]" />
               <span>AI Resume Auto-Tailor</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 tracking-tight">
               AI Resume Auto-Tailor
             </h1>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-stone-600 text-sm leading-relaxed">
               Upload your resume and paste any Job Description. The engine performs deep JD intelligence,
               reorders relevant skills, adapts employer terminology, and maximizes legitimate match alignment
               without fabricating skills or credentials.
@@ -1276,17 +1276,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
-              <Upload className="w-4 h-4 text-indigo-400" />
+              <Upload className="w-4 h-4 text-stone-600" />
               <span>Upload Resume (.txt)</span>
             </button>
           </div>
         </div>
 
         {uploadMessage && (
-          <div className="mt-4 p-3 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs flex items-center gap-2 animate-in fade-in">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="mt-4 p-3 bg-emerald-50 text-[#0F4A3E] border border-emerald-200 rounded-xl text-xs flex items-center gap-2 animate-in fade-in">
+            <CheckCircle2 className="w-4 h-4 text-[#0F4A3E] shrink-0" />
             <span>{uploadMessage}</span>
           </div>
         )}
@@ -1294,20 +1294,20 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* 7-Step Progress Pipeline Indicator (Shown when running) */}
       {isTailoring && (
-        <div className="bg-slate-900 border border-indigo-500/40 rounded-3xl p-6 shadow-2xl space-y-4 animate-in fade-in duration-200">
+        <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 shadow-xs space-y-4 animate-in fade-in duration-200">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-indigo-300 font-bold text-xs uppercase tracking-wider">
-              <RefreshCw className="w-4 h-4 animate-spin text-indigo-400" />
+            <div className="flex items-center gap-2 text-[#0F4A3E] font-bold text-xs uppercase tracking-wider">
+              <RefreshCw className="w-4 h-4 animate-spin text-[#0F4A3E]" />
               <span>Auto-Tailoring Resume Pipeline in Progress...</span>
             </div>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-stone-500">
               {currentStepIndex + 1} of {PIPELINE_STEPS.length}
             </span>
           </div>
 
-          <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-stone-200 rounded-full h-2 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 h-full transition-all duration-300"
+              className="bg-[#0F4A3E] h-full transition-all duration-300"
               style={{ width: `${((currentStepIndex + 1) / PIPELINE_STEPS.length) * 100}%` }}
             />
           </div>
@@ -1321,18 +1321,18 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   key={idx}
                   className={`p-2.5 rounded-xl border text-xs flex items-center gap-2 transition-all ${
                     isCurrent
-                      ? 'bg-indigo-600/20 border-indigo-500/50 text-white font-semibold shadow'
+                      ? 'bg-emerald-50 border-emerald-300 text-stone-900 font-semibold shadow-xs'
                       : isPast
-                      ? 'bg-slate-950/60 border-emerald-500/30 text-emerald-300'
-                      : 'bg-slate-950/40 border-slate-800 text-slate-500'
+                      ? 'bg-[#FAF9F7] border-emerald-200 text-[#0F4A3E]'
+                      : 'bg-[#FAF9F7] border-stone-200 text-stone-400'
                   }`}
                 >
                   {isPast ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0F4A3E] shrink-0" />
                   ) : isCurrent ? (
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-indigo-400 shrink-0" />
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#0F4A3E] shrink-0" />
                   ) : (
-                    <span className="w-3.5 h-3.5 rounded-full border border-slate-700 text-[10px] flex items-center justify-center font-mono shrink-0">
+                    <span className="w-3.5 h-3.5 rounded-full border border-stone-300 text-[10px] flex items-center justify-center font-mono shrink-0">
                       {idx + 1}
                     </span>
                   )}
@@ -1353,21 +1353,21 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
       )}
 
       {/* RESUME DRAFTS & TARGET ROLE SWITCHER HUB */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-slate-800">
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#EBE8E3]">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#0F4A3E] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                 Multi-Role Resume Draft Studio
               </span>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+              <span className="text-[10px] font-mono text-[#0F4A3E] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                 {drafts.length} Active Tracks
               </span>
             </div>
-            <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
+            <h2 className="text-base sm:text-lg font-serif font-bold text-stone-900 tracking-tight flex items-center gap-2">
               <span>Target Role Drafts & Bullets History</span>
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-stone-600">
               Save and switch between tailored resume drafts across your target roles, preserving complete bullet histories and XYZ formulas.
             </p>
           </div>
@@ -1375,24 +1375,24 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleSaveCurrentDraft}
-              className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold border border-stone-200 transition-all cursor-pointer shadow-xs"
             >
-              <Save className="w-3.5 h-3.5 text-emerald-400" />
+              <Save className="w-3.5 h-3.5 text-[#0F4A3E]" />
               <span>Save Draft</span>
             </button>
 
             <button
               onClick={handleDuplicateDraft}
-              className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold border border-stone-200 transition-all cursor-pointer shadow-xs"
               title="Duplicate current draft into a new variant"
             >
-              <CopyPlus className="w-3.5 h-3.5 text-indigo-400" />
+              <CopyPlus className="w-3.5 h-3.5 text-stone-600" />
               <span>Duplicate Draft</span>
             </button>
 
             <button
               onClick={() => setShowParserModal(true)}
-              className="px-3.5 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-3.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-all cursor-pointer shadow-xs"
               title="Parse existing PDF or text resume into internal profile with Gemini"
             >
               <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
@@ -1401,7 +1401,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             <button
               onClick={() => setShowNewDraftModal(true)}
-              className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="h-9 inline-flex items-center justify-center gap-1.5 px-3.5 rounded-xl bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold transition-all cursor-pointer shadow-xs"
             >
               <FolderPlus className="w-3.5 h-3.5 text-white" />
               <span>New Role Draft</span>
@@ -1419,26 +1419,26 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => handleSwitchDraft(d.id)}
                 className={`p-3 rounded-2xl text-left border transition-all cursor-pointer flex items-center gap-3 ${
                   isActive
-                    ? 'bg-indigo-950/60 border-indigo-500/60 ring-2 ring-indigo-500/20 shadow-md text-white'
-                    : 'bg-slate-950/40 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200'
+                    ? 'bg-emerald-50/70 border-emerald-300 ring-2 ring-emerald-500/20 shadow-xs text-stone-900'
+                    : 'bg-[#FAF9F7] border-[#EBE8E3] hover:border-stone-300 text-stone-600 hover:text-stone-900'
                 }`}
               >
-                <div className={`p-2 rounded-xl ${isActive ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'}`}>
+                <div className={`p-2 rounded-xl ${isActive ? 'bg-[#0F4A3E] text-white' : 'bg-stone-200 text-stone-600'}`}>
                   <Briefcase className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-white">{d.draftName}</span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
+                    <span className="text-xs font-bold text-stone-900">{d.draftName}</span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-[#0F4A3E] border border-emerald-300 font-semibold">
                       {d.atsMatchScore}% ATS
                     </span>
                   </div>
-                  <div className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">
+                  <div className="text-[11px] text-stone-500 flex items-center gap-2 mt-0.5">
                     <span>{d.roleTarget}</span>
                     <span>•</span>
-                    <span className="text-slate-500">{d.targetCompany}</span>
+                    <span className="text-stone-400">{d.targetCompany}</span>
                     <span>•</span>
-                    <span className="font-mono text-[10px] text-indigo-300">
+                    <span className="font-mono text-[10px] text-stone-500">
                       {(d.bulletHistoryEntries || []).length} historical bullets
                     </span>
                   </div>
@@ -1454,19 +1454,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
         
         {/* LEFT COLUMN: Inputs & Auto-Tailor Action */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
             
             {/* Quick Pick from Pipeline */}
             {applications.length > 0 && (
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1.5">
+                <label className="text-xs font-semibold uppercase text-stone-500 block mb-1.5">
                   Import Job from Active Pipeline
                 </label>
                 <div className="relative">
                   <select
                     value={selectedAppId}
                     onChange={(e) => handleSelectPipelineJob(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer appearance-none pr-8"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E] cursor-pointer appearance-none pr-8"
                   >
                     <option value="">Select a saved application...</option>
                     {applications.map((app) => (
@@ -1475,7 +1475,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 text-stone-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
             )}
@@ -1483,7 +1483,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {/* Target Role & Company */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-semibold uppercase text-stone-500 block mb-1">
                   Target Job Title
                 </label>
                 <input
@@ -1491,12 +1491,12 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
                   placeholder="e.g. Senior Frontend Engineer"
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E]"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-semibold uppercase text-stone-500 block mb-1">
                   Target Company
                 </label>
                 <input
@@ -1504,7 +1504,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder="e.g. Linear, Stripe"
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E]"
                 />
               </div>
             </div>
@@ -1512,10 +1512,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {/* Target Job Description */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold uppercase text-slate-400">
+                <label className="text-xs font-semibold uppercase text-stone-500">
                   Target Job Description & Requirements
                 </label>
-                <span className="text-[11px] text-slate-500 font-mono">
+                <span className="text-[11px] text-stone-400 font-mono">
                   {jobDescription.length} chars
                 </span>
               </div>
@@ -1524,26 +1524,26 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
                 placeholder="Paste the full job posting text here..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono leading-relaxed resize-none"
+                className="w-full bg-stone-50 border border-stone-200 rounded-2xl p-3 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E] font-mono leading-relaxed resize-none"
               />
             </div>
 
             {/* Resume Source Text */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold uppercase text-slate-400">
+                <label className="text-xs font-semibold uppercase text-stone-500">
                   Candidate Resume / Truth Anchor Text
                 </label>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setShowParserModal(true)}
-                    className="text-[11px] text-indigo-400 hover:text-indigo-300 flex items-center gap-1 font-semibold cursor-pointer transition-colors"
+                    className="text-[11px] text-[#0F4A3E] hover:text-[#0B382F] flex items-center gap-1 font-semibold cursor-pointer transition-colors"
                   >
-                    <Sparkles className="w-3 h-3 text-indigo-400" />
+                    <Sparkles className="w-3 h-3 text-[#0F4A3E]" />
                     <span>Parse PDF / Text</span>
                   </button>
-                  <span className="text-[11px] text-slate-500 font-mono">
+                  <span className="text-[11px] text-stone-400 font-mono">
                     {resumeTextInput.length} chars
                   </span>
                 </div>
@@ -1553,15 +1553,15 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 value={resumeTextInput}
                 onChange={(e) => setResumeTextInput(e.target.value)}
                 placeholder="Paste your existing resume bullet points or summary..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono leading-relaxed resize-none"
+                className="w-full bg-stone-50 border border-stone-200 rounded-2xl p-3 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E] font-mono leading-relaxed resize-none"
               />
             </div>
 
             {/* Strict Anti-Fabrication Notice */}
-            <div className="p-3 bg-indigo-950/30 border border-indigo-500/20 rounded-xl text-xs text-indigo-200 flex items-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+            <div className="p-3 bg-emerald-50/60 border border-emerald-200 rounded-xl text-xs text-stone-700 flex items-start gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#0F4A3E] shrink-0 mt-0.5" />
               <div>
-                <span className="font-semibold text-white">Truth Anchor Active: </span>
+                <span className="font-semibold text-stone-900">Truth Anchor Active: </span>
                 AI strictly preserves your real metrics and past projects. Missing qualifications remain noted rather than invented.
               </div>
             </div>
@@ -1571,16 +1571,16 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               <button
                 onClick={() => runAutoTailorPipeline(false)}
                 disabled={isTailoring || !jobDescription.trim()}
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 disabled:opacity-50 text-white font-extrabold text-sm shadow-xl shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 rounded-2xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white font-bold text-sm shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isTailoring ? (
                   <>
-                    <RefreshCw className="w-4 h-4 animate-spin text-cyan-200" />
+                    <RefreshCw className="w-4 h-4 animate-spin text-emerald-200" />
                     <span>Auto-Tailoring in Progress...</span>
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 text-cyan-300" />
+                    <Sparkles className="w-4 h-4 text-emerald-300" />
                     <span>Auto-Tailor My Resume</span>
                   </>
                 )}
@@ -1591,10 +1591,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   <button
                     onClick={() => runAutoTailorPipeline(true)}
                     disabled={isTailoring || passCount >= 3}
-                    className="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 text-xs font-semibold border border-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    className="flex-1 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-stone-700 text-xs font-semibold border border-stone-200 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                     title={passCount >= 3 ? 'Maximum 3 optimization passes reached' : 'Run second optimization pass'}
                   >
-                    <RotateCcw className="w-3.5 h-3.5 text-indigo-400" />
+                    <RotateCcw className="w-3.5 h-3.5 text-[#0F4A3E]" />
                     <span>
                       {passCount >= 3 ? 'Max Optimized (Pass 3/3)' : `Optimize Again (Pass ${passCount + 1}/3)`}
                     </span>
@@ -1607,28 +1607,28 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 type="button"
                 onClick={() => handleRunAtsCompatibilityAnalysis()}
                 disabled={isAnalyzingAts || !resumeTextInput.trim() || !jobDescription.trim()}
-                className="w-full py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-750 hover:border-indigo-500/50 text-slate-200 hover:text-white border border-slate-700 disabled:opacity-50 text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200 disabled:opacity-50 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
                 title="Run Gemini ATS Compatibility Analysis against target Job Description"
               >
                 {isAnalyzingAts ? (
                   <>
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-indigo-400" />
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#0F4A3E]" />
                     <span>Analyzing ATS Compatibility...</span>
                   </>
                 ) : (
                   <>
-                    <Target className="w-3.5 h-3.5 text-indigo-400" />
+                    <Target className="w-3.5 h-3.5 text-[#0F4A3E]" />
                     <span>Audit ATS Compatibility</span>
                     {atsReport ? (
                       <span className={`ml-1 text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold ${
                         atsReport.overallScore >= 85
-                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                          : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                          ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200'
+                          : 'bg-stone-200 text-stone-700 border border-stone-300'
                       }`}>
                         {atsReport.overallScore}%
                       </span>
                     ) : (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] border border-emerald-200 font-semibold">
                         AI
                       </span>
                     )}
@@ -1643,14 +1643,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
         <div className="lg:col-span-7 space-y-4">
           
           {/* Header Controls & Tab Switcher */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="bg-white border border-[#EBE8E3] rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 shadow-xs">
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
               <button
                 onClick={() => setActiveTab('tailored')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'tailored'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
                 <FileText className="w-3.5 h-3.5" />
@@ -1661,14 +1661,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('comparison')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'comparison'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
                 <span>Before vs After</span>
                 {tailorResult && (
-                  <span className="ml-1 text-[10px] px-1.5 py-0.2 rounded-full bg-slate-800 text-cyan-300 font-mono">
+                  <span className="ml-1 text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-[#0F4A3E] font-mono font-bold">
                     {tailorResult.bulletModifications.length}
                   </span>
                 )}
@@ -1678,24 +1678,24 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('ats-score')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'ats-score'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
-                <Target className="w-3.5 h-3.5 text-indigo-400" />
+                <Target className="w-3.5 h-3.5 text-stone-400" />
                 <span>ATS Scorecard</span>
                 {atsReport ? (
                   <span className={`ml-1 text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold ${
                     atsReport.overallScore >= 85
-                      ? 'bg-emerald-500/20 text-emerald-300'
+                      ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200'
                       : atsReport.overallScore >= 70
-                      ? 'bg-amber-500/20 text-amber-300'
-                      : 'bg-rose-500/20 text-rose-300'
+                      ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                      : 'bg-rose-50 text-rose-700 border border-rose-200'
                   }`}>
                     {atsReport.overallScore}%
                   </span>
                 ) : (
-                  <span className="ml-1 text-[9px] px-1.5 py-0.2 rounded-full bg-slate-800 text-indigo-300 font-mono">
+                  <span className="ml-1 text-[9px] px-1.5 py-0.2 rounded-full bg-stone-100 text-stone-600 font-mono border border-stone-200">
                     AI
                   </span>
                 )}
@@ -1705,8 +1705,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('keywords')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'keywords'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
                 <Search className="w-3.5 h-3.5" />
@@ -1717,14 +1717,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('gaps')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'gaps'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
                 <span>Gaps & Evidence</span>
                 {tailorResult?.remainingGaps.length ? (
-                  <span className="ml-1 text-[10px] px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 font-mono">
+                  <span className="ml-1 text-[10px] px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-800 font-mono font-bold">
                     {tailorResult.remainingGaps.length}
                   </span>
                 ) : null}
@@ -1734,8 +1734,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('history')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'history'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
                 <History className="w-3.5 h-3.5" />
@@ -1746,8 +1746,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 onClick={() => setActiveTab('bullets-history')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === 'bullets-history'
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                    ? 'bg-[#0F4A3E] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
                 <ListOrdered className="w-3.5 h-3.5" />
@@ -1757,29 +1757,29 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             {/* Export buttons */}
             {tailorResult && (
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <button
                   onClick={handlePrintPdf}
-                  className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                  className="h-8 inline-flex items-center justify-center gap-1.5 px-3 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-colors cursor-pointer shadow-xs"
                   title="Print / Export ATS PDF"
                 >
-                  <Printer className="w-3 h-3" />
+                  <Printer className="w-3.5 h-3.5" />
                   <span>PDF</span>
                 </button>
                 <button
                   onClick={handleDownloadDocx}
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center gap-1 transition-colors cursor-pointer"
+                  className="h-8 inline-flex items-center justify-center gap-1.5 px-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold border border-stone-200 transition-colors cursor-pointer"
                   title="Download .DOC ATS Document"
                 >
-                  <Download className="w-3 h-3" />
+                  <Download className="w-3.5 h-3.5" />
                   <span>DOCX</span>
                 </button>
                 <button
                   onClick={handleCopyText}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors cursor-pointer"
+                  className="h-8 w-8 inline-flex items-center justify-center rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 transition-colors cursor-pointer"
                   title="Copy formatted text"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? <Check className="w-3.5 h-3.5 text-[#0F4A3E]" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
             )}
@@ -1787,25 +1787,25 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
           {/* Transparent Match Score Card */}
           {tailorResult && (
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4 animate-in fade-in">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-3">
+            <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 sm:p-5 space-y-4 animate-in fade-in shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#EBE8E3] pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-2xl bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
-                    <TrendingUp className="w-6 h-6 text-indigo-400" />
+                  <div className="p-2.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#0F4A3E]">
+                    <TrendingUp className="w-6 h-6 text-[#0F4A3E]" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-stone-500 block">
                       ATS & JD Alignment Score
                     </span>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm line-through text-slate-500 font-mono">
+                      <span className="text-sm line-through text-stone-400 font-mono">
                         {tailorResult.originalMatchScore}%
                       </span>
-                      <ArrowRight className="w-3 h-3 text-slate-600" />
-                      <span className="text-2xl font-black text-emerald-400 font-mono">
+                      <ArrowRight className="w-3 h-3 text-stone-400" />
+                      <span className="text-2xl font-black text-stone-900 font-mono">
                         {tailorResult.tailoredMatchScore}%
                       </span>
-                      <span className="text-xs font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                      <span className="text-xs font-bold text-[#0F4A3E] px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
                         +{tailorResult.scoreImprovement}% Gain
                       </span>
                     </div>
@@ -1813,10 +1813,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[11px] text-slate-400 block">
+                  <span className="text-[11px] text-stone-500 block">
                     Optimized for {tailorResult.tailoredResume.targetCompany}
                   </span>
-                  <span className="text-[10px] text-indigo-300 font-mono">
+                  <span className="text-[10px] text-[#0F4A3E] font-mono font-semibold">
                     Pass {tailorResult.passNumber} of 3
                   </span>
                 </div>
@@ -1825,14 +1825,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               {/* Category Breakdown Progress Bars */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {tailorResult.categories.map((cat, idx) => (
-                  <div key={idx} className="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 space-y-1">
+                  <div key={idx} className="bg-[#FAF9F7] p-2.5 rounded-xl border border-[#EBE8E3] space-y-1">
                     <div className="flex justify-between items-center text-[11px]">
-                      <span className="text-slate-300 font-semibold">{cat.category}</span>
-                      <span className="font-mono text-emerald-400 font-bold">{cat.score}%</span>
+                      <span className="text-stone-700 font-semibold">{cat.category}</span>
+                      <span className="font-mono text-[#0F4A3E] font-bold">{cat.score}%</span>
                     </div>
-                    <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                    <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                       <div
-                        className="bg-indigo-500 h-full rounded-full"
+                        className="bg-[#0F4A3E] h-full rounded-full"
                         style={{ width: `${cat.score}%` }}
                       />
                     </div>
@@ -1841,8 +1841,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               </div>
 
               {/* Audit Explanation */}
-              <p className="text-[11px] text-slate-400 bg-slate-950 p-2.5 rounded-xl border border-slate-800/60 leading-relaxed">
-                <span className="font-semibold text-slate-300">Evidence Audit: </span>
+              <p className="text-[11px] text-stone-600 bg-[#FAF9F7] p-2.5 rounded-xl border border-[#EBE8E3] leading-relaxed">
+                <span className="font-semibold text-stone-900">Evidence Audit: </span>
                 {tailorResult.auditExplanation}
               </p>
             </div>
@@ -1852,19 +1852,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           {activeTab === 'tailored' && (
             <div className="space-y-4">
               {/* ATS Formatting Toolbar & Heatmap Controller */}
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 no-print">
+              <div className="bg-white border border-[#EBE8E3] rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 no-print shadow-xs">
                 {/* Template Selection */}
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 mr-1">
-                    <LayoutTemplate className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="text-[11px] text-stone-500 font-semibold uppercase tracking-wider flex items-center gap-1 mr-1">
+                    <LayoutTemplate className="w-3.5 h-3.5 text-[#0F4A3E]" />
                     <span>Format:</span>
                   </span>
                   <button
                     onClick={() => setSelectedTemplate('modern')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                       selectedTemplate === 'modern'
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-[#0F4A3E] text-white shadow-xs'
+                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
                     }`}
                   >
                     Modern Tech
@@ -1873,8 +1873,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setSelectedTemplate('ivy')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold font-serif transition-all cursor-pointer ${
                       selectedTemplate === 'ivy'
-                        ? 'bg-stone-200 text-stone-900 shadow-xs'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-stone-900 text-white shadow-xs'
+                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
                     }`}
                   >
                     Ivy League Classic
@@ -1883,8 +1883,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setSelectedTemplate('metrics')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                       selectedTemplate === 'metrics'
-                        ? 'bg-emerald-600 text-white shadow-xs'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-[#0F4A3E] text-white shadow-xs'
+                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
                     }`}
                   >
                     Metrics-First (High Scan)
@@ -1897,12 +1897,12 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setShowAtsHeatmap(!showAtsHeatmap)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                       showAtsHeatmap
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-xs shadow-amber-500/10'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                        ? 'bg-amber-100 text-amber-900 border border-amber-300 shadow-xs'
+                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
                     }`}
                     title="Toggle visual ATS impact heatmap to evaluate active verbs and quantifiable metrics"
                   >
-                    <Flame className={`w-3.5 h-3.5 ${showAtsHeatmap ? 'text-amber-400 animate-pulse' : 'text-slate-400'}`} />
+                    <Flame className={`w-3.5 h-3.5 ${showAtsHeatmap ? 'text-amber-600 animate-pulse' : 'text-stone-400'}`} />
                     <span>ATS Heatmap: {showAtsHeatmap ? 'ON' : 'OFF'}</span>
                   </button>
                 </div>
@@ -2305,8 +2305,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           {/* TAB 2: BEFORE VS AFTER COMPARISON */}
           {activeTab === 'comparison' && (
             <div className="space-y-4">
-              <div className="p-3 bg-indigo-950/30 border border-indigo-500/20 rounded-xl text-xs text-indigo-200">
-                <span className="font-semibold text-white">Interactive Change Inspection: </span>
+              <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-stone-800">
+                <span className="font-semibold text-stone-900">Interactive Change Inspection: </span>
                 Click any modified or added bullet below to view the exact reason why the AI reworded it.
               </div>
 
@@ -2314,27 +2314,27 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 <div
                   key={mod.id}
                   onClick={() => setSelectedMod(mod)}
-                  className="bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-4 space-y-3 transition-all cursor-pointer shadow-md"
+                  className="bg-white border border-[#EBE8E3] hover:border-emerald-600/40 rounded-2xl p-4 space-y-3 transition-all cursor-pointer shadow-xs"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span
                         className={`text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full border ${
                           mod.type === 'MODIFIED'
-                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30'
+                            ? 'bg-amber-50 text-amber-800 border-amber-200'
                             : mod.type === 'ADDED'
-                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
-                            : 'bg-purple-500/20 text-purple-300 border-purple-500/30'
+                            ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200'
+                            : 'bg-stone-100 text-stone-700 border-stone-200'
                         }`}
                       >
                         {mod.type}
                       </span>
-                      <span className="text-xs text-slate-400 uppercase font-semibold">
+                      <span className="text-xs text-stone-500 uppercase font-semibold">
                         Section: {mod.section}
                       </span>
                     </div>
 
-                    <span className="text-[11px] text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1">
+                    <span className="text-[11px] text-[#0F4A3E] hover:text-[#0B382F] font-semibold flex items-center gap-1">
                       <span>Why did AI change this?</span>
                       <ArrowRight className="w-3 h-3" />
                     </span>
@@ -2342,17 +2342,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                     {/* Left: Original */}
-                    <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-                      <span className="text-[10px] uppercase font-bold text-slate-500 block">
+                    <div className="p-3 bg-[#FAF9F7] rounded-xl border border-[#EBE8E3] space-y-1">
+                      <span className="text-[10px] uppercase font-bold text-stone-400 block">
                         Original Resume Text:
                       </span>
-                      <p className="text-slate-400 leading-relaxed">{mod.original}</p>
+                      <p className="text-stone-600 leading-relaxed">{mod.original}</p>
                     </div>
 
                     {/* Right: Tailored */}
-                    <div className="p-3 bg-indigo-950/20 rounded-xl border border-indigo-500/30 space-y-2">
+                    <div className="p-3 bg-emerald-50/40 rounded-xl border border-emerald-200 space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase font-bold text-emerald-400 block">
+                        <span className="text-[10px] uppercase font-bold text-[#0F4A3E] block font-serif">
                           AI-Tailored Text:
                         </span>
                         <button
@@ -2361,14 +2361,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                             e.stopPropagation();
                             handleStartPolishBullet(0, 0, mod.tailored, jobTitle, company);
                           }}
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 text-[10px] font-semibold transition-all cursor-pointer"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-[#0F4A3E] border border-emerald-300 text-[10px] font-semibold transition-all cursor-pointer"
                           title="Polish this bullet with Google XYZ formula"
                         >
-                          <Wand2 className="w-3 h-3 text-cyan-300" />
+                          <Wand2 className="w-3 h-3 text-[#0F4A3E]" />
                           <span>Polish with XYZ</span>
                         </button>
                       </div>
-                      <p className="text-slate-200 leading-relaxed font-medium">{mod.tailored}</p>
+                      <p className="text-stone-900 leading-relaxed font-medium">{mod.tailored}</p>
                     </div>
                   </div>
                 </div>
@@ -2381,14 +2381,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             <div className="space-y-4">
               {/* Toast message if present */}
               {atsToastMessage && (
-                <div className="p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-2xl text-xs text-emerald-200 flex items-center justify-between gap-3 shadow-lg animate-in fade-in">
+                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-[#0F4A3E] flex items-center justify-between gap-3 shadow-xs animate-in fade-in">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-[#0F4A3E] shrink-0" />
                     <span>{atsToastMessage}</span>
                   </div>
                   <button
                     onClick={() => setAtsToastMessage(null)}
-                    className="text-emerald-400 hover:text-white p-1 cursor-pointer"
+                    className="text-[#0F4A3E] hover:text-stone-900 p-1 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -2396,22 +2396,22 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               )}
 
               {/* ATS Top Engine Bar */}
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400">
-                      <Target className="w-5 h-5 text-indigo-400" />
+                    <div className="p-2 rounded-xl bg-emerald-50 border border-emerald-200 text-[#0F4A3E]">
+                      <Target className="w-5 h-5 text-[#0F4A3E]" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <h3 className="text-sm font-bold text-stone-900 flex items-center gap-2">
                         <span>ATS Compatibility Engine</span>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] font-mono border border-emerald-200">
                           Gemini 3.8 Flash
                         </span>
                       </h3>
-                      <p className="text-[11px] text-slate-400">
-                        Target: <span className="text-slate-200 font-medium">{jobTitle || 'Target Role'}</span> at{' '}
-                        <span className="text-slate-200 font-medium">{company || 'Target Employer'}</span>
+                      <p className="text-[11px] text-stone-500">
+                        Target: <span className="text-stone-800 font-medium">{jobTitle || 'Target Role'}</span> at{' '}
+                        <span className="text-stone-800 font-medium">{company || 'Target Employer'}</span>
                       </p>
                     </div>
                   </div>
@@ -2420,7 +2420,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 {/* Audit Target Toggle & Run Button */}
                 <div className="flex flex-wrap items-center gap-2">
                   {tailorResult && (
-                    <div className="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 text-xs">
+                    <div className="inline-flex rounded-xl bg-stone-100 p-1 border border-stone-200 text-xs">
                       <button
                         type="button"
                         onClick={() => {
@@ -2429,8 +2429,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                         }}
                         className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
                           atsAuditTarget === 'draft'
-                            ? 'bg-indigo-600 text-white'
-                            : 'text-slate-400 hover:text-slate-200'
+                            ? 'bg-[#0F4A3E] text-white'
+                            : 'text-stone-600 hover:text-stone-900'
                         }`}
                       >
                         Master Draft
@@ -2443,8 +2443,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                         }}
                         className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
                           atsAuditTarget === 'tailored'
-                            ? 'bg-indigo-600 text-white'
-                            : 'text-slate-400 hover:text-slate-200'
+                            ? 'bg-[#0F4A3E] text-white'
+                            : 'text-stone-600 hover:text-stone-900'
                         }`}
                       >
                         Tailored Resume
@@ -2456,7 +2456,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     type="button"
                     onClick={() => handleRunAtsCompatibilityAnalysis()}
                     disabled={isAnalyzingAts || !resumeTextInput.trim() || !jobDescription.trim()}
-                    className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-bold transition-all shadow-md shadow-indigo-600/20 flex items-center gap-1.5 cursor-pointer shrink-0"
+                    className="px-4 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer shrink-0"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${isAnalyzingAts ? 'animate-spin' : ''}`} />
                     <span>{atsReport ? 'Re-Audit ATS Score' : 'Run ATS Audit'}</span>
@@ -2466,25 +2466,25 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
               {/* Analyzing State */}
               {isAnalyzingAts && (
-                <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col items-center justify-center text-center space-y-4 animate-in fade-in">
+                <div className="bg-white border border-[#EBE8E3] rounded-3xl p-8 flex flex-col items-center justify-center text-center space-y-4 shadow-xs animate-in fade-in">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin flex items-center justify-center" />
-                    <Target className="w-7 h-7 text-indigo-400 absolute inset-0 m-auto" />
+                    <div className="w-16 h-16 rounded-full border-4 border-emerald-500/20 border-t-[#0F4A3E] animate-spin flex items-center justify-center" />
+                    <Target className="w-7 h-7 text-[#0F4A3E] absolute inset-0 m-auto" />
                   </div>
                   <div className="space-y-1.5 max-w-md">
-                    <h4 className="text-sm font-bold text-white">Analyzing ATS Compatibility with Gemini...</h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <h4 className="text-sm font-bold text-stone-900 font-serif">Analyzing ATS Compatibility with Gemini...</h4>
+                    <p className="text-xs text-stone-600 leading-relaxed">
                       Auditing keywords, formatting parseability, Google XYZ quantifiable metrics, and hard skills alignment against the target job description.
                     </p>
                   </div>
-                  <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-[10px] text-slate-400 font-mono">
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-indigo-300">
+                  <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-[10px] text-stone-600 font-mono">
+                    <span className="px-2.5 py-1 rounded-lg bg-stone-50 border border-stone-200 text-stone-700">
                       • Greenhouse & Workday Filters
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-indigo-300">
+                    <span className="px-2.5 py-1 rounded-lg bg-stone-50 border border-stone-200 text-stone-700">
                       • Keyword Frequency Audit
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-indigo-300">
+                    <span className="px-2.5 py-1 rounded-lg bg-stone-50 border border-stone-200 text-stone-700">
                       • Metric Density Scoring
                     </span>
                   </div>
@@ -2493,14 +2493,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
               {/* Error State */}
               {atsAnalysisError && !isAnalyzingAts && (
-                <div className="bg-rose-950/30 border border-rose-500/30 rounded-2xl p-4 text-xs text-rose-300 flex items-center justify-between gap-3">
+                <div className="bg-rose-50 border border-rose-200 rounded-2xl p-4 text-xs text-rose-800 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                    <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
                     <span>{atsAnalysisError}</span>
                   </div>
                   <button
                     onClick={() => handleRunAtsCompatibilityAnalysis()}
-                    className="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold cursor-pointer"
+                    className="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold cursor-pointer"
                   >
                     Retry
                   </button>
@@ -2509,46 +2509,46 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
               {/* Empty Launcher State (When no report yet and not analyzing) */}
               {!atsReport && !isAnalyzingAts && !atsAnalysisError && (
-                <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 text-center space-y-6">
-                  <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto">
-                    <Target className="w-8 h-8 text-indigo-400" />
+                <div className="bg-white border border-[#EBE8E3] rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-xs">
+                  <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#0F4A3E] flex items-center justify-center mx-auto">
+                    <Target className="w-8 h-8 text-[#0F4A3E]" />
                   </div>
                   <div className="space-y-2 max-w-lg mx-auto">
-                    <h3 className="text-base sm:text-lg font-bold text-white">
+                    <h3 className="text-base sm:text-lg font-serif font-bold text-stone-900">
                       Instant ATS Compatibility Audit & Scoring
                     </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs text-stone-600 leading-relaxed">
                       Evaluate how your resume scores against modern Applicant Tracking Systems (Workday, Taleo, Greenhouse, Lever). Get exact compatibility percentages, missing high-priority keywords, and step-by-step improvements.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto text-left text-xs">
-                    <div className="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80 space-y-1">
-                      <div className="flex items-center gap-1.5 text-indigo-400 font-bold">
-                        <Search className="w-3.5 h-3.5" />
+                    <div className="bg-[#FAF9F7] p-3.5 rounded-2xl border border-[#EBE8E3] space-y-1">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-bold">
+                        <Search className="w-3.5 h-3.5 text-[#0F4A3E]" />
                         <span>Keyword Gaps</span>
                       </div>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[11px] text-stone-500">
                         Pinpoints essential hard & soft skills missing from your resume text.
                       </p>
                     </div>
 
-                    <div className="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80 space-y-1">
-                      <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                        <TrendingUp className="w-3.5 h-3.5" />
+                    <div className="bg-[#FAF9F7] p-3.5 rounded-2xl border border-[#EBE8E3] space-y-1">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-bold">
+                        <TrendingUp className="w-3.5 h-3.5 text-[#0F4A3E]" />
                         <span>Quantifiable Impact</span>
                       </div>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[11px] text-stone-500">
                         Detects Google XYZ formula coverage and quantifiable metrics.
                       </p>
                     </div>
 
-                    <div className="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80 space-y-1">
-                      <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
-                        <ShieldCheck className="w-3.5 h-3.5" />
+                    <div className="bg-[#FAF9F7] p-3.5 rounded-2xl border border-[#EBE8E3] space-y-1">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-bold">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#0F4A3E]" />
                         <span>Parser Friendliness</span>
                       </div>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[11px] text-stone-500">
                         Flags section header traps and unindexed contact information.
                       </p>
                     </div>
@@ -2559,9 +2559,9 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       type="button"
                       onClick={() => handleRunAtsCompatibilityAnalysis()}
                       disabled={!resumeTextInput.trim() || !jobDescription.trim()}
-                      className="px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-xs shadow-xl shadow-indigo-600/30 transition-all inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="px-6 py-3 rounded-2xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-bold text-xs shadow-xs transition-all inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
                     >
-                      <Sparkles className="w-4 h-4 text-cyan-200" />
+                      <Sparkles className="w-4 h-4 text-emerald-300" />
                       <span>Run Full ATS Compatibility Audit with Gemini</span>
                     </button>
                   </div>
@@ -2573,25 +2573,25 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 <div className="space-y-5 animate-in fade-in">
                   
                   {/* Hero Scorecard */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-5 shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 space-y-5 shadow-xs relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative">
                       {/* Left: Overall Score Circle & Rating */}
                       <div className="flex items-center gap-4">
                         <div
-                          className={`w-20 h-20 rounded-2xl flex flex-col items-center justify-center p-2 border shadow-lg ${
+                          className={`w-20 h-20 rounded-2xl flex flex-col items-center justify-center p-2 border shadow-xs ${
                             atsReport.overallScore >= 85
-                              ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-400 shadow-emerald-500/10'
+                              ? 'bg-emerald-50 border-emerald-200 text-[#0F4A3E]'
                               : atsReport.overallScore >= 70
-                              ? 'bg-indigo-950/40 border-indigo-500/40 text-indigo-400 shadow-indigo-500/10'
-                              : 'bg-rose-950/40 border-rose-500/40 text-rose-400 shadow-rose-500/10'
+                              ? 'bg-amber-50 border-amber-200 text-amber-800'
+                              : 'bg-rose-50 border-rose-200 text-rose-700'
                           }`}
                         >
                           <span className="text-3xl font-black font-mono leading-none">
                             {atsReport.overallScore}%
                           </span>
-                          <span className="text-[9px] uppercase tracking-wider font-bold mt-1 text-slate-400">
+                          <span className="text-[9px] uppercase tracking-wider font-bold mt-1 text-stone-500">
                             ATS Score
                           </span>
                         </div>
@@ -2601,19 +2601,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                             <span
                               className={`text-xs uppercase font-extrabold px-2.5 py-0.5 rounded-full border ${
                                 atsReport.overallScore >= 85
-                                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                                  ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200'
                                   : atsReport.overallScore >= 70
-                                  ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30'
-                                  : 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                                  ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                                  : 'bg-rose-50 text-rose-700 border border-rose-200'
                               }`}
                             >
                               {atsReport.rating} Match
                             </span>
-                            <span className="text-[11px] text-slate-400 font-medium">
+                            <span className="text-[11px] text-stone-500 font-medium">
                               • {atsReport.passProbability}
                             </span>
                           </div>
-                          <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+                          <p className="text-xs text-stone-700 max-w-xl leading-relaxed">
                             {atsReport.summary}
                           </p>
                         </div>
@@ -2622,10 +2622,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       {/* Right: Quick Action */}
                       <div className="flex flex-col sm:flex-row md:flex-col gap-2 shrink-0">
                         <div className="text-right hidden md:block">
-                          <span className="text-[10px] text-slate-500 font-mono block">
+                          <span className="text-[10px] text-stone-400 font-mono block">
                             Audited against {company || 'Target Co.'}
                           </span>
-                          <span className="text-[10px] text-indigo-400 font-mono block">
+                          <span className="text-[10px] text-[#0F4A3E] font-mono block font-semibold">
                             Model: {atsReport.source || 'gemini-3.8-flash'}
                           </span>
                         </div>
@@ -2634,15 +2634,15 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                     {/* 6-Second Recruiter First Impression Card */}
                     {atsReport.recruiterScanVerdict && (
-                      <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs flex items-start gap-3">
-                        <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 shrink-0 mt-0.5">
-                          <Eye className="w-4 h-4 text-amber-400" />
+                      <div className="p-3.5 rounded-2xl bg-[#FAF9F7] border border-[#EBE8E3] text-xs flex items-start gap-3">
+                        <div className="p-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 shrink-0 mt-0.5">
+                          <Eye className="w-4 h-4 text-amber-600" />
                         </div>
                         <div className="space-y-0.5 flex-1">
-                          <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block">
+                          <span className="text-[10px] font-bold text-amber-900 uppercase tracking-wider block">
                             6-Second Recruiter Scan Simulation:
                           </span>
-                          <p className="text-slate-300 leading-relaxed text-[11px]">
+                          <p className="text-stone-700 leading-relaxed text-[11px]">
                             {atsReport.recruiterScanVerdict}
                           </p>
                         </div>
@@ -2651,91 +2651,91 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   </div>
 
                   {/* 5 Sub-Scores Breakdown */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                  <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 space-y-3 shadow-xs">
                     <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                        <Sliders className="w-3.5 h-3.5 text-indigo-400" />
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center gap-1.5 font-serif">
+                        <Sliders className="w-3.5 h-3.5 text-[#0F4A3E]" />
                         <span>ATS Algorithmic Sub-Score Breakdown</span>
                       </h4>
-                      <span className="text-[10px] text-slate-500 font-mono">5 Core Dimensions</span>
+                      <span className="text-[10px] text-stone-400 font-mono">5 Core Dimensions</span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                       {/* Sub-Score 1: Keywords */}
-                      <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 space-y-1.5">
+                      <div className="bg-[#FAF9F7] p-3 rounded-2xl border border-[#EBE8E3] space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-400 font-medium text-[11px]">Keywords Match</span>
-                          <span className="font-mono font-bold text-indigo-400">
+                          <span className="text-stone-600 font-medium text-[11px]">Keywords Match</span>
+                          <span className="font-mono font-bold text-[#0F4A3E]">
                             {atsReport.subScores.keywordMatch}%
                           </span>
                         </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-indigo-500 h-full rounded-full transition-all"
+                            className="bg-[#0F4A3E] h-full rounded-full transition-all"
                             style={{ width: `${atsReport.subScores.keywordMatch}%` }}
                           />
                         </div>
                       </div>
 
                       {/* Sub-Score 2: Format */}
-                      <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 space-y-1.5">
+                      <div className="bg-[#FAF9F7] p-3 rounded-2xl border border-[#EBE8E3] space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-400 font-medium text-[11px]">Format & Headers</span>
-                          <span className="font-mono font-bold text-emerald-400">
+                          <span className="text-stone-600 font-medium text-[11px]">Format & Headers</span>
+                          <span className="font-mono font-bold text-[#0F4A3E]">
                             {atsReport.subScores.formatAndParseability}%
                           </span>
                         </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-emerald-500 h-full rounded-full transition-all"
+                            className="bg-[#0F4A3E] h-full rounded-full transition-all"
                             style={{ width: `${atsReport.subScores.formatAndParseability}%` }}
                           />
                         </div>
                       </div>
 
                       {/* Sub-Score 3: Impact */}
-                      <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 space-y-1.5">
+                      <div className="bg-[#FAF9F7] p-3 rounded-2xl border border-[#EBE8E3] space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-400 font-medium text-[11px]">XYZ Metric Density</span>
-                          <span className="font-mono font-bold text-cyan-400">
+                          <span className="text-stone-600 font-medium text-[11px]">XYZ Metric Density</span>
+                          <span className="font-mono font-bold text-[#0F4A3E]">
                             {atsReport.subScores.quantifiableImpact}%
                           </span>
                         </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-cyan-500 h-full rounded-full transition-all"
+                            className="bg-[#0F4A3E] h-full rounded-full transition-all"
                             style={{ width: `${atsReport.subScores.quantifiableImpact}%` }}
                           />
                         </div>
                       </div>
 
                       {/* Sub-Score 4: Hard Skills */}
-                      <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 space-y-1.5">
+                      <div className="bg-[#FAF9F7] p-3 rounded-2xl border border-[#EBE8E3] space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-400 font-medium text-[11px]">Hard Skills Fit</span>
-                          <span className="font-mono font-bold text-purple-400">
+                          <span className="text-stone-600 font-medium text-[11px]">Hard Skills Fit</span>
+                          <span className="font-mono font-bold text-[#0F4A3E]">
                             {atsReport.subScores.hardSkillsMatch}%
                           </span>
                         </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-purple-500 h-full rounded-full transition-all"
+                            className="bg-[#0F4A3E] h-full rounded-full transition-all"
                             style={{ width: `${atsReport.subScores.hardSkillsMatch}%` }}
                           />
                         </div>
                       </div>
 
                       {/* Sub-Score 5: Soft Skills */}
-                      <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 space-y-1.5">
+                      <div className="bg-[#FAF9F7] p-3 rounded-2xl border border-[#EBE8E3] space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-slate-400 font-medium text-[11px]">Velocity & Ownership</span>
-                          <span className="font-mono font-bold text-amber-400">
+                          <span className="text-stone-600 font-medium text-[11px]">Velocity & Ownership</span>
+                          <span className="font-mono font-bold text-[#0F4A3E]">
                             {atsReport.subScores.softSkillsMatch}%
                           </span>
                         </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-amber-500 h-full rounded-full transition-all"
+                            className="bg-[#0F4A3E] h-full rounded-full transition-all"
                             style={{ width: `${atsReport.subScores.softSkillsMatch}%` }}
                           />
                         </div>
@@ -2746,17 +2746,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   {/* Keywords Comparison: Missing vs Matched */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Top Missing Keywords (Actionable) */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                    <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 space-y-3 shadow-xs">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-rose-400" />
-                          <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                          <AlertTriangle className="w-4 h-4 text-rose-500" />
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider font-serif">
                             Critical Missing Keywords ({atsReport.topMissingKeywords.length})
                           </h4>
                         </div>
-                        <span className="text-[10px] text-slate-500 font-mono">Click to Add</span>
+                        <span className="text-[10px] text-stone-400 font-mono">Click to Add</span>
                       </div>
-                      <p className="text-[11px] text-slate-400 leading-relaxed">
+                      <p className="text-[11px] text-stone-600 leading-relaxed">
                         These high-weight terms from the job posting are missing from your resume. Click any keyword to inject it into your resume skills section:
                       </p>
 
@@ -2766,10 +2766,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                             key={idx}
                             type="button"
                             onClick={() => handleInsertKeyword(kw)}
-                            className="group px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+                            className="group px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
                             title={`Click to add "${kw}" to resume`}
                           >
-                            <Plus className="w-3 h-3 text-rose-400 group-hover:rotate-90 transition-transform" />
+                            <Plus className="w-3 h-3 text-rose-600 group-hover:rotate-90 transition-transform" />
                             <span>{kw}</span>
                           </button>
                         ))}
@@ -2777,17 +2777,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     </div>
 
                     {/* Successfully Matched Keywords */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                    <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 space-y-3 shadow-xs">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                          <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                          <CheckCircle2 className="w-4 h-4 text-[#0F4A3E]" />
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider font-serif">
                             Matched JD Keywords ({atsReport.matchedKeywords.length})
                           </h4>
                         </div>
-                        <span className="text-[10px] text-emerald-400 font-mono font-bold">Indexed</span>
+                        <span className="text-[10px] text-[#0F4A3E] font-mono font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Indexed</span>
                       </div>
-                      <p className="text-[11px] text-slate-400 leading-relaxed">
+                      <p className="text-[11px] text-stone-600 leading-relaxed">
                         These key technical terms are clearly articulated in your resume and recognized by ATS parsing dictionaries:
                       </p>
 
@@ -2795,9 +2795,9 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                         {atsReport.matchedKeywords.map((kw, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-xs font-semibold flex items-center gap-1.5"
+                            className="px-3 py-1.5 rounded-xl bg-emerald-50 text-[#0F4A3E] border border-emerald-200 text-xs font-semibold flex items-center gap-1.5"
                           >
-                            <Check className="w-3 h-3 text-emerald-400" />
+                            <Check className="w-3 h-3 text-[#0F4A3E]" />
                             <span>{kw}</span>
                           </span>
                         ))}
@@ -2806,24 +2806,24 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   </div>
 
                   {/* Prioritized Actionable Improvement Suggestions */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                  <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 space-y-4 shadow-xs">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
                       <div className="space-y-0.5">
                         <div className="flex items-center gap-2">
-                          <Lightbulb className="w-4 h-4 text-amber-400" />
-                          <h4 className="text-sm font-bold text-white">
+                          <Lightbulb className="w-4 h-4 text-amber-500" />
+                          <h4 className="text-sm font-bold text-stone-900 font-serif">
                             Actionable Improvement Suggestions ({atsReport.actionableSuggestions.length})
                           </h4>
                         </div>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="text-[11px] text-stone-500">
                           Tailored fixes prioritized by their algorithmic impact on ATS clearance.
                         </p>
                       </div>
 
                       {/* Filters */}
                       <div className="flex items-center gap-2">
-                        <span className="text-[11px] text-slate-500 font-semibold">Priority:</span>
-                        <div className="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 text-xs">
+                        <span className="text-[11px] text-stone-500 font-semibold">Priority:</span>
+                        <div className="inline-flex rounded-xl bg-stone-100 p-1 border border-stone-200 text-xs">
                           {(['all', 'high', 'medium', 'low'] as const).map((p) => (
                             <button
                               key={p}
@@ -2831,8 +2831,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                               onClick={() => setAtsFilterPriority(p)}
                               className={`px-2.5 py-0.5 rounded-lg text-[11px] font-semibold capitalize transition-all cursor-pointer ${
                                 atsFilterPriority === p
-                                  ? 'bg-indigo-600 text-white'
-                                  : 'text-slate-400 hover:text-slate-200'
+                                  ? 'bg-[#0F4A3E] text-white'
+                                  : 'text-stone-600 hover:text-stone-900'
                               }`}
                             >
                               {p}
@@ -2853,12 +2853,12 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                               key={sug.id}
                               className={`p-4 rounded-2xl border transition-all space-y-3 ${
                                 isApplied
-                                  ? 'bg-emerald-950/20 border-emerald-500/30'
+                                  ? 'bg-emerald-50/60 border-emerald-200'
                                   : sug.priority === 'high'
-                                  ? 'bg-slate-950 border-rose-500/30 hover:border-rose-500/50'
+                                  ? 'bg-[#FAF9F7] border-rose-200 hover:border-rose-300'
                                   : sug.priority === 'medium'
-                                  ? 'bg-slate-950 border-amber-500/30 hover:border-amber-500/50'
-                                  : 'bg-slate-950 border-slate-800 hover:border-slate-700'
+                                  ? 'bg-[#FAF9F7] border-amber-200 hover:border-amber-300'
+                                  : 'bg-[#FAF9F7] border-stone-200 hover:border-stone-300'
                               }`}
                             >
                               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
@@ -2867,26 +2867,26 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                                     <span
                                       className={`text-[9px] uppercase font-bold px-2 py-0.5 rounded-full border ${
                                         sug.priority === 'high'
-                                          ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                                          ? 'bg-rose-50 text-rose-700 border-rose-200'
                                           : sug.priority === 'medium'
-                                          ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-                                          : 'bg-slate-800 text-slate-300 border-slate-700'
+                                          ? 'bg-amber-50 text-amber-800 border-amber-200'
+                                          : 'bg-stone-100 text-stone-700 border-stone-200'
                                       }`}
                                     >
                                       {sug.priority === 'high' ? 'Critical Priority' : `${sug.priority} Priority`}
                                     </span>
-                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 border border-slate-800 font-mono">
+                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white text-stone-600 border border-stone-200 font-mono">
                                       {sug.category}
                                     </span>
                                     {isApplied && (
-                                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1">
-                                        <Check className="w-3 h-3 text-emerald-400" />
+                                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-[#0F4A3E] border border-emerald-300 font-semibold flex items-center gap-1">
+                                        <Check className="w-3 h-3 text-[#0F4A3E]" />
                                         <span>Applied</span>
                                       </span>
                                     )}
                                   </div>
-                                  <h5 className="text-xs font-bold text-white">{sug.title}</h5>
-                                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                                  <h5 className="text-xs font-bold text-stone-900">{sug.title}</h5>
+                                  <p className="text-[11px] text-stone-600 leading-relaxed">
                                     {sug.explanation}
                                   </p>
                                 </div>
@@ -2896,19 +2896,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                                   <button
                                     type="button"
                                     onClick={() => handleCopyAtsSuggestion(sug.suggestedAction)}
-                                    className="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold border border-slate-700 flex items-center gap-1 transition-all cursor-pointer"
+                                    className="px-2.5 py-1 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-[11px] font-semibold border border-stone-200 flex items-center gap-1 transition-all cursor-pointer"
                                     title="Copy suggested action"
                                   >
-                                    <Copy className="w-3 h-3 text-slate-400" />
+                                    <Copy className="w-3 h-3 text-stone-500" />
                                     <span>Copy</span>
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleApplyAtsSuggestion(sug)}
-                                    className="px-3 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold flex items-center gap-1 transition-all cursor-pointer shadow-xs"
+                                    className="px-3 py-1 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-[11px] font-semibold flex items-center gap-1 transition-all cursor-pointer shadow-xs"
                                     title="Add directly to active resume input"
                                   >
-                                    <Sparkles className="w-3 h-3 text-cyan-200" />
+                                    <Sparkles className="w-3 h-3 text-emerald-300" />
                                     <span>{isApplied ? 'Applied' : 'Apply to Resume'}</span>
                                   </button>
                                 </div>
@@ -2916,7 +2916,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                               {/* Concrete Example Snippet */}
                               {sug.suggestedAction && (
-                                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] font-mono text-cyan-200 leading-relaxed">
+                                <div className="p-3 bg-white rounded-xl border border-stone-200 text-[11px] font-mono text-stone-900 leading-relaxed">
                                   {sug.suggestedAction}
                                 </div>
                               )}
@@ -2929,10 +2929,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   {/* Red Flags & Passed Checks Split Card */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Passed Checks */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                    <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 space-y-3 shadow-xs">
                       <div className="flex items-center gap-2">
-                        <CheckCheck className="w-4 h-4 text-emerald-400" />
-                        <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                        <CheckCheck className="w-4 h-4 text-[#0F4A3E]" />
+                        <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider font-serif">
                           Passed ATS Parser Checks ({atsReport.passedChecks.length})
                         </h4>
                       </div>
@@ -2940,9 +2940,9 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                         {atsReport.passedChecks.map((checkText, idx) => (
                           <div
                             key={idx}
-                            className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-[11px] text-slate-300 flex items-start gap-2"
+                            className="p-2.5 rounded-xl bg-[#FAF9F7] border border-[#EBE8E3] text-[11px] text-stone-700 flex items-start gap-2"
                           >
-                            <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                            <Check className="w-3.5 h-3.5 text-[#0F4A3E] shrink-0 mt-0.5" />
                             <span>{checkText}</span>
                           </div>
                         ))}
@@ -2950,10 +2950,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     </div>
 
                     {/* Detected Red Flags */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                    <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 space-y-3 shadow-xs">
                       <div className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-400" />
-                        <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                        <AlertCircle className="w-4 h-4 text-amber-500" />
+                        <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider font-serif">
                           ATS Parser Red Flags & Traps ({atsReport.atsRedFlags.length})
                         </h4>
                       </div>
@@ -2966,15 +2966,15 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                           {atsReport.atsRedFlags.map((rf, idx) => (
                             <div
                               key={idx}
-                              className="p-3 rounded-xl bg-slate-950/80 border border-amber-500/20 text-xs space-y-1"
+                              className="p-3 rounded-xl bg-amber-50/70 border border-amber-200 text-xs space-y-1"
                             >
                               <div className="flex items-center justify-between">
-                                <span className="font-bold text-amber-300 text-[11px]">{rf.title}</span>
-                                <span className="text-[9px] uppercase font-mono px-2 py-0.2 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                                <span className="font-bold text-amber-900 text-[11px]">{rf.title}</span>
+                                <span className="text-[9px] uppercase font-mono px-2 py-0.2 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
                                   {rf.severity} risk
                                 </span>
                               </div>
-                              <p className="text-[11px] text-slate-400 leading-relaxed">{rf.advice}</p>
+                              <p className="text-[11px] text-amber-800 leading-relaxed">{rf.advice}</p>
                             </div>
                           ))}
                         </div>
@@ -2988,15 +2988,15 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
           {/* TAB 3: KEYWORDS MATRIX */}
           {activeTab === 'keywords' && tailorResult && (
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
-              <div className="p-4 border-b border-slate-800">
-                <h3 className="text-xs font-bold uppercase text-slate-300 tracking-wider">
+            <div className="bg-white border border-[#EBE8E3] rounded-2xl overflow-hidden shadow-xs">
+              <div className="p-4 border-b border-[#EBE8E3]">
+                <h3 className="text-xs font-bold uppercase text-stone-800 tracking-wider font-serif">
                   JD vs Resume Keyword Alignment Matrix
                 </h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs text-left">
-                  <thead className="bg-slate-950 text-slate-400 uppercase text-[10px] font-mono border-b border-slate-800">
+                  <thead className="bg-stone-50 text-stone-600 uppercase text-[10px] font-mono border-b border-stone-200">
                     <tr>
                       <th className="p-3">Keyword</th>
                       <th className="p-3">JD Freq</th>
@@ -3005,17 +3005,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       <th className="p-3">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tbody className="divide-y divide-stone-200 text-stone-700">
                     {tailorResult.keywordsMatrix.map((kw, idx) => (
-                      <tr key={idx} className="hover:bg-slate-850 transition-colors">
-                        <td className="p-3 font-semibold text-white flex items-center gap-1.5">
+                      <tr key={idx} className="hover:bg-stone-50 transition-colors">
+                        <td className="p-3 font-semibold text-stone-900 flex items-center gap-1.5">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${
                               kw.priority === 'CRITICAL'
-                                ? 'bg-rose-400'
+                                ? 'bg-rose-500'
                                 : kw.priority === 'HIGH'
-                                ? 'bg-amber-400'
-                                : 'bg-cyan-400'
+                                ? 'bg-amber-500'
+                                : 'bg-[#0F4A3E]'
                             }`}
                           />
                           {kw.keyword}
@@ -3025,18 +3025,18 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                           <span
                             className={`px-2 py-0.5 rounded text-[11px] font-medium ${
                               kw.resumePresence === 'Present'
-                                ? 'bg-emerald-500/20 text-emerald-300'
+                                ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200'
                                 : kw.resumePresence === 'Partial'
-                                ? 'bg-amber-500/20 text-amber-300'
-                                : 'bg-rose-500/20 text-rose-300'
+                                ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                                : 'bg-rose-50 text-rose-700 border border-rose-200'
                             }`}
                           >
                             {kw.resumePresence}
                           </span>
                         </td>
-                        <td className="p-3 text-slate-400">{kw.evidenceSource}</td>
+                        <td className="p-3 text-stone-500">{kw.evidenceSource}</td>
                         <td className="p-3">
-                          <span className="font-mono text-cyan-300 text-[11px]">{kw.action}</span>
+                          <span className="font-mono text-[#0F4A3E] text-[11px] font-semibold">{kw.action}</span>
                         </td>
                       </tr>
                     ))}
@@ -3049,38 +3049,38 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           {/* TAB 4: GAPS & ADD EVIDENCE WORKFLOW */}
           {activeTab === 'gaps' && (
             <div className="space-y-4">
-              <div className="p-3 bg-amber-950/30 border border-amber-500/30 rounded-xl text-xs text-amber-200">
-                <span className="font-bold text-white">&quot;Get to 90%+&quot; Ethical Guidance: </span>
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                <span className="font-bold text-amber-950">&quot;Get to 90%+&quot; Ethical Guidance: </span>
                 If your match score is below 90%, ApplyFlow refuses to fake qualifications. You can legitimately add genuine experience using the verified evidence workflow below.
               </div>
 
               {tailorResult?.remainingGaps.map((gap) => (
                 <div
                   key={gap.id}
-                  className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-3 shadow-md"
+                  className="bg-white border border-[#EBE8E3] rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 text-[10px] font-bold font-mono">
+                        <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-bold font-mono">
                           Remaining Gap
                         </span>
-                        <span className="text-xs text-slate-400">{gap.category}</span>
+                        <span className="text-xs text-stone-500">{gap.category}</span>
                       </div>
-                      <h4 className="text-sm font-bold text-white">{gap.requirement}</h4>
+                      <h4 className="text-sm font-bold text-stone-900">{gap.requirement}</h4>
                     </div>
 
                     <button
                       onClick={() => setEvidenceModalGap(gap)}
-                      className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow transition-colors cursor-pointer shrink-0"
+                      className="px-3 py-1.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer shrink-0"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Add Evidence</span>
                     </button>
                   </div>
 
-                  <p className="text-xs text-slate-400 bg-slate-950 p-3 rounded-xl border border-slate-800">
-                    <span className="font-semibold text-slate-300">Why this was omitted: </span>
+                  <p className="text-xs text-stone-600 bg-[#FAF9F7] p-3 rounded-xl border border-[#EBE8E3]">
+                    <span className="font-semibold text-stone-900">Why this was omitted: </span>
                     {gap.reason}
                   </p>
                 </div>
@@ -3092,23 +3092,23 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           {activeTab === 'history' && (
             <div className="space-y-3">
               {versions.length === 0 ? (
-                <div className="text-center py-12 text-slate-500 text-xs">
+                <div className="text-center py-12 text-stone-400 text-xs">
                   No previous tailored versions saved yet.
                 </div>
               ) : (
                 versions.map((ver) => (
                   <div
                     key={ver.id}
-                    className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md"
+                    className="bg-white border border-[#EBE8E3] rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-white">{ver.versionName}</span>
-                        <span className="text-[11px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                        <span className="text-sm font-bold text-stone-900">{ver.versionName}</span>
+                        <span className="text-[11px] font-mono text-[#0F4A3E] font-semibold px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                           {ver.finalScore}% ATS Match
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400 mt-0.5">
+                      <p className="text-xs text-stone-500 mt-0.5">
                         {ver.company} • {ver.jobTitle} • {ver.date} ({ver.modificationsCount} changes)
                       </p>
                     </div>
@@ -3123,7 +3123,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                           });
                           setActiveTab('tailored');
                         }}
-                        className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center gap-1 cursor-pointer"
+                        className="px-3 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-medium border border-stone-200 flex items-center gap-1 cursor-pointer transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Restore View</span>
@@ -3139,18 +3139,18 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
           {activeTab === 'bullets-history' && (
             <div className="space-y-4">
               {/* Filter and Search Bar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900 border border-slate-800 p-3.5 rounded-2xl">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-[#EBE8E3] p-3.5 rounded-2xl shadow-xs">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="text-xs text-slate-400 font-semibold mr-1 flex items-center gap-1">
-                    <Filter className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="text-xs text-stone-600 font-semibold mr-1 flex items-center gap-1">
+                    <Filter className="w-3.5 h-3.5 text-[#0F4A3E]" />
                     <span>Role:</span>
                   </span>
                   <button
                     onClick={() => setBulletRoleFilter('all')}
                     className={`px-2.5 py-1 rounded-xl text-xs font-medium cursor-pointer transition-colors ${
                       bulletRoleFilter === 'all'
-                        ? 'bg-indigo-600 text-white font-bold'
-                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        ? 'bg-[#0F4A3E] text-white font-bold'
+                        : 'bg-stone-100 text-stone-600 hover:bg-stone-200 border border-stone-200'
                     }`}
                   >
                     All Roles ({allHistoricalBullets.length})
@@ -3161,8 +3161,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       onClick={() => setBulletRoleFilter(role)}
                       className={`px-2.5 py-1 rounded-xl text-xs font-medium cursor-pointer transition-colors ${
                         bulletRoleFilter === role
-                          ? 'bg-indigo-600 text-white font-bold'
-                          : 'bg-slate-800 text-slate-400 hover:text-white'
+                          ? 'bg-[#0F4A3E] text-white font-bold'
+                          : 'bg-stone-100 text-stone-600 hover:bg-stone-200 border border-stone-200'
                       }`}
                     >
                       {role}
@@ -3176,9 +3176,9 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     value={bulletSearchQuery}
                     onChange={(e) => setBulletSearchQuery(e.target.value)}
                     placeholder="Search tailored bullets..."
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 pl-8"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-1.5 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] pl-8"
                   />
-                  <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                  <Search className="w-3.5 h-3.5 text-stone-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
                 </div>
               </div>
 
@@ -3196,20 +3196,20 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   .map((entry) => (
                     <div
                       key={entry.id}
-                      className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-3 shadow-md hover:border-slate-700 transition-colors"
+                      className="bg-white border border-[#EBE8E3] rounded-2xl p-4 sm:p-5 space-y-3 shadow-xs hover:border-stone-300 transition-colors"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-200 pb-2.5">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-xs font-bold text-white font-serif">{entry.roleContext}</span>
-                          <span className="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+                          <span className="text-xs font-bold text-stone-900 font-serif">{entry.roleContext}</span>
+                          <span className="text-[10px] font-mono text-[#0F4A3E] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             {entry.companyContext}
                           </span>
-                          <span className="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">
+                          <span className="text-[10px] text-stone-600 bg-stone-100 px-2 py-0.5 rounded border border-stone-200">
                             {entry.versionName}
                           </span>
                         </div>
 
-                        <span className="text-[10px] text-slate-500 font-mono">
+                        <span className="text-[10px] text-stone-400 font-mono">
                           {new Date(entry.timestamp).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -3222,30 +3222,30 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       {/* Before / After Comparison */}
                       <div className="space-y-2 text-xs">
                         {entry.originalBullet && (
-                          <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-400 space-y-0.5">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                          <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-500 space-y-0.5">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
                               Original Bullet:
                             </span>
                             <p className="line-through">{entry.originalBullet}</p>
                           </div>
                         )}
 
-                        <div className="p-3 rounded-xl bg-indigo-950/20 border border-indigo-500/30 text-white space-y-1">
+                        <div className="p-3 rounded-xl bg-emerald-50/40 border border-emerald-200 text-stone-900 space-y-1">
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                              <Sparkles className="w-3 h-3 text-emerald-400" />
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F4A3E] flex items-center gap-1 font-serif">
+                              <Sparkles className="w-3 h-3 text-[#0F4A3E]" />
                               Tailored Bullet (Google XYZ Formula):
                             </span>
-                            <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-[#0F4A3E] border border-emerald-300">
                               Quantified Impact
                             </span>
                           </div>
-                          <p className="font-medium text-slate-100 leading-relaxed">• {entry.tailoredBullet}</p>
+                          <p className="font-medium text-stone-900 leading-relaxed">• {entry.tailoredBullet}</p>
                         </div>
 
                         {entry.whyChanged && (
-                          <div className="text-[11px] text-slate-400 bg-slate-950/40 p-2 rounded-xl border border-slate-800/80">
-                            <strong className="text-slate-300">Strategy Rationale: </strong>
+                          <div className="text-[11px] text-stone-600 bg-[#FAF9F7] p-2 rounded-xl border border-[#EBE8E3]">
+                            <strong className="text-stone-900">Strategy Rationale: </strong>
                             {entry.whyChanged}
                           </div>
                         )}
@@ -3259,16 +3259,16 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                             setBulletCopiedId(entry.id);
                             setTimeout(() => setBulletCopiedId(null), 2000);
                           }}
-                          className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 flex items-center gap-1 cursor-pointer transition-colors"
+                          className="px-3 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold border border-stone-200 flex items-center gap-1 cursor-pointer transition-colors"
                         >
                           {bulletCopiedId === entry.id ? (
                             <>
-                              <Check className="w-3 h-3 text-emerald-400" />
+                              <Check className="w-3 h-3 text-emerald-700" />
                               <span>Copied!</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-3 h-3" />
+                              <Copy className="w-3 h-3 text-stone-500" />
                               <span>Copy Bullet</span>
                             </>
                           )}
@@ -3298,42 +3298,44 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* MODAL 1: "WHY DID AI CHANGE THIS?" */}
       {selectedMod && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xl p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-xl p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-[#EBE8E3] pb-3">
               <div className="flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-indigo-400" />
-                <h3 className="text-sm font-bold text-white">Why Did AI Change This?</h3>
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200 text-[#0F4A3E] flex items-center justify-center">
+                  <HelpCircle className="w-4 h-4 text-[#0F4A3E]" />
+                </div>
+                <h3 className="text-sm font-serif font-bold text-stone-900">Why Did AI Change This?</h3>
               </div>
               <button
                 onClick={() => setSelectedMod(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-                <span className="font-bold text-slate-500 uppercase text-[10px]">Original Text:</span>
-                <p className="text-slate-300">{selectedMod.original}</p>
+              <div className="p-3 bg-[#FAF9F7] rounded-xl border border-[#EBE8E3] space-y-1">
+                <span className="font-bold text-stone-500 uppercase text-[10px] tracking-wider">Original Text:</span>
+                <p className="text-stone-600 font-mono text-[11px]">{selectedMod.original}</p>
               </div>
 
-              <div className="p-3 bg-indigo-950/30 rounded-xl border border-indigo-500/30 space-y-1">
-                <span className="font-bold text-emerald-400 uppercase text-[10px]">AI-Tailored Text:</span>
-                <p className="text-white font-medium">{selectedMod.tailored}</p>
+              <div className="p-3 bg-emerald-50/50 rounded-xl border border-emerald-200 space-y-1">
+                <span className="font-bold text-[#0F4A3E] uppercase text-[10px] tracking-wider">AI-Tailored Text:</span>
+                <p className="text-stone-900 font-medium text-[11px] leading-relaxed">{selectedMod.tailored}</p>
               </div>
 
-              <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
-                <span className="font-bold text-indigo-300 uppercase text-[10px] flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+              <div className="p-3.5 bg-[#FAF9F7] rounded-xl border border-[#EBE8E3] space-y-1.5">
+                <span className="font-bold text-[#0F4A3E] uppercase text-[10px] flex items-center gap-1 tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5 text-[#0F4A3E]" />
                   Strategic Alignment Rationale:
                 </span>
-                <p className="text-slate-200 leading-relaxed">{selectedMod.whyChanged}</p>
+                <p className="text-stone-700 leading-relaxed text-[11px]">{selectedMod.whyChanged}</p>
               </div>
 
-              <div className="flex items-center gap-2 text-[11px] text-emerald-400 pt-1">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2 text-[11px] text-emerald-800 pt-1">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#0F4A3E]" />
                 <span>Verified: Grounded 100% in your actual experience without manufactured claims.</span>
               </div>
             </div>
@@ -3341,7 +3343,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setSelectedMod(null)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold cursor-pointer transition-colors"
               >
                 Close
               </button>
@@ -3352,20 +3354,20 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* MODAL 2: ADD EVIDENCE WORKFLOW */}
       {evidenceModalGap && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xl p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-xl p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-[#EBE8E3] pb-3">
               <div className="space-y-0.5">
-                <span className="text-[10px] uppercase font-bold text-indigo-400 font-mono">
+                <span className="text-[10px] uppercase font-bold text-[#0F4A3E] font-mono tracking-wider">
                   Verified Evidence Intake
                 </span>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-sm font-serif font-bold text-stone-900">
                   Add Genuine Evidence for: {evidenceModalGap.requirement}
                 </h3>
               </div>
               <button
                 onClick={() => setEvidenceModalGap(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -3373,11 +3375,11 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Where did you use this?</label>
+                <label className="text-stone-600 font-semibold block mb-1">Where did you use this?</label>
                 <select
                   value={evidenceWhere}
                   onChange={(e) => setEvidenceWhere(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 >
                   <option value="Work Experience">Work Experience</option>
                   <option value="Internship">Internship</option>
@@ -3388,61 +3390,61 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Context & Company / Project Name</label>
+                <label className="text-stone-600 font-semibold block mb-1">Context & Company / Project Name</label>
                 <input
                   type="text"
                   placeholder="e.g. ScaleCraft Software or Open-Source Project"
                   value={evidenceContext}
                   onChange={(e) => setEvidenceContext(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">What was your specific responsibility?</label>
+                <label className="text-stone-600 font-semibold block mb-1">What was your specific responsibility?</label>
                 <input
                   type="text"
                   placeholder="e.g. Designed asynchronous job worker with Redis"
                   value={evidenceResponsibility}
                   onChange={(e) => setEvidenceResponsibility(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Tools / Technologies Used</label>
+                <label className="text-stone-600 font-semibold block mb-1">Tools / Technologies Used</label>
                 <input
                   type="text"
                   placeholder="e.g. AWS SQS, Docker, Node.js"
                   value={evidenceTool}
                   onChange={(e) => setEvidenceTool(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Outcome & Optional Metric</label>
+                <label className="text-stone-600 font-semibold block mb-1">Outcome & Optional Metric</label>
                 <input
                   type="text"
                   placeholder="e.g. Processed 1.2M events/day with 99.98% reliability"
                   value={evidenceOutcome}
                   onChange={(e) => setEvidenceOutcome(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
             </div>
 
-            <div className="pt-2 flex justify-end gap-2">
+            <div className="pt-2 flex justify-end gap-2 border-t border-[#EBE8E3]">
               <button
                 onClick={() => setEvidenceModalGap(null)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold cursor-pointer transition-colors"
               >
                 Keep Missing
               </button>
               <button
                 onClick={handleSaveEvidence}
                 disabled={!evidenceContext.trim() || !evidenceResponsibility.trim()}
-                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-semibold shadow"
+                className="px-4 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white text-xs font-semibold shadow-xs cursor-pointer transition-colors"
               >
                 Confirm Evidence & Re-Optimize
               </button>
@@ -3453,18 +3455,18 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* MODAL 3: CREATE NEW ROLE DRAFT */}
       {showNewDraftModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-[#EBE8E3] pb-3">
               <div className="space-y-0.5">
-                <span className="text-[10px] uppercase font-bold text-indigo-400 font-mono">
+                <span className="text-[10px] uppercase font-bold text-[#0F4A3E] font-mono tracking-wider">
                   Multi-Role Target Track
                 </span>
-                <h3 className="text-sm font-bold text-white">Create New Resume Draft</h3>
+                <h3 className="text-sm font-serif font-bold text-stone-900">Create New Resume Draft</h3>
               </div>
               <button
                 onClick={() => setShowNewDraftModal(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg cursor-pointer"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg cursor-pointer transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -3472,44 +3474,44 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1 font-semibold">Draft Name</label>
+                <label className="text-stone-600 block mb-1 font-semibold">Draft Name</label>
                 <input
                   type="text"
                   placeholder="e.g. MERN Full-Stack Specialist v2"
                   value={newDraftName}
                   onChange={(e) => setNewDraftName(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1 font-semibold">Target Job Role</label>
+                <label className="text-stone-600 block mb-1 font-semibold">Target Job Role</label>
                 <input
                   type="text"
                   placeholder="e.g. MERN Stack Web Developer or AI / LLM Evaluator"
                   value={newDraftRole}
                   onChange={(e) => setNewDraftRole(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1 font-semibold">Target Company (Optional)</label>
+                <label className="text-stone-600 block mb-1 font-semibold">Target Company (Optional)</label>
                 <input
                   type="text"
                   placeholder="e.g. Haronex Technology, Outlier AI, TCS"
                   value={newDraftCompany}
                   onChange={(e) => setNewDraftCompany(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1 font-semibold">Starting Template / Focus</label>
+                <label className="text-stone-600 block mb-1 font-semibold">Starting Template / Focus</label>
                 <select
                   value={newDraftTemplate}
                   onChange={(e) => setNewDraftTemplate(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] focus:bg-white"
                 >
                   <option value="mern">MERN Stack Specialist (MetroMart E-Commerce)</option>
                   <option value="ai-eval">AI / LLM Evaluation Specialist (Model Benchmarking)</option>
@@ -3519,17 +3521,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
               </div>
             </div>
 
-            <div className="pt-2 flex justify-end gap-2 border-t border-slate-800">
+            <div className="pt-2 flex justify-end gap-2 border-t border-[#EBE8E3]">
               <button
                 onClick={() => setShowNewDraftModal(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold cursor-pointer transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleCreateNewDraft}
                 disabled={!newDraftName.trim() || !newDraftRole.trim()}
-                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-semibold shadow cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white text-xs font-semibold shadow-xs cursor-pointer transition-colors"
               >
                 Create & Switch to Draft
               </button>
@@ -3540,19 +3542,19 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* MODAL 4: GEMINI RESUME PARSER & PROFILE MAPPER */}
       {showParserModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in overflow-y-auto">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-2xl p-6 sm:p-7 shadow-2xl space-y-5 my-8 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-xs animate-in fade-in overflow-y-auto">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-2xl p-6 sm:p-7 shadow-2xl space-y-5 my-8 max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-start justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-start justify-between border-b border-[#EBE8E3] pb-3">
               <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 text-[10px] font-bold font-mono border border-indigo-500/20">
-                  <Sparkles className="w-3 h-3 text-indigo-400" />
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] text-[10px] font-bold font-mono border border-emerald-200">
+                  <Sparkles className="w-3 h-3 text-[#0F4A3E]" />
                   <span>Gemini 3.8 Flash · Resume Intelligence Engine</span>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                <h3 className="text-base sm:text-lg font-serif font-bold text-stone-900 tracking-tight">
                   AI Resume Parser & Profile Mapper
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-stone-500">
                   Upload a PDF/text resume or paste raw text. Gemini extracts your profile, verified technical skills, and experience snippets into ApplyFlow.
                 </p>
               </div>
@@ -3562,7 +3564,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   setParsedData(null);
                   setParserError(null);
                 }}
-                className="text-slate-400 hover:text-white p-1 rounded-lg cursor-pointer"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg cursor-pointer transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -3570,8 +3572,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             {/* Error Message */}
             {parserError && (
-              <div className="p-3 rounded-2xl bg-rose-950/50 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+              <div className="p-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
                 <span>{parserError}</span>
               </div>
             )}
@@ -3580,13 +3582,13 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {!parsedData && !isParsingResume && (
               <div className="space-y-4">
                 {/* Tabs: Upload File vs Paste Text */}
-                <div className="flex p-1 bg-slate-950 rounded-2xl w-fit border border-slate-800">
+                <div className="flex p-1 bg-stone-100 rounded-2xl w-fit border border-stone-200">
                   <button
                     onClick={() => setParserInputMode('upload')}
                     className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                       parserInputMode === 'upload'
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'bg-[#0F4A3E] text-white shadow-xs'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Upload Document (PDF / TXT)
@@ -3595,8 +3597,8 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setParserInputMode('text')}
                     className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                       parserInputMode === 'text'
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'bg-[#0F4A3E] text-white shadow-xs'
+                        : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
                     Paste Resume Text
@@ -3615,27 +3617,27 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                     <div
                       onClick={() => resumeParserFileInputRef.current?.click()}
-                      className="border-2 border-dashed border-slate-700 hover:border-indigo-500 bg-slate-950/50 hover:bg-slate-950 rounded-2xl p-8 text-center cursor-pointer transition-all space-y-3 group"
+                      className="border-2 border-dashed border-stone-300 hover:border-[#0F4A3E] bg-[#FAF9F7] hover:bg-stone-100/60 rounded-2xl p-8 text-center cursor-pointer transition-all space-y-3 group"
                     >
-                      <div className="w-12 h-12 rounded-2xl bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#0F4A3E] flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
                         <Upload className="w-6 h-6" />
                       </div>
                       <div className="space-y-1">
-                        <p className="text-xs sm:text-sm font-semibold text-white">
+                        <p className="text-xs sm:text-sm font-semibold text-stone-900">
                           Click to upload PDF or Plain Text Resume
                         </p>
-                        <p className="text-[11px] text-slate-500">
+                        <p className="text-[11px] text-stone-500">
                           Supports native multi-page PDF documents and text files up to 10MB
                         </p>
                       </div>
-                      <span className="inline-block px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-[10px] font-mono">
+                      <span className="inline-block px-3 py-1 rounded-full bg-stone-200 text-stone-700 text-[10px] font-mono">
                         Native Gemini PDF Parsing Enabled
                       </span>
                     </div>
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <label className="text-xs font-bold text-slate-300 block">
+                    <label className="text-xs font-bold text-stone-700 block">
                       Paste Plain Resume Text:
                     </label>
                     <textarea
@@ -3643,13 +3645,13 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                       value={parserRawText}
                       onChange={(e) => setParserRawText(e.target.value)}
                       placeholder="Paste your full resume text including Summary, Experience, Education, and Skills..."
-                      className="w-full p-3.5 bg-slate-950 border border-slate-800 rounded-2xl text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono resize-y leading-relaxed"
+                      className="w-full p-3.5 bg-stone-50 border border-stone-200 rounded-2xl text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E] font-mono resize-y leading-relaxed"
                     />
 
                     <button
                       onClick={handleParseResumeFromText}
                       disabled={!parserRawText.trim()}
-                      className="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold text-xs shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all"
+                      className="w-full py-3 rounded-2xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white font-semibold text-xs shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all"
                     >
                       <Sparkles className="w-4 h-4 text-emerald-300" />
                       <span>Parse Text with Gemini</span>
@@ -3662,10 +3664,10 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {/* While Parsing Spinner */}
             {isParsingResume && (
               <div className="py-12 flex flex-col items-center justify-center space-y-3 text-center">
-                <div className="w-12 h-12 rounded-full border-4 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+                <div className="w-12 h-12 rounded-full border-4 border-emerald-200 border-t-[#0F4A3E] animate-spin" />
                 <div className="space-y-1">
-                  <p className="text-sm font-bold text-white">Gemini 3.8 Flash is Analyzing Resume...</p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-sm font-bold text-stone-900">Gemini 3.8 Flash is Analyzing Resume...</p>
+                  <p className="text-xs text-stone-500">
                     Extracting work experience metrics, verified technical skills, and structural metadata.
                   </p>
                 </div>
@@ -3675,24 +3677,24 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {/* When Parsed: Review & Mapping Screen */}
             {parsedData && (
               <div className="space-y-4 animate-in fade-in">
-                <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                <div className="p-4 rounded-2xl bg-[#FAF9F7] border border-[#EBE8E3] space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#EBE8E3] pb-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-base font-bold text-white font-serif">
+                        <span className="text-base font-bold text-stone-900 font-serif">
                           {parsedData.profile.fullName}
                         </span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] border border-emerald-200 font-semibold">
                           {parsedData.profile.yearsOfExp} Yr{parsedData.profile.yearsOfExp === 1 ? '' : 's'} Exp
                         </span>
                       </div>
-                      <p className="text-xs text-indigo-300 mt-0.5">{parsedData.profile.headline}</p>
-                      <p className="text-[11px] text-slate-500">{parsedData.profile.email}</p>
+                      <p className="text-xs text-stone-700 mt-0.5">{parsedData.profile.headline}</p>
+                      <p className="text-[11px] text-stone-500">{parsedData.profile.email}</p>
                     </div>
 
                     <button
                       onClick={() => setParsedData(null)}
-                      className="text-xs text-slate-400 hover:text-white underline cursor-pointer self-start sm:self-auto"
+                      className="text-xs text-stone-500 hover:text-stone-800 underline cursor-pointer self-start sm:self-auto transition-colors"
                     >
                       Re-upload
                     </button>
@@ -3701,24 +3703,24 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   {/* Summary */}
                   {parsedData.summary && (
                     <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                      <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block">
                         Summary
                       </span>
-                      <p className="text-xs text-slate-300 leading-relaxed">{parsedData.summary}</p>
+                      <p className="text-xs text-stone-700 leading-relaxed">{parsedData.summary}</p>
                     </div>
                   )}
 
                   {/* Skills Chips */}
                   {parsedData.profile.skills && parsedData.profile.skills.length > 0 && (
                     <div className="space-y-1.5 pt-1">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                      <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block">
                         Extracted Technical Skills ({parsedData.profile.skills.length}):
                       </span>
                       <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto pr-1">
                         {parsedData.profile.skills.map((skill, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-mono"
+                            className="px-2 py-0.5 rounded-lg bg-white border border-[#EBE8E3] text-stone-700 text-[11px] font-mono shadow-2xs"
                           >
                             {skill}
                           </span>
@@ -3730,14 +3732,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   {/* Work Experience Snippets */}
                   {parsedData.profile.experienceSnippets && parsedData.profile.experienceSnippets.length > 0 && (
                     <div className="space-y-1.5 pt-1">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                      <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block">
                         Key Experience Achievement Snippets:
                       </span>
                       <div className="space-y-1 max-h-32 overflow-y-auto pr-1">
                         {parsedData.profile.experienceSnippets.map((snippet, idx) => (
                           <div
                             key={idx}
-                            className="p-2 rounded-xl bg-slate-900/60 border border-slate-800/80 text-[11px] text-slate-300 leading-relaxed"
+                            className="p-2 rounded-xl bg-white border border-[#EBE8E3] text-[11px] text-stone-700 leading-relaxed shadow-2xs"
                           >
                             • {snippet}
                           </div>
@@ -3748,50 +3750,50 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                 </div>
 
                 {/* Mapping Options */}
-                <div className="p-3.5 rounded-2xl bg-indigo-950/20 border border-indigo-500/20 space-y-2 text-xs">
-                  <span className="text-[10px] uppercase font-bold text-indigo-300 tracking-wider block">
+                <div className="p-3.5 rounded-2xl bg-emerald-50/40 border border-emerald-200 space-y-2 text-xs">
+                  <span className="text-[10px] uppercase font-bold text-[#0F4A3E] tracking-wider block">
                     Automatic Profile Mapping Options:
                   </span>
 
-                  <label className="flex items-center gap-2 cursor-pointer text-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer text-stone-700">
                     <input
                       type="checkbox"
                       checked={updateGlobalProfile}
                       onChange={(e) => setUpdateGlobalProfile(e.target.checked)}
-                      className="rounded accent-indigo-600"
+                      className="rounded accent-[#0F4A3E]"
                     />
-                    <span>Update App's Global Candidate Profile (`userProfile`) & Truth Anchor</span>
+                    <span>Update App&apos;s Global Candidate Profile (`userProfile`) & Truth Anchor</span>
                   </label>
 
-                  <label className="flex items-center gap-2 cursor-pointer text-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer text-stone-700">
                     <input
                       type="checkbox"
                       checked={updateCurrentDraft}
                       onChange={(e) => setUpdateCurrentDraft(e.target.checked)}
-                      className="rounded accent-indigo-600"
+                      className="rounded accent-[#0F4A3E]"
                     />
                     <span>Update Active Resume Draft Source Text & Role ({jobTitle})</span>
                   </label>
 
-                  <label className="flex items-center gap-2 cursor-pointer text-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer text-stone-700">
                     <input
                       type="checkbox"
                       checked={createNewRoleDraft}
                       onChange={(e) => setCreateNewRoleDraft(e.target.checked)}
-                      className="rounded accent-indigo-600"
+                      className="rounded accent-[#0F4A3E]"
                     />
                     <span>Create a New Dedicated Target Role Draft for this Ingested Resume</span>
                   </label>
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#EBE8E3]">
                   <button
                     onClick={() => {
                       setShowParserModal(false);
                       setParsedData(null);
                     }}
-                    className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+                    className="px-4 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold cursor-pointer transition-colors"
                   >
                     Cancel
                   </button>
@@ -3811,25 +3813,25 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
       {/* In-Line Bullet Polish Workbench Modal */}
       {polishTarget && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto animate-in fade-in">
-          <div className="bg-slate-900 border border-indigo-500/30 rounded-3xl max-w-2xl w-full p-6 space-y-5 shadow-2xl relative my-8">
+        <div className="fixed inset-0 z-50 bg-stone-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-in fade-in">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl max-w-2xl w-full p-6 space-y-5 shadow-2xl relative my-8">
             {/* Header */}
-            <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
+            <div className="flex items-start justify-between gap-4 border-b border-[#EBE8E3] pb-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400">
-                  <Wand2 className="w-5 h-5 text-indigo-400" />
+                <div className="p-2.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#0F4A3E]">
+                  <Wand2 className="w-5 h-5 text-[#0F4A3E]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-white tracking-tight">
+                    <h3 className="text-base font-serif font-bold text-stone-900 tracking-tight">
                       AI Bullet Polish Workbench
                     </h3>
-                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-[#0F4A3E] border border-emerald-200">
                       Google XYZ Formula
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400">
-                    Role: <span className="text-slate-200 font-medium">{polishTarget.role}</span> · Company: <span className="text-slate-200 font-medium">{polishTarget.company}</span>
+                  <p className="text-xs text-stone-500">
+                    Role: <span className="text-stone-800 font-medium">{polishTarget.role}</span> · Company: <span className="text-stone-800 font-medium">{polishTarget.company}</span>
                   </p>
                 </div>
               </div>
@@ -3839,18 +3841,18 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                   setPolishResult(null);
                   setPolishError(null);
                 }}
-                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Original Bullet */}
-            <div className="p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-1">
-              <span className="text-[10px] uppercase font-bold text-slate-500 block">
+            <div className="p-3 bg-[#FAF9F7] rounded-2xl border border-[#EBE8E3] space-y-1">
+              <span className="text-[10px] uppercase font-bold text-stone-500 block tracking-wider">
                 Current Bullet Point:
               </span>
-              <p className="text-xs text-slate-300 leading-relaxed font-mono">
+              <p className="text-xs text-stone-700 leading-relaxed font-mono">
                 &quot;{polishTarget.text}&quot;
               </p>
             </div>
@@ -3858,12 +3860,12 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {/* Loading state */}
             {isPolishing && (
               <div className="py-8 flex flex-col items-center justify-center gap-3 text-center">
-                <RefreshCw className="w-7 h-7 text-indigo-400 animate-spin" />
+                <RefreshCw className="w-7 h-7 text-[#0F4A3E] animate-spin" />
                 <div className="space-y-1">
-                  <p className="text-xs font-bold text-white">
+                  <p className="text-xs font-bold text-stone-900">
                     Polishing bullet with Gemini AI...
                   </p>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-stone-500">
                     Applying Google&apos;s XYZ formula, upgrading action verbs, and quantifying performance impact.
                   </p>
                 </div>
@@ -3872,14 +3874,14 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
             {/* Error state */}
             {polishError && (
-              <div className="p-3 bg-rose-500/20 border border-rose-500/30 rounded-xl text-xs text-rose-300 flex items-center justify-between gap-2">
+              <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
                   <span>{polishError}</span>
                 </div>
                 <button
                   onClick={() => handleStartPolishBullet(polishTarget.expIndex, polishTarget.bulletIndex, polishTarget.text, polishTarget.role, polishTarget.company)}
-                  className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-semibold cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-semibold cursor-pointer"
                 >
                   Retry
                 </button>
@@ -3890,25 +3892,25 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
             {polishResult && !isPolishing && (
               <div className="space-y-4 animate-in fade-in">
                 {/* Critique & Strength Score */}
-                <div className="p-3 bg-indigo-950/40 border border-indigo-500/30 rounded-2xl flex items-center justify-between gap-4 text-xs">
+                <div className="p-3.5 bg-emerald-50/50 border border-emerald-200 rounded-2xl flex items-center justify-between gap-4 text-xs">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-white">Recruiter Critique:</span>
+                      <span className="font-bold text-stone-900">Recruiter Critique:</span>
                       {polishResult.activeVerbUsed && (
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-mono">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-mono">
                           Verb: {polishResult.activeVerbUsed}
                         </span>
                       )}
                     </div>
-                    <p className="text-slate-300 leading-relaxed text-[11px]">
+                    <p className="text-stone-700 leading-relaxed text-[11px]">
                       {polishResult.critique}
                     </p>
                   </div>
-                  <div className="text-center shrink-0 pl-3 border-l border-indigo-500/20">
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                  <div className="text-center shrink-0 pl-3 border-l border-emerald-200">
+                    <span className="text-[10px] uppercase font-bold text-stone-500 block tracking-wider">
                       Strength
                     </span>
-                    <span className="text-xl font-black text-emerald-400 font-mono">
+                    <span className="text-xl font-serif font-black text-[#0F4A3E]">
                       {polishResult.strengthScore}/100
                     </span>
                   </div>
@@ -3916,7 +3918,7 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                 {/* 3 Selectable Variants */}
                 <div className="space-y-2">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">
+                  <span className="text-[10px] uppercase font-bold text-stone-500 tracking-wider block">
                     Select High-Impact Formula:
                   </span>
 
@@ -3925,17 +3927,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setSelectedPolishVariant(polishResult.metricVariant)}
                     className={`p-3 rounded-2xl border transition-all cursor-pointer space-y-1.5 ${
                       selectedPolishVariant === polishResult.metricVariant
-                        ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-md'
-                        : 'bg-slate-950/70 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-emerald-50 border-emerald-400 text-stone-900 shadow-xs ring-1 ring-emerald-400'
+                        : 'bg-[#FAF9F7] border-[#EBE8E3] text-stone-700 hover:border-emerald-300 hover:bg-emerald-50/30'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                        <Zap className="w-3 h-3 text-emerald-400" />
+                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-[#0F4A3E] border border-emerald-300 flex items-center gap-1">
+                        <Zap className="w-3 h-3 text-[#0F4A3E]" />
                         <span>Google XYZ Formula (Metric & Impact)</span>
                       </span>
                       {selectedPolishVariant === polishResult.metricVariant && (
-                        <CheckCircle2 className="w-4 h-4 text-indigo-400" />
+                        <CheckCircle2 className="w-4 h-4 text-[#0F4A3E]" />
                       )}
                     </div>
                     <p className="text-xs leading-relaxed font-mono">
@@ -3948,17 +3950,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setSelectedPolishVariant(polishResult.brevityVariant)}
                     className={`p-3 rounded-2xl border transition-all cursor-pointer space-y-1.5 ${
                       selectedPolishVariant === polishResult.brevityVariant
-                        ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-md'
-                        : 'bg-slate-950/70 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-emerald-50 border-emerald-400 text-stone-900 shadow-xs ring-1 ring-emerald-400'
+                        : 'bg-[#FAF9F7] border-[#EBE8E3] text-stone-700 hover:border-emerald-300 hover:bg-emerald-50/30'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1">
-                        <Target className="w-3 h-3 text-cyan-400" />
+                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 border border-stone-300 flex items-center gap-1">
+                        <Target className="w-3 h-3 text-stone-700" />
                         <span>High Brevity & High Density</span>
                       </span>
                       {selectedPolishVariant === polishResult.brevityVariant && (
-                        <CheckCircle2 className="w-4 h-4 text-indigo-400" />
+                        <CheckCircle2 className="w-4 h-4 text-[#0F4A3E]" />
                       )}
                     </div>
                     <p className="text-xs leading-relaxed font-mono">
@@ -3971,17 +3973,17 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
                     onClick={() => setSelectedPolishVariant(polishResult.keywordVariant)}
                     className={`p-3 rounded-2xl border transition-all cursor-pointer space-y-1.5 ${
                       selectedPolishVariant === polishResult.keywordVariant
-                        ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-md'
-                        : 'bg-slate-950/70 border-slate-800 text-slate-300 hover:border-slate-700'
+                        ? 'bg-emerald-50 border-emerald-400 text-stone-900 shadow-xs ring-1 ring-emerald-400'
+                        : 'bg-[#FAF9F7] border-[#EBE8E3] text-stone-700 hover:border-emerald-300 hover:bg-emerald-50/30'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1">
-                        <Search className="w-3 h-3 text-purple-400" />
+                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-stone-200 text-stone-800 border border-stone-300 flex items-center gap-1">
+                        <Search className="w-3 h-3 text-stone-700" />
                         <span>ATS Keyword Infused</span>
                       </span>
                       {selectedPolishVariant === polishResult.keywordVariant && (
-                        <CheckCircle2 className="w-4 h-4 text-indigo-400" />
+                        <CheckCircle2 className="w-4 h-4 text-[#0F4A3E]" />
                       )}
                     </div>
                     <p className="text-xs leading-relaxed font-mono">
@@ -3992,34 +3994,34 @@ ${tailorResult.tailoredResume.education.map((ed) => `${ed.degree} — ${ed.schoo
 
                 {/* Editable Textarea */}
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-slate-400 block">
+                  <label className="text-[10px] uppercase font-bold text-stone-500 block tracking-wider">
                     Customize or Review Before Applying:
                   </label>
                   <textarea
                     rows={3}
                     value={selectedPolishVariant}
                     onChange={(e) => setSelectedPolishVariant(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono leading-relaxed resize-none"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#0F4A3E] focus:bg-white font-mono leading-relaxed resize-none"
                   />
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#EBE8E3]">
                   <button
                     onClick={() => {
                       setPolishTarget(null);
                       setPolishResult(null);
                     }}
-                    className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 text-xs font-semibold cursor-pointer transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={() => handleApplyPolishedBullet(selectedPolishVariant || polishResult.metricVariant)}
                     disabled={!selectedPolishVariant.trim()}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 disabled:opacity-50 text-white text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-1.5 cursor-pointer transition-all"
+                    className="px-5 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white text-xs font-bold shadow-xs flex items-center gap-1.5 cursor-pointer transition-all"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-cyan-200" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-300" />
                     <span>Apply to Resume & Save to History</span>
                   </button>
                 </div>

@@ -259,7 +259,7 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
   };
 
   const renderBadgeIcon = (iconName: string, unlocked: boolean) => {
-    const iconClass = `w-5 h-5 ${unlocked ? 'text-amber-300' : 'text-slate-500'}`;
+    const iconClass = `w-5 h-5 ${unlocked ? 'text-[#0F4A3E]' : 'text-stone-400'}`;
     switch (iconName) {
       case 'Send':
         return <Send className={iconClass} />;
@@ -287,44 +287,41 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden space-y-4">
-      {/* Background ambient lighting */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-amber-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-
+    <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 shadow-xs relative overflow-hidden space-y-4">
       {/* Header with unlocked counter and XP bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 text-xs font-semibold border border-amber-500/30">
-            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#0F4A3E] text-xs font-semibold border border-emerald-200">
+            <Trophy className="w-3.5 h-3.5 text-[#0F4A3E]" />
             <span>Achievement Badges</span>
           </div>
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+          <h3 className="text-base sm:text-lg font-serif font-bold text-stone-900 tracking-tight">
             Milestones & Career Mastery
           </h3>
-          <p className="text-xs text-slate-400 leading-relaxed max-w-xl">
+          <p className="text-xs text-stone-500 leading-relaxed max-w-xl">
             Track key breakthroughs across your job hunt, from first applications and resume optimizations to active interview loops.
           </p>
         </div>
 
         {/* Level / Progress pill */}
         <div className="flex items-center gap-3">
-          <div className="bg-slate-950/80 border border-slate-800/90 rounded-2xl px-4 py-2.5 shadow-inner text-right">
+          <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl px-4 py-2.5 shadow-xs text-right">
             <div className="flex items-baseline justify-end gap-1.5">
-              <span className="font-mono text-xl sm:text-2xl font-black text-amber-400">
+              <span className="font-serif text-xl sm:text-2xl font-bold text-[#0F4A3E]">
                 {unlockedCount}
               </span>
-              <span className="text-slate-400 text-xs font-mono">
+              <span className="text-stone-500 text-xs font-mono">
                 / {totalBadges} Unlocked
               </span>
             </div>
-            <div className="text-[11px] font-semibold text-emerald-400">
+            <div className="text-[11px] font-semibold text-emerald-800">
               {earnedXp} / {totalXp} XP ({unlockedPercentage}%)
             </div>
           </div>
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors cursor-pointer flex items-center justify-center gap-1.5 text-xs font-semibold"
+            className="p-2.5 rounded-2xl bg-stone-100 hover:bg-stone-200/70 text-stone-700 border border-stone-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5 text-xs font-semibold"
             title={isExpanded ? 'Collapse badge matrix' : 'Expand full badge showcase'}
           >
             <span>{isExpanded ? 'Collapse' : 'Show All'}</span>
@@ -343,8 +340,8 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                 key={badge.id}
                 className={`p-3.5 rounded-2xl border transition-all ${
                   badge.unlocked
-                    ? 'bg-gradient-to-br from-amber-500/10 via-slate-900 to-slate-950 border-amber-500/30 shadow-sm'
-                    : 'bg-slate-950/60 border-slate-800/90'
+                    ? 'bg-[#FAF9F7] border-emerald-200/80 shadow-xs'
+                    : 'bg-white border-stone-200'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
@@ -352,46 +349,46 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                     <div
                       className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border ${
                         badge.unlocked
-                          ? 'bg-amber-500/20 border-amber-500/40 text-amber-300 shadow-md shadow-amber-500/20'
-                          : 'bg-slate-850 border-slate-800 text-slate-500'
+                          ? 'bg-emerald-50 border-emerald-200 text-[#0F4A3E]'
+                          : 'bg-stone-100 border-stone-200 text-stone-400'
                       }`}
                     >
                       {renderBadgeIcon(badge.iconName, badge.unlocked)}
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-white truncate max-w-[130px]">
+                      <h4 className="text-xs font-bold text-stone-900 truncate max-w-[130px]">
                         {badge.title}
                       </h4>
-                      <span className="text-[10px] text-slate-400 font-mono">
+                      <span className="text-[10px] text-stone-500 font-mono">
                         +{badge.xp} XP
                       </span>
                     </div>
                   </div>
 
                   {badge.unlocked ? (
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200 flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-700" />
                       <span>Unlocked</span>
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px] font-mono border border-slate-700 flex items-center gap-1 shrink-0">
-                      <Lock className="w-2.5 h-2.5 text-slate-500" />
+                    <span className="px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 text-[10px] font-mono border border-stone-200 flex items-center gap-1 shrink-0">
+                      <Lock className="w-2.5 h-2.5 text-stone-400" />
                       <span>{badge.currentCount}/{badge.targetCount}</span>
                     </span>
                   )}
                 </div>
 
-                <p className="text-[11px] text-slate-400 mt-2 line-clamp-2 leading-relaxed">
+                <p className="text-[11px] text-stone-600 mt-2 line-clamp-2 leading-relaxed">
                   {badge.description}
                 </p>
 
                 {/* Progress bar */}
-                <div className="w-full bg-slate-800 rounded-full h-1.5 mt-2.5 overflow-hidden">
+                <div className="w-full bg-stone-100 rounded-full h-1.5 mt-2.5 overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-300 ${
                       badge.unlocked
-                        ? 'bg-gradient-to-r from-amber-400 to-emerald-400'
-                        : 'bg-indigo-500'
+                        ? 'bg-[#0F4A3E]'
+                        : 'bg-stone-400'
                     }`}
                     style={{ width: `${progress}%` }}
                   />
@@ -404,7 +401,7 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
 
       {/* Expanded Complete Showcase Tray */}
       {isExpanded && (
-        <div className="space-y-4 pt-2 border-t border-slate-800 relative z-10 animate-in fade-in duration-200">
+        <div className="space-y-4 pt-2 border-t border-stone-200 relative z-10 animate-in fade-in duration-200">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
             {[
@@ -421,8 +418,8 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                 onClick={() => setSelectedCategory(tab.id)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                   selectedCategory === tab.id
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow'
-                    : 'bg-slate-850 hover:bg-slate-800 text-slate-300 border border-slate-800'
+                    ? 'bg-[#0F4A3E] text-white font-bold shadow-xs'
+                    : 'bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200'
                 }`}
               >
                 {tab.label}
@@ -439,8 +436,8 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                   key={badge.id}
                   className={`p-4 rounded-2xl border transition-all space-y-3 flex flex-col justify-between ${
                     badge.unlocked
-                      ? 'bg-gradient-to-br from-amber-500/10 via-slate-900 to-slate-950 border-amber-500/30 shadow-md shadow-amber-500/5'
-                      : 'bg-slate-950/70 border-slate-800/90'
+                      ? 'bg-[#FAF9F7] border-emerald-200/90 shadow-xs'
+                      : 'bg-white border-stone-200 shadow-xs'
                   }`}
                 >
                   <div>
@@ -449,41 +446,41 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                         <div
                           className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 border ${
                             badge.unlocked
-                              ? 'bg-amber-500/20 border-amber-500/40 text-amber-300 shadow-md shadow-amber-500/20'
-                              : 'bg-slate-850 border-slate-800 text-slate-500'
+                              ? 'bg-emerald-50 border-emerald-200 text-[#0F4A3E]'
+                              : 'bg-stone-100 border-stone-200 text-stone-400'
                           }`}
                         >
                           {renderBadgeIcon(badge.iconName, badge.unlocked)}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-stone-100 text-stone-600 border border-stone-200">
                               {badge.category}
                             </span>
-                            <span className="text-[10px] font-mono font-bold text-amber-400">
+                            <span className="text-[10px] font-mono font-bold text-[#0F4A3E]">
                               +{badge.xp} XP
                             </span>
                           </div>
-                          <h4 className="text-sm font-bold text-white mt-0.5">
+                          <h4 className="text-sm font-serif font-bold text-stone-900 mt-0.5">
                             {badge.title}
                           </h4>
                         </div>
                       </div>
 
                       {badge.unlocked ? (
-                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1 shrink-0">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200 flex items-center gap-1 shrink-0">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-700" />
                           <span>Unlocked</span>
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px] font-mono border border-slate-700 flex items-center gap-1 shrink-0">
-                          <Lock className="w-2.5 h-2.5 text-slate-500" />
+                        <span className="px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 text-[10px] font-mono border border-stone-200 flex items-center gap-1 shrink-0">
+                          <Lock className="w-2.5 h-2.5 text-stone-400" />
                           <span>{badge.currentCount}/{badge.targetCount}</span>
                         </span>
                       )}
                     </div>
 
-                    <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                    <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
                       {badge.description}
                     </p>
                   </div>
@@ -492,17 +489,17 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                     {/* Progress tracking */}
                     <div className="space-y-1.5 pt-1">
                       <div className="flex justify-between items-center text-[10px] font-mono">
-                        <span className="text-slate-400">Progress</span>
-                        <span className={badge.unlocked ? 'text-emerald-400 font-bold' : 'text-slate-300'}>
+                        <span className="text-stone-500">Progress</span>
+                        <span className={badge.unlocked ? 'text-emerald-800 font-bold' : 'text-stone-600'}>
                           {badge.currentCount} / {badge.targetCount} ({progress}%)
                         </span>
                       </div>
-                      <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-300 ${
                             badge.unlocked
-                              ? 'bg-gradient-to-r from-amber-400 to-emerald-400'
-                              : 'bg-indigo-500'
+                              ? 'bg-[#0F4A3E]'
+                              : 'bg-stone-400'
                           }`}
                           style={{ width: `${progress}%` }}
                         />
@@ -513,9 +510,9 @@ export const AchievementBadges: React.FC<AchievementBadgesProps> = ({
                     {!badge.unlocked && badge.actionText && (
                       <button
                         onClick={() => handleBadgeAction(badge.actionType)}
-                        className="mt-3 w-full py-1.5 px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-indigo-300 hover:text-indigo-200 border border-slate-750 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        className="mt-3 w-full py-1.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0F4A3E] border border-emerald-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <Zap className="w-3 h-3 text-cyan-300" />
+                        <Zap className="w-3 h-3 text-[#0F4A3E]" />
                         <span>{badge.actionText}</span>
                         <ArrowRight className="w-3 h-3" />
                       </button>

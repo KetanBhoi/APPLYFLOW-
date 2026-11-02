@@ -44,6 +44,7 @@ import { AtsKeywordGapModal } from './components/AtsKeywordGapModal';
 import { LinkedInWarmOutreachHub } from './components/LinkedInWarmOutreachHub';
 import { StarStoryVaultHub } from './components/StarStoryVaultHub';
 import { TechnicalCodeLab } from './components/TechnicalCodeLab';
+import { SalaryAnalyticsHub } from './components/SalaryAnalyticsHub';
 import { checkServerHealth } from './services/geminiService';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
@@ -383,7 +384,19 @@ function ApplyFlowApp() {
             onNavigateToWarmOutreach={() => setCurrentTab('warm-outreach')}
             onNavigateToStarVault={() => setCurrentTab('star-vault')}
             onNavigateToCodeStudio={() => setCurrentTab('code-studio')}
+            onNavigateToSalaryAnalytics={() => setCurrentTab('salary-analytics')}
             onOpenJobClipper={() => setShowJobClipperModal(true)}
+          />
+        )}
+
+        {/* Tab 0.2: Salary Analytics & Comp Visualization Hub (D3 & Recharts) */}
+        {currentTab === 'salary-analytics' && (
+          <SalaryAnalyticsHub
+            applications={applications}
+            userProfile={userProfile}
+            onSelectApplication={setSelectedApp}
+            onNavigateToOffers={() => setCurrentTab('offers')}
+            onNavigateToPipeline={() => setCurrentTab('pipeline')}
           />
         )}
 

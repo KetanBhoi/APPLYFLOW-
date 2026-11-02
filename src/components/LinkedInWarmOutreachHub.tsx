@@ -322,47 +322,45 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
   return (
     <div className="space-y-6">
       {/* Studio Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-500/30">
-              <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-[#0F4A3E] text-xs font-semibold border border-emerald-300">
+              <Linkedin className="w-3.5 h-3.5 text-[#0F4A3E]" />
               <span>LinkedIn Warm Outreach & Alumni Assistant</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
               Warm Connection & Alumni Intelligence
             </h1>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-stone-600 text-sm leading-relaxed">
               Identify common alumni, mutual company peers, and tech leads for companies in your{' '}
-              <strong className="text-amber-400 font-semibold">'Interviewing'</strong> stage.
+              <strong className="text-amber-800 font-semibold">'Interviewing'</strong> stage.
               Generate high-conversion, strictly sub-300-character LinkedIn connection notes and pre-interview insider advice inquiries.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             {/* Filter Toggle */}
-            <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs">
+            <div className="flex items-center bg-stone-100 p-1 rounded-xl border border-stone-200 text-xs">
               <button
                 type="button"
                 onClick={() => setFilterMode('interviewing')}
-                className={`px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-lg transition-all font-semibold flex items-center gap-1.5 cursor-pointer ${
                   filterMode === 'interviewing'
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-xs'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-stone-900 border border-stone-200 shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
                 }`}
               >
-                <Flame className="w-3.5 h-3.5 text-amber-400" />
+                <Flame className="w-3.5 h-3.5 text-amber-600" />
                 <span>Interviewing ({interviewingApps.length})</span>
               </button>
               <button
                 type="button"
                 onClick={() => setFilterMode('all')}
-                className={`px-3 py-1.5 rounded-lg transition-all font-semibold ${
+                className={`px-3 py-1.5 rounded-lg transition-all font-semibold cursor-pointer ${
                   filterMode === 'all'
-                    ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30 shadow-xs'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-stone-900 border border-stone-200 shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
                 }`}
               >
                 <span>All Pipeline ({applications.length})</span>
@@ -371,7 +369,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
             <button
               onClick={() => setShowAddContactModal(true)}
-              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-lg shadow-blue-600/30 transition-all cursor-pointer whitespace-nowrap"
+              className="px-4 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs flex items-center gap-1.5 shadow-xs transition-all cursor-pointer whitespace-nowrap"
             >
               <Plus className="w-4 h-4" />
               <span>Add Custom Contact</span>
@@ -382,11 +380,11 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
       {/* Target Companies Strip (Interviewing Stage Highlighted) */}
       <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs text-slate-400 px-1">
-          <span className="font-semibold uppercase tracking-wider text-[11px]">
+        <div className="flex items-center justify-between text-xs text-stone-500 px-1">
+          <span className="font-semibold uppercase tracking-wider text-[11px] text-stone-700">
             Target Companies in Scope ({targetAppsList.length})
           </span>
-          <span className="text-slate-500">Select a company to discover warm touchpoints</span>
+          <span className="text-stone-500">Select a company to discover warm touchpoints</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -398,35 +396,35 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
               <div
                 key={app.id}
                 onClick={() => setSelectedAppId(app.id)}
-                className={`p-4 rounded-2xl border transition-all cursor-pointer relative ${
+                className={`p-4 rounded-2xl border transition-all cursor-pointer relative shadow-xs ${
                   isSelected
-                    ? 'bg-slate-900 border-blue-500 shadow-md ring-1 ring-blue-500/40'
-                    : 'bg-slate-950 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
+                    ? 'bg-white border-[#0F4A3E] ring-2 ring-[#0F4A3E]/30'
+                    : 'bg-white border-stone-200 hover:border-emerald-700/50 hover:bg-stone-50/50'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <Building2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                      <h3 className="font-bold text-sm text-white truncate">{app.company}</h3>
+                      <Building2 className="w-3.5 h-3.5 text-[#0F4A3E] shrink-0" />
+                      <h3 className="font-bold text-sm text-stone-900 truncate">{app.company}</h3>
                     </div>
-                    <div className="text-xs text-slate-400 truncate mt-0.5">{app.role}</div>
+                    <div className="text-xs text-stone-600 truncate mt-0.5">{app.role}</div>
                   </div>
 
                   {isInterviewing ? (
-                    <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider shrink-0">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-[10px] font-bold uppercase tracking-wider shrink-0">
                       Interviewing
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px] capitalize shrink-0">
+                    <span className="px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 text-[10px] capitalize shrink-0 border border-stone-200">
                       {app.status}
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-800/80 font-mono">
+                <div className="flex items-center justify-between text-[11px] text-stone-500 pt-2 border-t border-stone-100 font-mono">
                   {app.interviewDate ? (
-                    <span className="flex items-center gap-1 text-amber-400">
+                    <span className="flex items-center gap-1 text-amber-700 font-semibold">
                       <Clock className="w-3 h-3" />
                       <span>{app.interviewDate.split('T')[0]}</span>
                     </span>
@@ -434,7 +432,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                     <span>Fit: {app.fitScore || 85}%</span>
                   )}
 
-                  <span className="text-blue-400 hover:text-blue-300 font-sans font-medium flex items-center gap-0.5">
+                  <span className="text-[#0F4A3E] hover:underline font-sans font-medium flex items-center gap-0.5">
                     <span>{isSelected ? 'Active' : 'Select'}</span>
                     <ArrowRight className="w-3 h-3" />
                   </span>
@@ -447,23 +445,23 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
       {/* Selected Company Action Bar & LinkedIn Deep Links */}
       {selectedApp && (
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div className="bg-white border border-[#EBE8E3] rounded-2xl p-5 shadow-xs space-y-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-100 pb-4">
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0F4A3E]">
                   Active Target: {selectedApp.company}
                 </span>
                 {selectedApp.status === 'interviewing' && (
-                  <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 text-[10px] font-bold border border-amber-200">
                     Active Interview Stage
                   </span>
                 )}
               </div>
-              <h2 className="text-lg font-bold text-white mt-0.5 flex items-center gap-2">
+              <h2 className="font-serif text-lg font-bold text-stone-900 mt-0.5 flex items-center gap-2">
                 <span>{selectedApp.role}</span>
-                <span className="text-slate-500 text-sm font-normal">•</span>
-                <span className="text-slate-400 text-sm font-normal">{contacts.length} Warm Contacts Identified</span>
+                <span className="text-stone-400 text-sm font-normal">•</span>
+                <span className="text-stone-500 text-sm font-normal">{contacts.length} Warm Contacts Identified</span>
               </h2>
             </div>
 
@@ -473,36 +471,36 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                 href={alumniSearchUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-3 py-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
                 title={`Search LinkedIn for ${selectedApp.company} employees who attended ${candidateSchool}`}
               >
-                <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
+                <GraduationCap className="w-3.5 h-3.5 text-[#0F4A3E]" />
                 <span>Search {candidateSchool} Alumni</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
+                <ExternalLink className="w-3 h-3 text-stone-400" />
               </a>
 
               <a
                 href={hiringManagerSearchUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-3 py-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
                 title={`Search LinkedIn for Tech Leads and Engineering Managers at ${selectedApp.company}`}
               >
-                <Briefcase className="w-3.5 h-3.5 text-amber-400" />
+                <Briefcase className="w-3.5 h-3.5 text-amber-700" />
                 <span>Find Hiring Managers</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
+                <ExternalLink className="w-3 h-3 text-stone-400" />
               </a>
 
               <a
                 href={mutualSearchUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-3 py-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
                 title={`Search LinkedIn for 2nd Degree mutual connections at ${selectedApp.company}`}
               >
-                <Users className="w-3.5 h-3.5 text-emerald-400" />
+                <Users className="w-3.5 h-3.5 text-[#0F4A3E]" />
                 <span>2nd Degree Mutuals</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
+                <ExternalLink className="w-3 h-3 text-stone-400" />
               </a>
             </div>
           </div>
@@ -515,17 +513,17 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
               return (
                 <div
                   key={contact.id}
-                  className={`bg-slate-950 border rounded-2xl p-5 shadow-sm space-y-3 flex flex-col justify-between transition-all ${
+                  className={`bg-[#FAF9F7] border rounded-2xl p-5 shadow-xs space-y-3 flex flex-col justify-between transition-all ${
                     isDrawerActive
-                      ? 'border-blue-500 ring-1 ring-blue-500/30'
-                      : 'border-slate-800 hover:border-slate-700'
+                      ? 'border-[#0F4A3E] ring-2 ring-[#0F4A3E]/20 bg-white'
+                      : 'border-stone-200 hover:border-emerald-700/40 bg-[#FAF9F7]'
                   }`}
                 >
                   <div className="space-y-2.5">
                     {/* Contact Header */}
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-300 flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 text-[#0F4A3E] flex items-center justify-center font-bold text-xs shrink-0">
                           {contact.name
                             .split(' ')
                             .map((n) => n[0])
@@ -533,14 +531,14 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                             .slice(0, 2)}
                         </div>
                         <div className="min-w-0">
-                          <h4 className="font-bold text-sm text-white truncate">{contact.name}</h4>
-                          <p className="text-xs text-slate-400 truncate">{contact.title}</p>
+                          <h4 className="font-bold text-sm text-stone-900 truncate">{contact.name}</h4>
+                          <p className="text-xs text-stone-600 truncate">{contact.title}</p>
                         </div>
                       </div>
 
                       <button
                         onClick={() => handleDeleteContact(contact.id)}
-                        className="text-slate-600 hover:text-rose-400 p-1 rounded-lg transition-colors"
+                        className="text-stone-400 hover:text-rose-600 p-1 rounded-lg transition-colors cursor-pointer"
                         title="Remove contact"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -548,46 +546,46 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                     </div>
 
                     {/* Affinity Badge */}
-                    <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+                    <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-xs space-y-1 shadow-xs">
                       <div className="flex items-center gap-1.5">
                         {contact.affinity === 'alumni' ? (
-                          <span className="flex items-center gap-1 text-emerald-400 font-semibold text-[11px]">
+                          <span className="flex items-center gap-1 text-[#0F4A3E] font-semibold text-[11px]">
                             <GraduationCap className="w-3.5 h-3.5" />
                             <span>Common Alumni</span>
                           </span>
                         ) : contact.affinity === 'hiring_team' ? (
-                          <span className="flex items-center gap-1 text-amber-400 font-semibold text-[11px]">
+                          <span className="flex items-center gap-1 text-amber-800 font-semibold text-[11px]">
                             <Target className="w-3.5 h-3.5" />
                             <span>Hiring Squad Lead</span>
                           </span>
                         ) : contact.affinity === 'mutual_company' ? (
-                          <span className="flex items-center gap-1 text-blue-400 font-semibold text-[11px]">
+                          <span className="flex items-center gap-1 text-blue-800 font-semibold text-[11px]">
                             <Building2 className="w-3.5 h-3.5" />
                             <span>Mutual Past Company</span>
                           </span>
                         ) : (
-                          <span className="flex items-center gap-1 text-purple-400 font-semibold text-[11px]">
+                          <span className="flex items-center gap-1 text-stone-800 font-semibold text-[11px]">
                             <Share2 className="w-3.5 h-3.5" />
                             <span>Domain Tech Kin</span>
                           </span>
                         )}
                       </div>
-                      <p className="text-slate-300 text-[11px] leading-snug">{contact.affinityDetail}</p>
+                      <p className="text-stone-700 text-[11px] leading-snug">{contact.affinityDetail}</p>
                     </div>
 
                     {contact.notes && (
-                      <p className="text-[11px] text-slate-400 italic line-clamp-2">"{contact.notes}"</p>
+                      <p className="text-[11px] text-stone-500 italic line-clamp-2">"{contact.notes}"</p>
                     )}
                   </div>
 
                   {/* Actions & Outreach Launcher */}
-                  <div className="pt-3 border-t border-slate-900 space-y-2">
+                  <div className="pt-3 border-t border-stone-200 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[10px] uppercase font-semibold text-slate-500">Outreach SLA</span>
+                      <span className="text-[10px] uppercase font-bold text-stone-500">Outreach SLA</span>
                       <select
                         value={contact.status}
                         onChange={(e) => handleUpdateContactStatus(contact.id, e.target.value as WarmOutreachStatus)}
-                        className="text-[11px] font-semibold bg-slate-900 text-slate-300 border border-slate-800 rounded-lg px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="text-[11px] font-semibold bg-white text-stone-800 border border-stone-200 rounded-lg px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E] cursor-pointer shadow-xs"
                       >
                         <option value="identified">1. Identified</option>
                         <option value="invite_sent">2. Invite Sent</option>
@@ -600,9 +598,9 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       <button
                         onClick={() => handleGenerateOutreach(contact)}
-                        className="px-2.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                        className="px-2.5 py-1.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
                       >
-                        <Sparkles className="w-3.5 h-3.5" />
+                        <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
                         <span>Draft Message</span>
                       </button>
 
@@ -610,11 +608,11 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                         href={contact.linkedInUrl || alumniSearchUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                        className="px-2.5 py-1.5 rounded-xl bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                       >
-                        <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+                        <Linkedin className="w-3.5 h-3.5 text-[#0F4A3E]" />
                         <span>Open Search</span>
-                        <ExternalLink className="w-3 h-3 text-slate-500" />
+                        <ExternalLink className="w-3 h-3 text-stone-400" />
                       </a>
                     </div>
                   </div>
@@ -624,11 +622,11 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
           </div>
 
           {contacts.length === 0 && (
-            <div className="py-12 text-center text-slate-500 space-y-2">
+            <div className="py-12 text-center text-stone-500 space-y-2">
               <p>No contacts identified yet for {selectedApp.company}.</p>
               <button
                 onClick={() => setShowAddContactModal(true)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold"
+                className="px-4 py-2 bg-[#0F4A3E] hover:bg-[#0B382F] text-white rounded-xl text-xs font-semibold cursor-pointer shadow-xs"
               >
                 Add Your First Discovered Contact
               </button>
@@ -639,20 +637,20 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
       {/* Live Warm Outreach Message Drawer / Modal */}
       {activeContactForDrawer && (
-        <div className="bg-slate-900 border-2 border-blue-500/50 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div className="bg-[#FAF9F7] border border-stone-200 rounded-3xl p-6 sm:p-8 shadow-md space-y-5 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200 pb-4">
             <div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-blue-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                <Sparkles className="w-4 h-4 text-[#0F4A3E]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0F4A3E]">
                   Personalized Warm Outreach Assistant
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mt-0.5">
+              <h3 className="font-serif text-lg font-bold text-stone-900 mt-0.5">
                 Outreach Drafts for {activeContactForDrawer.name} ({activeContactForDrawer.title} at {selectedApp?.company})
               </h3>
-              <p className="text-xs text-slate-400">
-                Grounding Angle: <strong className="text-slate-200">{activeContactForDrawer.affinityDetail}</strong>
+              <p className="text-xs text-stone-500">
+                Grounding Angle: <strong className="text-stone-800">{activeContactForDrawer.affinityDetail}</strong>
               </p>
             </div>
 
@@ -660,14 +658,14 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
               <button
                 onClick={() => handleGenerateOutreach(activeContactForDrawer)}
                 disabled={isGeneratingMessage}
-                className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 border border-slate-700 transition-colors disabled:opacity-50"
+                className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold flex items-center gap-1.5 border border-stone-200 transition-colors disabled:opacity-50 shadow-xs cursor-pointer"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${isGeneratingMessage ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`w-3.5 h-3.5 text-[#0F4A3E] ${isGeneratingMessage ? 'animate-spin' : ''}`} />
                 <span>Regenerate with Gemini</span>
               </button>
               <button
                 onClick={() => setActiveContactForDrawer(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-200/60 transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -675,21 +673,21 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
           </div>
 
           {isGeneratingMessage ? (
-            <div className="py-12 flex flex-col items-center justify-center space-y-3 text-slate-400 text-xs text-center">
-              <div className="w-8 h-8 rounded-full border-3 border-slate-700 border-t-blue-500 animate-spin" />
+            <div className="py-12 flex flex-col items-center justify-center space-y-3 text-stone-500 text-xs text-center">
+              <div className="w-8 h-8 rounded-full border-3 border-stone-200 border-t-[#0F4A3E] animate-spin" />
               <div>Crafting personalized connection request respecting 300-character LinkedIn limit...</div>
             </div>
           ) : activeContactForDrawer.generatedOutreach ? (
             <div className="space-y-4">
               {/* Message Type Tabs */}
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+              <div className="flex flex-wrap items-center gap-2 border-b border-stone-200 pb-2">
                 <button
                   type="button"
                   onClick={() => setActiveMessageType('invite')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeMessageType === 'invite'
-                      ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-400 hover:text-white bg-slate-950'
+                      ? 'bg-[#0F4A3E] text-white shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900 bg-white border border-stone-200'
                   }`}
                 >
                   <Linkedin className="w-3.5 h-3.5" />
@@ -699,10 +697,10 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                 <button
                   type="button"
                   onClick={() => setActiveMessageType('coffee')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeMessageType === 'coffee'
-                      ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-400 hover:text-white bg-slate-950'
+                      ? 'bg-[#0F4A3E] text-white shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900 bg-white border border-stone-200'
                   }`}
                 >
                   <Coffee className="w-3.5 h-3.5" />
@@ -712,10 +710,10 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                 <button
                   type="button"
                   onClick={() => setActiveMessageType('advice')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeMessageType === 'advice'
-                      ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-400 hover:text-white bg-slate-950'
+                      ? 'bg-[#0F4A3E] text-white shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900 bg-white border border-stone-200'
                   }`}
                 >
                   <Award className="w-3.5 h-3.5" />
@@ -736,10 +734,10 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                 const isUnderLimit = charCount <= 300;
 
                 return (
-                  <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3">
-                    <div className="flex items-center justify-between">
+                  <div className="bg-white border border-stone-200 rounded-2xl p-5 space-y-3 shadow-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold uppercase text-slate-400">
+                        <span className="text-xs font-bold uppercase text-stone-700">
                           {activeMessageType === 'invite'
                             ? 'Connection Request Note'
                             : activeMessageType === 'coffee'
@@ -750,7 +748,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                         {activeMessageType === 'invite' && (
                           <span
                             className={`text-[11px] font-mono px-2 py-0.5 rounded-md font-bold ${
-                              isUnderLimit ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'
+                              isUnderLimit ? 'bg-emerald-50 text-[#0F4A3E] border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'
                             }`}
                           >
                             {charCount} / 300 chars {isUnderLimit ? '✓ Ready' : '⚠️ Exceeds limit'}
@@ -761,7 +759,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleCopy(messageText, 'active_message')}
-                          className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                          className="px-3 py-1.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                         >
                           {copiedKey === 'active_message' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                           <span>{copiedKey === 'active_message' ? 'Copied to Clipboard' : 'Copy Message'}</span>
@@ -771,22 +769,22 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                           href={activeContactForDrawer.linkedInUrl || alumniSearchUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                          className="px-3 py-1.5 rounded-xl bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
                         >
-                          <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+                          <Linkedin className="w-3.5 h-3.5 text-[#0F4A3E]" />
                           <span>Paste on LinkedIn</span>
-                          <ExternalLink className="w-3 h-3 text-slate-500" />
+                          <ExternalLink className="w-3 h-3 text-stone-400" />
                         </a>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-slate-900 rounded-xl text-xs sm:text-sm text-slate-200 leading-relaxed font-sans border border-slate-800/80 whitespace-pre-line select-all">
+                    <div className="p-4 bg-stone-50 rounded-xl text-xs sm:text-sm text-stone-900 leading-relaxed font-sans border border-stone-200 whitespace-pre-line select-all">
                       {messageText}
                     </div>
 
                     {/* Pro Tip */}
-                    <div className="flex items-start gap-2 text-[11px] text-slate-400 pt-1">
-                      <HelpCircle className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-2 text-[11px] text-amber-950 bg-amber-50/70 p-3 rounded-xl border border-amber-200">
+                      <HelpCircle className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
                       <span>
                         <strong>Networking Pro Tip:</strong> LinkedIn personal connection notes are strictly limited to 300 characters. Never ask for a referral in the first message—ask for their perspective or advice first to build genuine rapport.
                       </span>
@@ -801,16 +799,16 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
       {/* Modal: Add Custom Contact */}
       {showAddContactModal && selectedApp && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/60 backdrop-blur-xs overflow-y-auto">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
               <div>
-                <h3 className="font-bold text-base text-white">Add Discovered LinkedIn Contact</h3>
-                <p className="text-xs text-slate-400">Target Company: {selectedApp.company}</p>
+                <h3 className="font-serif font-bold text-base text-stone-900">Add Discovered LinkedIn Contact</h3>
+                <p className="text-xs text-stone-500">Target Company: {selectedApp.company}</p>
               </div>
               <button
                 onClick={() => setShowAddContactModal(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -818,7 +816,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                   Full Name *
                 </label>
                 <input
@@ -826,12 +824,12 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                   placeholder="e.g. Rahul Sharma"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                   Role / Title at {selectedApp.company} *
                 </label>
                 <input
@@ -839,19 +837,19 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                   placeholder="e.g. Senior Frontend Engineer / Tech Lead"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                  <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                     Warm Affinity Angle
                   </label>
                   <select
                     value={newAffinity}
                     onChange={(e) => setNewAffinity(e.target.value as WarmContactAffinity)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                   >
                     <option value="alumni">🎓 College/University Alumni</option>
                     <option value="hiring_team">👔 Hiring Lead / Manager</option>
@@ -862,7 +860,7 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                  <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                     Affinity Detail
                   </label>
                   <input
@@ -870,13 +868,13 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                     placeholder={`e.g. ${candidateSchool} '22`}
                     value={newAffinityDetail}
                     onChange={(e) => setNewAffinityDetail(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                   LinkedIn Profile URL (Optional)
                 </label>
                 <input
@@ -884,12 +882,12 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                   placeholder="https://linkedin.com/in/username"
                   value={newLinkedInUrl}
                   onChange={(e) => setNewLinkedInUrl(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+                <label className="text-xs font-bold uppercase text-stone-700 block mb-1">
                   Private Notes / Mutual Context
                 </label>
                 <textarea
@@ -897,22 +895,22 @@ export const LinkedInWarmOutreachHub: React.FC<LinkedInWarmOutreachHubProps> = (
                   value={newNotes}
                   onChange={(e) => setNewNotes(e.target.value)}
                   rows={2}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#0F4A3E]"
                 />
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-stone-200">
               <button
                 onClick={() => setShowAddContactModal(false)}
-                className="px-4 py-2 text-xs text-slate-400 hover:text-white"
+                className="px-4 py-2 text-xs text-stone-500 hover:text-stone-800 cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveNewContact}
                 disabled={!newName.trim() || !newTitle.trim()}
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs disabled:opacity-50"
+                className="px-4 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs disabled:opacity-50 shadow-xs cursor-pointer"
               >
                 Save & Generate Messages
               </button>

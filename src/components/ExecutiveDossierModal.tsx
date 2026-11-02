@@ -177,20 +177,20 @@ ${dossier.strategicRisks
       <div className="bg-white text-stone-900 rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-stone-200">
         
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-stone-900 text-stone-100 flex items-center justify-between border-b border-stone-800">
+        <div className="px-6 py-4 bg-[#FAF9F7] text-stone-900 flex items-center justify-between border-b border-[#EBE8E3]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-[#0F4A3E]">
               <Compass className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold tracking-wider uppercase text-emerald-400">Executive Briefing & Strategic Blueprint</span>
-                <span className="text-xs px-2 py-0.5 rounded bg-stone-800 text-stone-300 font-mono">30-60-90 Day Dossier</span>
+                <span className="text-xs font-semibold tracking-wider uppercase text-[#0F4A3E]">Executive Briefing & Strategic Blueprint</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-mono border border-stone-200">30-60-90 Day Dossier</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-serif font-bold text-white flex items-center gap-2">
+              <h2 className="text-lg sm:text-xl font-serif font-bold text-stone-900 flex items-center gap-2">
                 <span>{application.company}</span>
-                <span className="text-stone-500 text-sm font-sans font-normal">/</span>
-                <span className="text-stone-300 text-base font-sans font-normal">{application.role}</span>
+                <span className="text-stone-400 text-sm font-sans font-normal">/</span>
+                <span className="text-stone-600 text-base font-sans font-normal">{application.role}</span>
               </h2>
             </div>
           </div>
@@ -199,7 +199,7 @@ ${dossier.strategicRisks
             <button
               onClick={handleGenerate}
               disabled={isLoading}
-              className="px-3 py-1.5 text-xs font-medium rounded-lg border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+              className="h-8 inline-flex items-center justify-center gap-1.5 px-3 text-xs font-semibold rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 transition-colors disabled:opacity-50 shadow-xs cursor-pointer shrink-0"
               title="Regenerate with Gemini"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
@@ -208,7 +208,7 @@ ${dossier.strategicRisks
             <button
               onClick={handleExportMarkdown}
               disabled={!dossier || isLoading}
-              className="px-3 py-1.5 text-xs font-medium rounded-lg border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+              className="h-8 inline-flex items-center justify-center gap-1.5 px-3 text-xs font-semibold rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-stone-700 transition-colors disabled:opacity-50 shadow-xs cursor-pointer shrink-0"
               title="Download as Markdown"
             >
               <Download className="w-3.5 h-3.5" />
@@ -217,7 +217,7 @@ ${dossier.strategicRisks
             <button
               onClick={handlePrint}
               disabled={!dossier || isLoading}
-              className="px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 transition-colors disabled:opacity-50"
+              className="h-8 inline-flex items-center justify-center gap-1.5 px-3 text-xs font-semibold rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white transition-colors disabled:opacity-50 shadow-xs cursor-pointer shrink-0"
               title="Print to PDF"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -225,7 +225,8 @@ ${dossier.strategicRisks
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors ml-2"
+              className="h-8 w-8 inline-flex items-center justify-center rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer shrink-0"
+              aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
             </button>

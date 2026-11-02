@@ -24,12 +24,12 @@ interface StandingRulesLabProps {
 }
 
 const CATEGORY_STYLES: Record<string, { label: string; color: string }> = {
-  tone: { label: 'Tone & Style', color: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30' },
-  brevity: { label: 'Brevity & Caps', color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30' },
-  integrity: { label: 'Truth & Metrics', color: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' },
-  cadence: { label: 'Timing & Cadence', color: 'bg-amber-500/20 text-amber-300 border-amber-500/30' },
-  custom: { label: 'Custom Rule', color: 'bg-purple-500/20 text-purple-300 border-purple-500/30' },
-  keywords: { label: 'Tech Stack', color: 'bg-blue-500/20 text-blue-300 border-blue-500/30' }
+  tone: { label: 'Tone & Style', color: 'bg-stone-100 text-stone-700 border-stone-200' },
+  brevity: { label: 'Brevity & Caps', color: 'bg-emerald-50 text-[#0F4A3E] border-emerald-200' },
+  integrity: { label: 'Truth & Metrics', color: 'bg-emerald-100/70 text-emerald-800 border-emerald-200' },
+  cadence: { label: 'Timing & Cadence', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+  custom: { label: 'Custom Rule', color: 'bg-stone-100 text-stone-800 border-stone-300' },
+  keywords: { label: 'Tech Stack', color: 'bg-emerald-50 text-[#0F4A3E] border-emerald-200' }
 };
 
 export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
@@ -109,17 +109,17 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
   return (
     <div className="space-y-8">
       {/* Intro Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-sm">
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold mb-2 border border-emerald-500/20">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#0F4A3E] text-xs font-semibold mb-2 border border-emerald-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0F4A3E]" />
               Permanent Standing Rules Engine
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-stone-900 tracking-tight">
               Turn Bugs & Preferences into Standing Rules
             </h2>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
+            <p className="text-stone-600 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
               Whenever the AI makes a mistake or writes something you dislike (e.g., using buzzwords like &quot;spearheaded&quot;, writing emails too long, or inventing fake metrics), lock it in as a <strong>Standing Rule</strong>. Every subsequent scan strictly enforces it.
             </p>
           </div>
@@ -127,7 +127,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onResetRules}
-              className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 text-xs font-medium border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="h-9 inline-flex items-center gap-1.5 px-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold border border-stone-200 transition-colors cursor-pointer"
               title="Reset to recommended default rules"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -136,7 +136,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
 
             <button
               onClick={() => setShowAddModal(true)}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="h-9 inline-flex items-center gap-1.5 px-4 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Add Standing Rule</span>
@@ -152,8 +152,8 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
           return (
             <div
               key={rule.id}
-              className={`bg-slate-900 border rounded-2xl p-5 transition-all shadow-sm flex flex-col justify-between ${
-                rule.enabled ? 'border-slate-700/80' : 'border-slate-800 opacity-60'
+              className={`bg-white border rounded-2xl p-5 transition-all shadow-xs flex flex-col justify-between ${
+                rule.enabled ? 'border-stone-200' : 'border-stone-200 opacity-60'
               }`}
             >
               <div>
@@ -162,7 +162,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                     <span className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full border ${style.color}`}>
                       {style.label}
                     </span>
-                    <span className="text-[11px] text-slate-400 font-mono">
+                    <span className="text-[11px] text-stone-500 font-mono">
                       Enforced {rule.timesEnforced}x
                     </span>
                   </div>
@@ -175,28 +175,28 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                       onChange={() => onToggleRule(rule.id)}
                       className="sr-only peer"
                     />
-                    <div className="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                    <div className="w-9 h-5 bg-stone-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0F4A3E]"></div>
                   </label>
                 </div>
 
-                <h3 className="text-base font-bold text-white mb-1.5">{rule.title}</h3>
+                <h3 className="text-base font-serif font-bold text-stone-900 mb-1.5">{rule.title}</h3>
 
-                <p className="text-xs text-slate-300 font-mono bg-slate-950 p-2.5 rounded-xl border border-slate-800 leading-relaxed mb-3">
+                <p className="text-xs text-stone-800 font-mono bg-[#FAF9F7] p-2.5 rounded-xl border border-stone-200 leading-relaxed mb-3">
                   &quot;{rule.instruction}&quot;
                 </p>
 
-                <p className="text-xs text-slate-400">{rule.description}</p>
+                <p className="text-xs text-stone-500">{rule.description}</p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
-                <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                <span className="flex items-center gap-1 font-semibold text-emerald-800">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                   {rule.enabled ? 'Active on all prompts' : 'Disabled'}
                 </span>
 
                 <button
                   onClick={() => onDeleteRule(rule.id)}
-                  className="text-slate-500 hover:text-rose-400 p-1 rounded transition-colors"
+                  className="text-stone-400 hover:text-rose-600 p-1 rounded transition-colors"
                   title="Delete rule"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
@@ -208,12 +208,12 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
       </div>
 
       {/* Interactive Rule Tester / Sandbox */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4">
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 space-y-4 shadow-xs">
         <div className="flex items-center gap-2">
-          <Zap className="w-4 h-4 text-amber-400" />
-          <h3 className="text-base font-bold text-white">Standing Rules Live Audit Sandbox</h3>
+          <Zap className="w-4 h-4 text-[#0F4A3E]" />
+          <h3 className="text-base font-serif font-bold text-stone-900">Standing Rules Live Audit Sandbox</h3>
         </div>
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-stone-500">
           Type or paste a draft bullet point, cover letter sentence, or prompt to test how your active standing rules audit it in real time.
         </p>
 
@@ -223,21 +223,21 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
             value={testInput}
             onChange={(e) => setTestInput(e.target.value)}
             placeholder="Type sample text to audit..."
-            className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-4 py-2 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
           />
           <button
             onClick={runTestAudit}
-            className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors cursor-pointer shrink-0"
+            className="px-5 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-colors cursor-pointer shrink-0 shadow-xs"
           >
             Audit Rules
           </button>
         </div>
 
         {testOutput && (
-          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
-            <p className="font-semibold text-slate-200">{testOutput}</p>
+          <div className="bg-[#FAF9F7] p-4 rounded-xl border border-stone-200 space-y-2 text-xs">
+            <p className="font-semibold text-stone-800">{testOutput}</p>
             {testViolations.length > 0 && (
-              <ul className="space-y-1 text-rose-300 pl-4 list-disc">
+              <ul className="space-y-1 text-rose-800 pl-4 list-disc font-medium">
                 {testViolations.map((v, i) => (
                   <li key={i}>{v}</li>
                 ))}
@@ -249,16 +249,16 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
 
       {/* Add Rule Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg p-6 shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs">
+          <div className="bg-white border border-[#EBE8E3] rounded-3xl w-full max-w-lg p-6 shadow-xl space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <Plus className="w-5 h-5 text-emerald-400" />
+              <h3 className="text-lg font-serif font-bold text-stone-900 flex items-center gap-2">
+                <Plus className="w-5 h-5 text-[#0F4A3E]" />
                 Add Permanent Standing Rule
               </h3>
               <button
                 onClick={() => setShowAddModal(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-stone-400 hover:text-stone-700 p-1 rounded-lg"
               >
                 ✕
               </button>
@@ -266,7 +266,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
 
             <form onSubmit={handleCreateRule} className="space-y-4">
               <div>
-                <label className="text-xs font-semibold text-slate-300 uppercase block mb-1">
+                <label className="text-xs font-semibold text-stone-700 uppercase block mb-1">
                   Rule Name
                 </label>
                 <input
@@ -274,19 +274,19 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                   placeholder="e.g. Strict Salary Minimum or React 19 Focus"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                   required
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-300 uppercase block mb-1">
+                <label className="text-xs font-semibold text-stone-700 uppercase block mb-1">
                   Category
                 </label>
                 <select
                   value={newCategory}
                   onChange={(e) => setNewCategory(e.target.value as any)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                 >
                   <option value="tone">Tone & Voice (Zero slop, anti-cliché)</option>
                   <option value="brevity">Brevity & Word Caps</option>
@@ -298,7 +298,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-300 uppercase block mb-1">
+                <label className="text-xs font-semibold text-stone-700 uppercase block mb-1">
                   Exact Standing Instruction (Passed directly to AI)
                 </label>
                 <textarea
@@ -306,13 +306,13 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                   placeholder="e.g. Always emphasize Next.js App Router and TypeScript, never mention PHP, and flag any job with over 4 rounds of interviews."
                   value={newInstruction}
                   onChange={(e) => setNewInstruction(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700 font-mono"
                   required
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-300 uppercase block mb-1">
+                <label className="text-xs font-semibold text-stone-700 uppercase block mb-1">
                   Why this rule exists (Your rationale)
                 </label>
                 <input
@@ -320,7 +320,7 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                   placeholder="e.g. Saves time by filtering out legacy stacks and long interview loops"
                   value={newDescription}
                   onChange={(e) => setNewDescription(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                 />
               </div>
 
@@ -328,13 +328,13 @@ export const StandingRulesLab: React.FC<StandingRulesLabProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-medium hover:bg-slate-700"
+                  className="px-4 py-2 rounded-xl bg-stone-100 text-stone-700 text-xs font-medium hover:bg-stone-200"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors"
+                  className="px-5 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold transition-colors shadow-xs"
                 >
                   Lock In Rule
                 </button>

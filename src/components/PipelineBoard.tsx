@@ -42,11 +42,11 @@ interface PipelineBoardProps {
 }
 
 const COLUMNS: { id: ApplicationStatus; label: string; color: string; badgeBg: string }[] = [
-  { id: 'wishlist', label: 'Wishlist / Saved', color: 'border-slate-700', badgeBg: 'bg-slate-700/60 text-slate-300' },
-  { id: 'applied', label: 'Applied', color: 'border-blue-600/40', badgeBg: 'bg-blue-500/20 text-blue-300' },
-  { id: 'interviewing', label: 'Interviewing', color: 'border-amber-600/40', badgeBg: 'bg-amber-500/20 text-amber-300' },
-  { id: 'offer', label: 'Offers', color: 'border-emerald-600/40', badgeBg: 'bg-emerald-500/20 text-emerald-300' },
-  { id: 'rejected', label: 'Archived', color: 'border-slate-800', badgeBg: 'bg-slate-800 text-slate-400' },
+  { id: 'wishlist', label: 'Wishlist / Saved', color: 'border-stone-300', badgeBg: 'bg-stone-100 text-stone-700 border border-stone-200' },
+  { id: 'applied', label: 'Applied', color: 'border-blue-300', badgeBg: 'bg-blue-50 text-blue-800 border border-blue-200' },
+  { id: 'interviewing', label: 'Interviewing', color: 'border-amber-300', badgeBg: 'bg-amber-50 text-amber-900 border border-amber-200' },
+  { id: 'offer', label: 'Offers', color: 'border-emerald-300', badgeBg: 'bg-emerald-50 text-[#0F4A3E] border border-emerald-300 font-bold' },
+  { id: 'rejected', label: 'Archived', color: 'border-stone-200', badgeBg: 'bg-stone-100 text-stone-600 border border-stone-200' },
 ];
 
 export const PipelineBoard: React.FC<PipelineBoardProps> = ({
@@ -147,20 +147,20 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
     let momentumLabel = 'Building Pipeline';
     let momentumDescription = 'Add target roles to your wishlist and start tailoring submissions.';
-    let statusTheme = 'text-slate-300 bg-slate-800/80 border-slate-700';
+    let statusTheme = 'text-stone-700 bg-stone-50 border-stone-200';
 
     if (offer > 0) {
       momentumLabel = 'Elite Momentum — Offer Secured!';
       momentumDescription = `${offer} opportunity reached the offer stage! Time to compare compensation packages and strategize counter-offers.`;
-      statusTheme = 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30';
+      statusTheme = 'text-[#0F4A3E] bg-emerald-50/80 border-emerald-300';
     } else if (interviewing > 0) {
       momentumLabel = 'High Momentum — Active Interview Loops';
       momentumDescription = `${interviewing} role${interviewing > 1 ? 's have' : ' has'} advanced into technical and behavioral rounds. Keep practicing STAR answers!`;
-      statusTheme = 'text-amber-300 bg-amber-500/10 border-amber-500/30';
+      statusTheme = 'text-amber-950 bg-amber-50/80 border-amber-300';
     } else if (applied > 0) {
       momentumLabel = 'Gaining Momentum — Applications Dispatched';
       momentumDescription = `${applied} submission${applied > 1 ? 's' : ''} sent. Follow-up reminders are queued to maintain response rates.`;
-      statusTheme = 'text-blue-300 bg-blue-500/10 border-blue-500/30';
+      statusTheme = 'text-blue-900 bg-blue-50/80 border-blue-200';
     }
 
     return {
@@ -321,57 +321,57 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
       {/* Metrics Row */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
-          <p className="text-xs text-slate-400 font-medium">Total Pipeline</p>
+        <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 shadow-xs">
+          <p className="text-xs text-stone-500 font-medium">Total Pipeline</p>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-2xl font-bold text-white">{stats.total}</span>
-            <span className="text-xs text-slate-400">roles tracked</span>
+            <span className="font-serif text-2xl font-bold text-stone-900">{stats.total}</span>
+            <span className="text-xs text-stone-500">roles tracked</span>
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
-          <p className="text-xs text-slate-400 font-medium">Active Interviews</p>
+        <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 shadow-xs">
+          <p className="text-xs text-stone-500 font-medium">Active Interviews</p>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-2xl font-bold text-amber-400">{stats.interviewing}</span>
-            <span className="text-xs text-amber-400/80">in progress</span>
+            <span className="font-serif text-2xl font-bold text-amber-800">{stats.interviewing}</span>
+            <span className="text-xs text-amber-700/80">in progress</span>
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
-          <p className="text-xs text-slate-400 font-medium">Offers</p>
+        <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 shadow-xs">
+          <p className="text-xs text-stone-500 font-medium">Offers</p>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-2xl font-bold text-emerald-400">{stats.offers}</span>
-            <span className="text-xs text-emerald-400/80">received</span>
+            <span className="font-serif text-2xl font-bold text-[#0F4A3E]">{stats.offers}</span>
+            <span className="text-xs text-emerald-700/80">received</span>
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
-          <p className="text-xs text-slate-400 font-medium">Interview Rate</p>
+        <div className="bg-white border border-[#EBE8E3] rounded-2xl p-4 shadow-xs">
+          <p className="text-xs text-stone-500 font-medium">Interview Rate</p>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-2xl font-bold text-indigo-400">{stats.responseRate}%</span>
-            <span className="text-xs text-indigo-400/80">of sent apps</span>
+            <span className="font-serif text-2xl font-bold text-stone-900">{stats.responseRate}%</span>
+            <span className="text-xs text-stone-500">of sent apps</span>
           </div>
         </div>
 
-        <div className={`col-span-2 sm:col-span-4 lg:col-span-1 border rounded-2xl p-4 shadow-sm ${
+        <div className={`col-span-2 sm:col-span-4 lg:col-span-1 border rounded-2xl p-4 shadow-xs ${
           stats.followUpsDue > 0
-            ? 'bg-rose-950/20 border-rose-500/40 text-rose-300'
-            : 'bg-slate-900 border-slate-800 text-slate-300'
+            ? 'bg-rose-50 border-rose-200 text-rose-900'
+            : 'bg-white border-[#EBE8E3] text-stone-700'
         }`}>
           <div className="flex items-center justify-between">
             <p className="text-xs font-medium">Follow-ups Due</p>
             {stats.followUpsDue > 0 && (
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
               </span>
             )}
           </div>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className={`text-2xl font-bold ${stats.followUpsDue > 0 ? 'text-rose-400' : 'text-white'}`}>
+            <span className={`font-serif text-2xl font-bold ${stats.followUpsDue > 0 ? 'text-rose-700' : 'text-stone-900'}`}>
               {stats.followUpsDue}
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-stone-500">
               {stats.followUpsDue > 0 ? 'action needed today' : 'all caught up'}
             </span>
           </div>
@@ -379,33 +379,31 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
       </div>
 
       {/* Visual Career Momentum Progress Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden space-y-4">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 sm:p-6 shadow-xs relative overflow-hidden space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
-              <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-[#0F4A3E] text-xs font-semibold border border-emerald-300">
+              <TrendingUp className="w-3.5 h-3.5 text-[#0F4A3E]" />
               <span>Career Momentum</span>
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+            <h3 className="font-serif text-base sm:text-lg font-bold text-stone-900 tracking-tight">
               Wishlist → Interview & Offer Progression
             </h3>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-xl">
+            <p className="text-xs text-stone-600 leading-relaxed max-w-xl">
               Tracks how effectively your saved opportunities convert into active interview rounds and job offers.
             </p>
           </div>
 
-          <div className="flex items-baseline sm:items-end flex-col bg-slate-950/70 border border-slate-800/80 rounded-2xl px-4 py-2.5 shadow-inner">
+          <div className="flex items-baseline sm:items-end flex-col bg-stone-50 border border-stone-200 rounded-2xl px-4 py-2.5 shadow-xs">
             <div className="flex items-baseline gap-1.5">
-              <span className="font-mono text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400">
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-[#0F4A3E]">
                 {momentumStats.advancedCount}
               </span>
-              <span className="text-slate-400 text-xs font-mono">
+              <span className="text-stone-500 text-xs font-mono">
                 / {momentumStats.total} advanced
               </span>
             </div>
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-400">
+            <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-800">
               <span>{momentumStats.momentumPercentage}% conversion rate</span>
             </div>
           </div>
@@ -413,12 +411,12 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
         {/* Multi-Segment Visual Progress Bar */}
         <div className="space-y-2 relative z-10">
-          <div className="w-full bg-slate-950 border border-slate-800/90 rounded-full h-4 sm:h-5 p-0.5 flex overflow-hidden shadow-inner">
+          <div className="w-full bg-stone-100 border border-stone-200 rounded-full h-4 sm:h-5 p-0.5 flex overflow-hidden shadow-inner">
             {/* Wishlist Segment */}
             {momentumStats.wishlistPct > 0 && (
               <div
                 style={{ width: `${momentumStats.wishlistPct}%` }}
-                className="h-full bg-slate-700 hover:bg-slate-600 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
+                className="h-full bg-stone-300 hover:bg-stone-400 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
                 title={`Wishlist / Saved: ${momentumStats.wishlist} (${Math.round(momentumStats.wishlistPct)}%)`}
               />
             )}
@@ -427,7 +425,7 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
             {momentumStats.appliedPct > 0 && (
               <div
                 style={{ width: `${momentumStats.appliedPct}%` }}
-                className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
+                className="h-full bg-blue-500 hover:bg-blue-600 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
                 title={`Applied: ${momentumStats.applied} (${Math.round(momentumStats.appliedPct)}%)`}
               />
             )}
@@ -436,7 +434,7 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
             {momentumStats.interviewingPct > 0 && (
               <div
                 style={{ width: `${momentumStats.interviewingPct}%` }}
-                className="h-full bg-gradient-to-r from-amber-500 to-amber-400 hover:opacity-95 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer shadow-lg shadow-amber-500/20"
+                className="h-full bg-amber-400 hover:bg-amber-500 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
                 title={`Interviewing: ${momentumStats.interviewing} (${Math.round(momentumStats.interviewingPct)}%)`}
               />
             )}
@@ -445,51 +443,51 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
             {momentumStats.offerPct > 0 && (
               <div
                 style={{ width: `${momentumStats.offerPct}%` }}
-                className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer shadow-lg shadow-emerald-500/30"
+                className="h-full bg-[#0F4A3E] hover:bg-[#0B382F] transition-all first:rounded-l-full last:rounded-r-full relative group cursor-pointer"
                 title={`Offers: ${momentumStats.offer} (${Math.round(momentumStats.offerPct)}%)`}
               />
             )}
 
             {momentumStats.total === 0 && (
-              <div className="w-full h-full bg-slate-800/40 rounded-full" />
+              <div className="w-full h-full bg-stone-200 rounded-full" />
             )}
           </div>
 
           {/* Interactive Legend & Stage Breakdown */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs">
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-slate-950/60 border border-slate-800">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-600 shrink-0" />
+            <div className="flex items-center gap-2 p-2 rounded-xl bg-stone-50 border border-stone-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-stone-400 shrink-0" />
               <div className="truncate">
-                <span className="text-slate-400 font-medium">Wishlist: </span>
-                <span className="text-white font-bold font-mono">{momentumStats.wishlist}</span>
-                <span className="text-[10px] text-slate-500 ml-1">({Math.round(momentumStats.wishlistPct)}%)</span>
+                <span className="text-stone-600 font-medium">Wishlist: </span>
+                <span className="text-stone-900 font-bold font-mono">{momentumStats.wishlist}</span>
+                <span className="text-[10px] text-stone-500 ml-1">({Math.round(momentumStats.wishlistPct)}%)</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-slate-950/60 border border-slate-800">
+            <div className="flex items-center gap-2 p-2 rounded-xl bg-stone-50 border border-stone-200">
               <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
               <div className="truncate">
-                <span className="text-slate-400 font-medium">Applied: </span>
-                <span className="text-white font-bold font-mono">{momentumStats.applied}</span>
-                <span className="text-[10px] text-slate-500 ml-1">({Math.round(momentumStats.appliedPct)}%)</span>
+                <span className="text-stone-600 font-medium">Applied: </span>
+                <span className="text-stone-900 font-bold font-mono">{momentumStats.applied}</span>
+                <span className="text-[10px] text-stone-500 ml-1">({Math.round(momentumStats.appliedPct)}%)</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-amber-500/10 border border-amber-500/20">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 animate-pulse" />
+            <div className="flex items-center gap-2 p-2 rounded-xl bg-amber-50 border border-amber-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
               <div className="truncate">
-                <span className="text-amber-300 font-medium">Interview: </span>
-                <span className="text-amber-200 font-bold font-mono">{momentumStats.interviewing}</span>
-                <span className="text-[10px] text-amber-400/80 ml-1">({Math.round(momentumStats.interviewingPct)}%)</span>
+                <span className="text-amber-900 font-medium">Interview: </span>
+                <span className="text-amber-950 font-bold font-mono">{momentumStats.interviewing}</span>
+                <span className="text-[10px] text-amber-700 ml-1">({Math.round(momentumStats.interviewingPct)}%)</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 shadow-sm shadow-emerald-400" />
+            <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-50 border border-emerald-200">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0F4A3E] shrink-0" />
               <div className="truncate">
-                <span className="text-emerald-300 font-medium">Offers: </span>
-                <span className="text-emerald-200 font-bold font-mono">{momentumStats.offer}</span>
-                <span className="text-[10px] text-emerald-400/80 ml-1">({Math.round(momentumStats.offerPct)}%)</span>
+                <span className="text-emerald-900 font-medium">Offers: </span>
+                <span className="text-[#0F4A3E] font-bold font-mono">{momentumStats.offer}</span>
+                <span className="text-[10px] text-emerald-700 ml-1">({Math.round(momentumStats.offerPct)}%)</span>
               </div>
             </div>
           </div>
@@ -499,46 +497,46 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
         <div className={`p-3 rounded-2xl border text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${momentumStats.statusTheme} relative z-10`}>
           <div className="flex items-center gap-2">
             {momentumStats.offer > 0 ? (
-              <Award className="w-4 h-4 text-emerald-400 shrink-0" />
+              <Award className="w-4 h-4 text-[#0F4A3E] shrink-0" />
             ) : momentumStats.interviewing > 0 ? (
-              <Flame className="w-4 h-4 text-amber-400 shrink-0" />
+              <Flame className="w-4 h-4 text-amber-700 shrink-0" />
             ) : (
-              <TrendingUp className="w-4 h-4 text-indigo-400 shrink-0" />
+              <TrendingUp className="w-4 h-4 text-stone-600 shrink-0" />
             )}
             <div>
-              <span className="font-bold text-white mr-1.5">{momentumStats.momentumLabel}</span>
-              <span className="text-slate-300 hidden sm:inline">{momentumStats.momentumDescription}</span>
+              <span className="font-bold mr-1.5">{momentumStats.momentumLabel}</span>
+              <span className="text-stone-600 hidden sm:inline">{momentumStats.momentumDescription}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-1 text-[11px] font-mono shrink-0">
-            <span className="font-bold text-white">{momentumStats.advancedCount}</span>
-            <span className="text-slate-400">of {momentumStats.total} reached final stages</span>
+            <span className="font-bold text-stone-900">{momentumStats.advancedCount}</span>
+            <span className="text-stone-500">of {momentumStats.total} reached final stages</span>
           </div>
         </div>
       </div>
 
       {/* AI Resume Tailor Dashboard Card */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-3xl p-5 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#0F4A3E] text-xs font-semibold border border-emerald-300">
+            <Sparkles className="w-3.5 h-3.5 text-[#0F4A3E]" />
             <span>AI Resume Auto-Tailor</span>
           </div>
-          <h3 className="text-base font-bold text-white">
+          <h3 className="font-serif text-base font-bold text-stone-900">
             Turn your resume into a role-specific version.
           </h3>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 pt-1">
-            <span className="flex items-center gap-1 text-emerald-400">
-              <Check className="w-3.5 h-3.5" /> Resume: Uploaded ✓
+          <div className="flex flex-wrap items-center gap-3 text-xs text-stone-600 pt-1">
+            <span className="flex items-center gap-1 text-emerald-800 font-medium">
+              <Check className="w-3.5 h-3.5 text-emerald-600" /> Resume: Uploaded ✓
             </span>
-            <span className="flex items-center gap-1 text-emerald-400">
-              <Check className="w-3.5 h-3.5" /> Job Description: Added ✓
+            <span className="flex items-center gap-1 text-emerald-800 font-medium">
+              <Check className="w-3.5 h-3.5 text-emerald-600" /> Job Description: Added ✓
             </span>
-            <span className="text-slate-400">
-              Current Match: <strong className="text-slate-200">64%</strong>
+            <span className="text-stone-500">
+              Current Match: <strong className="text-stone-800">64%</strong>
             </span>
-            <span className="text-emerald-400 font-bold font-mono">
+            <span className="text-[#0F4A3E] font-bold font-mono">
               Optimized Match: 91%
             </span>
           </div>
@@ -547,9 +545,9 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
         {onNavigateToResume && (
           <button
             onClick={onNavigateToResume}
-            className="px-5 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
+            className="px-5 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
           >
-            <Zap className="w-4 h-4 text-cyan-300" />
+            <Zap className="w-4 h-4 text-emerald-200" />
             <span>Optimize Resume</span>
           </button>
         )}
@@ -579,12 +577,12 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
             return (
               <div
                 key={column.id}
-                className="bg-slate-900/60 rounded-2xl border border-slate-800 flex flex-col min-w-[260px] h-[calc(100vh-320px)] min-h-[500px]"
+                className="bg-stone-100/70 rounded-2xl border border-stone-200/90 flex flex-col min-w-[260px] h-[calc(100vh-320px)] min-h-[500px]"
               >
                 {/* Column Header */}
-                <div className="p-3.5 border-b border-slate-800 flex items-center justify-between">
+                <div className="p-3.5 border-b border-stone-200/90 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-white">{column.label}</span>
+                    <span className="text-sm font-serif font-bold text-stone-900">{column.label}</span>
                     <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono font-medium ${column.badgeBg}`}>
                       {columnApps.length}
                     </span>
@@ -592,7 +590,7 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
                   <button
                     onClick={() => onOpenNewJobModal(column.id)}
-                    className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="p-1 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-200/60 transition-colors cursor-pointer"
                     title={`Add to ${column.label}`}
                   >
                     <Plus className="w-4 h-4" />
@@ -602,11 +600,11 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                 {/* Column Body Cards */}
                 <div className="p-2.5 flex-1 overflow-y-auto space-y-3">
                   {columnApps.length === 0 ? (
-                    <div className="h-32 flex flex-col items-center justify-center text-slate-500 text-xs border border-dashed border-slate-800 rounded-xl p-4 text-center">
+                    <div className="h-32 flex flex-col items-center justify-center text-stone-400 text-xs border border-dashed border-stone-300 rounded-xl p-4 text-center">
                       <p>No applications here</p>
                       <button
                         onClick={() => onOpenNewJobModal(column.id)}
-                        className="mt-2 text-indigo-400 hover:underline cursor-pointer"
+                        className="mt-2 text-[#0F4A3E] font-semibold hover:underline cursor-pointer"
                       >
                         + Add position
                       </button>
@@ -622,50 +620,50 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                         <div
                           key={app.id}
                           onClick={() => onSelectApplication(app)}
-                          className="group bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/50 rounded-xl p-3.5 transition-all shadow-sm hover:shadow-md cursor-pointer relative"
+                          className="group bg-white hover:bg-stone-50/80 border border-stone-200/90 hover:border-emerald-700/50 rounded-xl p-3.5 transition-all shadow-xs hover:shadow-sm cursor-pointer relative"
                         >
                           {/* Priority and Match Score */}
                           <div className="flex items-center justify-between mb-2">
                             <span
                               className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
                                 app.priority === 'high'
-                                  ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
+                                  ? 'bg-rose-50 text-rose-800 border-rose-200'
                                   : app.priority === 'medium'
-                                  ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
-                                  : 'bg-slate-800 text-slate-400 border-slate-700'
+                                  ? 'bg-amber-50 text-amber-900 border-amber-200'
+                                  : 'bg-stone-100 text-stone-600 border-stone-200'
                               }`}
                             >
                               {app.priority}
                             </span>
 
                             {app.fitScore && (
-                              <span className="text-[11px] font-mono font-semibold text-emerald-400 flex items-center gap-1">
-                                <Sparkles className="w-3 h-3 text-emerald-400" />
+                              <span className="text-[11px] font-mono font-semibold text-emerald-800 flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-emerald-700" />
                                 {app.fitScore}% match
                               </span>
                             )}
                           </div>
 
                           {/* Role and Company */}
-                          <h4 className="font-semibold text-white text-sm group-hover:text-indigo-300 transition-colors line-clamp-1">
+                          <h4 className="font-bold text-stone-900 text-sm group-hover:text-[#0F4A3E] transition-colors line-clamp-1">
                             {app.role}
                           </h4>
-                          <p className="text-xs text-slate-400 flex items-center gap-1 mt-0.5 font-medium">
-                            <Building2 className="w-3 h-3 text-slate-500" />
+                          <p className="text-xs text-stone-600 flex items-center gap-1 mt-0.5 font-medium">
+                            <Building2 className="w-3 h-3 text-stone-400" />
                             {app.company}
                           </p>
 
                           {/* Location & Salary */}
-                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-[11px] text-slate-400">
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-[11px] text-stone-500">
                             {app.location && (
                               <span className="flex items-center gap-1">
-                                <MapPin className="w-2.5 h-2.5 text-slate-500" />
+                                <MapPin className="w-2.5 h-2.5 text-stone-400" />
                                 {app.location.split('/')[0]}
                               </span>
                             )}
                             {app.salary && (
-                              <span className="flex items-center gap-1 text-slate-300">
-                                <DollarSign className="w-2.5 h-2.5 text-emerald-400" />
+                              <span className="flex items-center gap-1 text-stone-700 font-medium">
+                                <DollarSign className="w-2.5 h-2.5 text-[#0F4A3E]" />
                                 {app.salary.split('+')[0]}
                               </span>
                             )}
@@ -673,16 +671,16 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
                           {/* Follow-up / Deadline Alert */}
                           {isFollowUpDue && (
-                            <div className="mt-2.5 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[11px] font-medium">
-                              <AlertCircle className="w-3 h-3 text-rose-400 shrink-0" />
+                            <div className="mt-2.5 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200 text-[11px] font-medium">
+                              <AlertCircle className="w-3 h-3 text-rose-600 shrink-0" />
                               <span>Follow-up Due!</span>
                             </div>
                           )}
 
                           {/* Interview Scheduled Badge */}
                           {app.interviewDate && (
-                            <div className="mt-2.5 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] font-medium">
-                              <Clock className="w-3 h-3 text-purple-400 shrink-0" />
+                            <div className="mt-2.5 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-medium">
+                              <Clock className="w-3 h-3 text-[#0F4A3E] shrink-0" />
                               <span>
                                 Interview: {new Date(app.interviewDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
                               </span>
@@ -695,13 +693,13 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                               {app.tags.slice(0, 3).map((tag, idx) => (
                                 <span
                                   key={idx}
-                                  className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/50"
+                                  className="text-[10px] px-1.5 py-0.5 rounded bg-stone-100 text-stone-600 border border-stone-200"
                                 >
                                   {tag}
                                 </span>
                               ))}
                               {app.tags.length > 3 && (
-                                <span className="text-[10px] text-slate-500 self-center">
+                                <span className="text-[10px] text-stone-400 self-center">
                                   +{app.tags.length - 3}
                                 </span>
                               )}
@@ -711,12 +709,12 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                           {/* Quick Status Dropdown on hover */}
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="mt-3 pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400"
+                            className="mt-3 pt-2 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500"
                           >
                             <select
                               value={app.status}
                               onChange={(e) => onUpdateStatus(app.id, e.target.value as ApplicationStatus)}
-                              className="bg-slate-800 text-slate-300 border border-slate-700 rounded-lg px-2 py-1 text-[11px] focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                              className="bg-stone-50 text-stone-800 border border-stone-200 rounded-lg px-2 py-1 text-[11px] focus:outline-none focus:ring-1 focus:ring-emerald-700 cursor-pointer"
                             >
                               <option value="wishlist">Wishlist</option>
                               <option value="applied">Applied</option>
@@ -727,7 +725,7 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
                             <button
                               onClick={() => onDeleteApplication(app.id)}
-                              className="text-slate-500 hover:text-rose-400 p-1 rounded transition-colors"
+                              className="text-stone-400 hover:text-rose-600 p-1 rounded transition-colors"
                               title="Delete application"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -744,10 +742,10 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
         </div>
       ) : (
         /* Table View */
-        <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-sm">
+        <div className="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm text-slate-300">
-              <thead className="bg-slate-850 border-b border-slate-800 text-xs font-semibold uppercase text-slate-400 tracking-wider">
+            <table className="w-full text-left text-xs sm:text-sm text-stone-700">
+              <thead className="bg-stone-50 border-b border-stone-200 text-xs font-semibold uppercase text-stone-600 tracking-wider">
                 <tr>
                   <th className="px-4 py-3.5">Company & Role</th>
                   <th className="px-4 py-3.5">Status</th>
@@ -757,10 +755,10 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                   <th className="px-4 py-3.5 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/80">
+              <tbody className="divide-y divide-stone-100">
                 {filteredApps.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-4 py-8 text-center text-slate-500">
+                    <td colSpan={6} className="px-4 py-8 text-center text-stone-400">
                       No applications matched your filter.
                     </td>
                   </tr>
@@ -769,14 +767,14 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                     <tr
                       key={app.id}
                       onClick={() => onSelectApplication(app)}
-                      className="hover:bg-slate-850/60 transition-colors cursor-pointer group"
+                      className="hover:bg-stone-50/70 transition-colors cursor-pointer group"
                     >
                       <td className="px-4 py-3.5">
-                        <div className="font-semibold text-white group-hover:text-indigo-300 transition-colors">
+                        <div className="font-bold text-stone-900 group-hover:text-[#0F4A3E] transition-colors">
                           {app.role}
                         </div>
-                        <div className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
-                          <Building2 className="w-3 h-3 text-slate-500" />
+                        <div className="text-xs text-stone-500 flex items-center gap-1 mt-0.5">
+                          <Building2 className="w-3 h-3 text-stone-400" />
                           <span>{app.company}</span>
                         </div>
                       </td>
@@ -786,7 +784,7 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                           value={app.status}
                           onClick={(e) => e.stopPropagation()}
                           onChange={(e) => onUpdateStatus(app.id, e.target.value as ApplicationStatus)}
-                          className="bg-slate-800 text-slate-200 border border-slate-700 rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                          className="bg-stone-50 text-stone-800 border border-stone-200 rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-700 cursor-pointer"
                         >
                           <option value="wishlist">Wishlist</option>
                           <option value="applied">Applied</option>
@@ -798,33 +796,33 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
 
                       <td className="px-4 py-3.5">
                         {app.fitScore ? (
-                          <span className="font-mono font-bold text-emerald-400 flex items-center gap-1">
-                            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="font-mono font-bold text-emerald-800 flex items-center gap-1">
+                            <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
                             {app.fitScore}%
                           </span>
                         ) : (
-                          <span className="text-slate-500 text-xs">Pending scan</span>
+                          <span className="text-stone-400 text-xs">Pending scan</span>
                         )}
                       </td>
 
                       <td className="px-4 py-3.5">
-                        <div className="text-xs text-slate-300">{app.location || 'Remote'}</div>
-                        <div className="text-xs text-slate-400 font-mono mt-0.5">{app.salary || 'Unlisted'}</div>
+                        <div className="text-xs text-stone-700">{app.location || 'Remote'}</div>
+                        <div className="text-xs text-stone-500 font-mono mt-0.5">{app.salary || 'Unlisted'}</div>
                       </td>
 
                       <td className="px-4 py-3.5">
                         {app.followUpDate ? (
-                          <div className="flex items-center gap-1.5 text-xs text-slate-300">
-                            <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                          <div className="flex items-center gap-1.5 text-xs text-stone-700">
+                            <Calendar className="w-3.5 h-3.5 text-stone-400" />
                             <span>{app.followUpDate}</span>
                             {app.followUpDate <= todayStr && (
-                              <span className="px-1.5 py-0.5 rounded text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                              <span className="px-1.5 py-0.5 rounded text-[10px] bg-rose-50 text-rose-800 border border-rose-200 font-semibold">
                                 Due
                               </span>
                             )}
                           </div>
                         ) : (
-                          <span className="text-slate-500 text-xs">—</span>
+                          <span className="text-stone-400 text-xs">—</span>
                         )}
                       </td>
 
@@ -832,13 +830,13 @@ export const PipelineBoard: React.FC<PipelineBoardProps> = ({
                         <div className="flex items-center justify-end gap-2" onClick={(e) => e.stopPropagation()}>
                           <button
                             onClick={() => onSelectApplication(app)}
-                            className="text-xs text-indigo-400 hover:text-indigo-300 font-medium px-2 py-1 rounded bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors"
+                            className="text-xs text-[#0F4A3E] hover:text-[#0B382F] font-semibold px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 transition-colors border border-emerald-200"
                           >
                             Details
                           </button>
                           <button
                             onClick={() => onDeleteApplication(app.id)}
-                            className="text-slate-500 hover:text-rose-400 p-1 transition-colors"
+                            className="text-stone-400 hover:text-rose-600 p-1 transition-colors"
                             title="Delete"
                           >
                             <Trash2 className="w-4 h-4" />

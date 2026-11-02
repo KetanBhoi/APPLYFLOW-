@@ -162,19 +162,19 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
   return (
     <div className="space-y-6">
       {/* Studio Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
-              <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#0F4A3E] text-xs font-semibold border border-emerald-200">
+              <DollarSign className="w-3.5 h-3.5 text-[#0F4A3E]" />
               <span>Offer Comparison & Salary Negotiation Engine</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 tracking-tight">
               Offer Matrix & Negotiation Strategist
             </h1>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-stone-600 text-sm leading-relaxed">
               Compare base salaries, equity, sign-on bonuses, and annual total compensation side-by-side.
               Generate respectful, executive counter-offer scripts with market benchmarks and competing leverage.
             </p>
@@ -182,7 +182,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
 
           <button
             onClick={() => setShowAddForm(true)}
-            className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Offer</span>
@@ -192,41 +192,41 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
 
       {/* Add Offer Modal */}
       {showAddForm && (
-        <div className="bg-slate-900 border border-emerald-500/40 rounded-3xl p-6 shadow-2xl animate-in fade-in space-y-4">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <Plus className="w-4 h-4 text-emerald-400" />
+        <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 shadow-xs animate-in fade-in space-y-4">
+          <h3 className="text-sm font-serif font-bold text-stone-900 flex items-center gap-2">
+            <Plus className="w-4 h-4 text-[#0F4A3E]" />
             <span>Add New Job Offer to Matrix</span>
           </h3>
 
           <form onSubmit={handleAddOffer} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Company</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Company</label>
               <input
                 type="text"
                 placeholder="e.g. Figma"
                 value={newCompany}
                 onChange={(e) => setNewCompany(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900"
                 required
               />
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Role Title</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Role Title</label>
               <input
                 type="text"
                 placeholder="e.g. Senior Software Engineer"
                 value={newRole}
                 onChange={(e) => setNewRole(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900"
                 required
               />
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Work Mode</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Work Mode</label>
               <select
                 value={newWorkMode}
                 onChange={(e: any) => setNewWorkMode(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900"
               >
                 <option value="remote">Remote</option>
                 <option value="hybrid">Hybrid</option>
@@ -234,30 +234,30 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
               </select>
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Base Salary ($)</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Base Salary ($)</label>
               <input
                 type="number"
                 value={newBase}
                 onChange={(e) => setNewBase(Number(e.target.value))}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 font-mono"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Annual Equity / RSUs ($)</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Annual Equity / RSUs ($)</label>
               <input
                 type="number"
                 value={newEquity}
                 onChange={(e) => setNewEquity(Number(e.target.value))}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 font-mono"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-400 block mb-1">Sign-on Bonus ($)</label>
+              <label className="text-xs text-stone-600 font-medium block mb-1">Sign-on Bonus ($)</label>
               <input
                 type="number"
                 value={newSignOn}
                 onChange={(e) => setNewSignOn(Number(e.target.value))}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-900 font-mono"
               />
             </div>
 
@@ -265,13 +265,13 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-stone-100 text-stone-700 text-xs font-semibold hover:bg-stone-200"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow"
+                className="px-5 py-2 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] text-white text-xs font-semibold shadow-xs"
               >
                 Add Offer to Comparison
               </button>
@@ -290,20 +290,20 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
             <div
               key={offer.id}
               onClick={() => setSelectedOfferId(offer.id)}
-              className={`rounded-3xl p-6 transition-all border shadow-lg cursor-pointer relative overflow-hidden flex flex-col justify-between ${
+              className={`rounded-3xl p-6 transition-all border shadow-xs cursor-pointer relative overflow-hidden flex flex-col justify-between ${
                 isSelected
-                  ? 'bg-slate-900 border-emerald-500/60 shadow-emerald-950/30 ring-2 ring-emerald-500/30'
-                  : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+                  ? 'bg-white border-2 border-[#0F4A3E] ring-2 ring-emerald-700/20 shadow-md'
+                  : 'bg-white border-[#EBE8E3] hover:border-stone-300'
               }`}
             >
               <div className="space-y-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
                       {offer.workMode}
                     </span>
-                    <h3 className="text-lg font-bold text-white mt-1">{offer.company}</h3>
-                    <p className="text-xs text-slate-400">{offer.role}</p>
+                    <h3 className="text-lg font-serif font-bold text-stone-900 mt-1">{offer.company}</h3>
+                    <p className="text-xs text-stone-500">{offer.role}</p>
                   </div>
 
                   <button
@@ -311,44 +311,44 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                       e.stopPropagation();
                       handleDeleteOffer(offer.id);
                     }}
-                    className="text-slate-500 hover:text-rose-400 p-1 rounded transition-colors"
+                    className="text-stone-400 hover:text-rose-600 p-1 rounded transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
                 {/* Total Compensation Highlight */}
-                <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-center">
-                  <span className="text-[10px] uppercase text-slate-400 font-semibold tracking-wider block">
+                <div className="p-4 bg-[#FAF9F7] rounded-2xl border border-stone-200 text-center">
+                  <span className="text-[10px] uppercase text-stone-500 font-semibold tracking-wider block">
                     Year 1 Total Compensation
                   </span>
-                  <span className="font-mono text-2xl font-black text-emerald-400 tracking-tight">
+                  <span className="font-serif text-2xl font-bold text-[#0F4A3E] tracking-tight">
                     ${tc.toLocaleString()}
                   </span>
                 </div>
 
                 {/* Itemized Compensation Table */}
                 <div className="space-y-1.5 text-xs">
-                  <div className="flex justify-between text-slate-300">
-                    <span className="text-slate-400">Base Salary:</span>
+                  <div className="flex justify-between text-stone-700">
+                    <span className="text-stone-500">Base Salary:</span>
                     <span className="font-mono font-semibold">${offer.baseSalary.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
-                    <span className="text-slate-400">Annual Equity (RSUs):</span>
+                  <div className="flex justify-between text-stone-700">
+                    <span className="text-stone-500">Annual Equity (RSUs):</span>
                     <span className="font-mono font-semibold">${offer.annualEquity.toLocaleString()}/yr</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
-                    <span className="text-slate-400">Sign-on Bonus:</span>
+                  <div className="flex justify-between text-stone-700">
+                    <span className="text-stone-500">Sign-on Bonus:</span>
                     <span className="font-mono font-semibold">${offer.signOnBonus.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
-                    <span className="text-slate-400">Annual Bonus / Stipend:</span>
+                  <div className="flex justify-between text-stone-700">
+                    <span className="text-stone-500">Annual Bonus / Stipend:</span>
                     <span className="font-mono font-semibold">
                       ${(offer.annualBonus + offer.remoteStipend).toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex justify-between text-slate-300 border-t border-slate-800 pt-1.5">
-                    <span className="text-slate-400">PTO Days:</span>
+                  <div className="flex justify-between text-stone-700 border-t border-stone-100 pt-1.5">
+                    <span className="text-stone-500">PTO Days:</span>
                     <span className="font-mono">{offer.ptoDays} days</span>
                   </div>
                 </div>
@@ -359,7 +359,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                     {offer.pros.map((p, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300"
+                        className="text-[10px] px-2 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200"
                       >
                         ✓ {p}
                       </span>
@@ -368,11 +368,11 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                 )}
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                <span className="text-[11px] text-slate-400">
+              <div className="pt-4 mt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+                <span className="text-[11px] text-stone-500">
                   {isSelected ? '✓ Selected for negotiation' : 'Click to select'}
                 </span>
-                <span className="font-semibold text-emerald-400 flex items-center gap-1">
+                <span className="font-semibold text-[#0F4A3E] flex items-center gap-1">
                   <span>Strategize</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </span>
@@ -384,16 +384,16 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
 
       {/* Negotiation Script Generator Workspace */}
       {selectedOffer && (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div className="bg-white border border-[#EBE8E3] rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200 pb-4">
             <div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs font-semibold uppercase text-emerald-300 tracking-wider">
+                <Sparkles className="w-4 h-4 text-[#0F4A3E]" />
+                <span className="text-xs font-semibold uppercase text-[#0F4A3E] tracking-wider">
                   AI Negotiation Strategist
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mt-1">
+              <h3 className="text-lg font-serif font-bold text-stone-900 mt-1">
                 Draft Counter-Offer & Negotiation Leverage for {selectedOffer.company}
               </h3>
             </div>
@@ -401,32 +401,32 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
             <button
               onClick={handleGenerateScript}
               disabled={isGenerating}
-              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-[#0F4A3E] hover:bg-[#0B382F] disabled:opacity-50 text-white font-semibold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 text-emerald-200" />
               <span>{isGenerating ? 'Synthesizing Strategy...' : 'Generate Negotiation Package'}</span>
             </button>
           </div>
 
           {/* 4-Year Vesting Schedule & Growth Modeling */}
-          <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-4">
+          <div className="p-4 bg-[#FAF9F7] border border-stone-200 rounded-2xl space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                <span className="text-xs font-serif font-bold uppercase tracking-wider text-stone-900">
                   4-Year Vesting & Equity Upside Modeling
                 </span>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-stone-500">
                   Simulate standard 1-year cliff vs backloaded vesting and market growth scenarios for {selectedOffer.company}.
                 </p>
               </div>
 
               {/* Scenario Toggle */}
-              <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs">
+              <div className="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xl border border-stone-200 text-xs">
                 <button
                   type="button"
                   onClick={() => setEquityMultiplier(0.5)}
                   className={`px-2.5 py-1 rounded-lg transition-all ${
-                    equityMultiplier === 0.5 ? 'bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30' : 'text-slate-400 hover:text-white'
+                    equityMultiplier === 0.5 ? 'bg-rose-100 text-rose-800 font-bold border border-rose-200' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   Bear (0.5x)
@@ -435,7 +435,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                   type="button"
                   onClick={() => setEquityMultiplier(1.0)}
                   className={`px-2.5 py-1 rounded-lg transition-all ${
-                    equityMultiplier === 1.0 ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30' : 'text-slate-400 hover:text-white'
+                    equityMultiplier === 1.0 ? 'bg-[#0F4A3E] text-white font-bold' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   Baseline (1.0x)
@@ -444,7 +444,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                   type="button"
                   onClick={() => setEquityMultiplier(2.5)}
                   className={`px-2.5 py-1 rounded-lg transition-all ${
-                    equityMultiplier === 2.5 ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30' : 'text-slate-400 hover:text-white'
+                    equityMultiplier === 2.5 ? 'bg-amber-100 text-amber-900 font-bold border border-amber-200' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   Bull (2.5x)
@@ -465,15 +465,15 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                 const yearTotalComp = selectedOffer.baseSalary + slotValue + (i === 0 ? selectedOffer.signOnBonus : 0) + selectedOffer.annualBonus;
 
                 return (
-                  <div key={i} className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 text-xs space-y-1">
-                    <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-mono">
+                  <div key={i} className="p-3 bg-white rounded-xl border border-stone-200 text-xs space-y-1 shadow-xs">
+                    <div className="flex items-center justify-between text-stone-500 text-[10px] uppercase font-mono">
                       <span>{slot.year}</span>
                       <span>{Math.round(slot.pct * 100)}%</span>
                     </div>
-                    <div className="text-base font-bold text-white font-mono">
+                    <div className="text-base font-serif font-bold text-stone-900 font-mono">
                       ${slotValue.toLocaleString()}
                     </div>
-                    <div className="text-[10px] text-emerald-400 font-mono">
+                    <div className="text-[10px] text-[#0F4A3E] font-semibold font-mono">
                       Year TC: ${yearTotalComp.toLocaleString()}
                     </div>
                   </div>
@@ -484,7 +484,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
 
           {/* Tactical Strategy Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-semibold uppercase text-slate-400 block">
+            <label className="text-xs font-semibold uppercase text-stone-600 block">
               Negotiation Tactical Posture
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
@@ -500,12 +500,12 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                   onClick={() => setSelectedTactic(tac.id as any)}
                   className={`p-3 rounded-xl border text-left transition-all ${
                     selectedTactic === tac.id
-                      ? 'bg-emerald-500/10 border-emerald-500 text-white shadow-sm ring-1 ring-emerald-500/30'
-                      : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                      ? 'bg-emerald-50 border-[#0F4A3E] text-stone-900 shadow-xs ring-1 ring-[#0F4A3E]'
+                      : 'bg-[#FAF9F7] border-stone-200 text-stone-600 hover:text-stone-900 hover:border-stone-300'
                   }`}
                 >
-                  <div className="font-bold text-xs text-white">{tac.title}</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-2">{tac.desc}</div>
+                  <div className="font-bold text-xs text-stone-900">{tac.title}</div>
+                  <div className="text-[10px] text-stone-500 mt-0.5 line-clamp-2">{tac.desc}</div>
                 </button>
               ))}
             </div>
@@ -513,19 +513,19 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+              <label className="text-xs font-semibold uppercase text-stone-600 block mb-1">
                 Target Total Compensation ($)
               </label>
               <input
                 type="number"
                 value={targetComp}
                 onChange={(e) => setTargetComp(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-stone-900 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-700"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold uppercase text-slate-400 block mb-1">
+              <label className="text-xs font-semibold uppercase text-stone-600 block mb-1">
                 Your Primary Leverage Points
               </label>
               <input
@@ -533,7 +533,7 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                 value={leverageInput}
                 onChange={(e) => setLeverageInput(e.target.value)}
                 placeholder="e.g. Competing offer, rare niche skill, immediate start date..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
               />
             </div>
           </div>
@@ -543,19 +543,19 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
             <div className="space-y-6 pt-4 animate-in fade-in duration-300">
               
               {/* Strategy Summary */}
-              <div className="p-4 bg-emerald-950/30 border border-emerald-500/30 rounded-2xl text-xs text-emerald-200 space-y-1">
-                <span className="font-bold text-white flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-emerald-400" />
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-emerald-950 space-y-1">
+                <span className="font-bold text-stone-900 flex items-center gap-1.5 font-serif text-sm">
+                  <TrendingUp className="w-4 h-4 text-[#0F4A3E]" />
                   Executive Strategy Framing
                 </span>
-                <p className="leading-relaxed text-slate-300">{scriptResult.strategySummary}</p>
+                <p className="leading-relaxed text-stone-700">{scriptResult.strategySummary}</p>
               </div>
 
               {/* Ready-to-Send Counter-Offer Email */}
-              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3">
+              <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-5 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase text-slate-300 flex items-center gap-1.5">
-                    <Mail className="w-4 h-4 text-indigo-400" />
+                  <span className="text-xs font-bold uppercase text-stone-700 flex items-center gap-1.5">
+                    <Mail className="w-4 h-4 text-[#0F4A3E]" />
                     <span>Counter-Offer Email to Recruiter</span>
                   </span>
 
@@ -566,19 +566,19 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                         'email-script'
                       )
                     }
-                    className="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 cursor-pointer"
+                    className="text-xs text-[#0F4A3E] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                   >
-                    {copiedKey === 'email-script' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedKey === 'email-script' ? <Check className="w-3.5 h-3.5 text-[#0F4A3E]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'email-script' ? 'Copied Email' : 'Copy Email'}</span>
                   </button>
                 </div>
 
-                <div className="p-3 bg-slate-900 rounded-xl text-xs font-mono text-slate-300 border border-slate-800">
-                  <span className="text-slate-500">Subject: </span>
+                <div className="p-3 bg-white rounded-xl text-xs font-mono text-stone-800 border border-stone-200">
+                  <span className="text-stone-500">Subject: </span>
                   {scriptResult.counterOfferEmail.subject}
                 </div>
 
-                <div className="p-4 bg-slate-900 rounded-xl text-xs sm:text-sm text-slate-200 leading-relaxed font-sans border border-slate-800 whitespace-pre-line">
+                <div className="p-4 bg-white rounded-xl text-xs sm:text-sm text-stone-800 leading-relaxed font-sans border border-stone-200 whitespace-pre-line">
                   {scriptResult.counterOfferEmail.body}
                 </div>
               </div>
@@ -587,15 +587,15 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* Phone Talking Points */}
-                <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-2">
-                  <span className="text-xs font-bold uppercase text-amber-300 flex items-center gap-1.5">
-                    <Phone className="w-4 h-4 text-amber-400" />
+                <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-4 space-y-2">
+                  <span className="text-xs font-bold uppercase text-amber-900 flex items-center gap-1.5">
+                    <Phone className="w-4 h-4 text-amber-700" />
                     <span>If the Recruiter Calls (Verbal Points)</span>
                   </span>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
+                  <ul className="space-y-1.5 text-xs text-stone-700">
                     {scriptResult.phoneTalkingPoints.map((pt: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1.5">
-                        <span className="text-amber-400 font-bold">•</span>
+                        <span className="text-[#0F4A3E] font-bold">•</span>
                         <span>{pt}</span>
                       </li>
                     ))}
@@ -603,15 +603,15 @@ export const OfferNegotiationStudio: React.FC<OfferNegotiationStudioProps> = ({
                 </div>
 
                 {/* Concession Alternatives */}
-                <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-2">
-                  <span className="text-xs font-bold uppercase text-cyan-300 flex items-center gap-1.5">
-                    <Scale className="w-4 h-4 text-cyan-400" />
+                <div className="bg-[#FAF9F7] border border-stone-200 rounded-2xl p-4 space-y-2">
+                  <span className="text-xs font-bold uppercase text-[#0F4A3E] flex items-center gap-1.5">
+                    <Scale className="w-4 h-4 text-[#0F4A3E]" />
                     <span>Non-Salary Trade-Offs (If Base is Frozen)</span>
                   </span>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
+                  <ul className="space-y-1.5 text-xs text-stone-700">
                     {scriptResult.concessionAlternatives.map((alt: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1.5">
-                        <span className="text-cyan-400 font-bold">•</span>
+                        <span className="text-[#0F4A3E] font-bold">•</span>
                         <span>{alt}</span>
                       </li>
                     ))}

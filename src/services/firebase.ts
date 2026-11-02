@@ -11,6 +11,7 @@ import {
   User
 } from 'firebase/auth';
 import {
+  initializeFirestore,
   getFirestore,
   doc,
   getDocFromServer,
@@ -39,21 +40,38 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-// Initialize Firestore
+// Initialize Firestore with long-polling to prevent WebChannel streaming timeouts in sandbox/iframe environments
 const databaseId = firebaseConfigData.firestoreDatabaseId && firebaseConfigData.firestoreDatabaseId !== '(default)'
   ? firebaseConfigData.firestoreDatabaseId
   : undefined;
 
-export const db = databaseId ? getFirestore(app, databaseId) : getFirestore(app);
+export const db = (() => {
+  try {
+    return initializeFirestore(
+      app,
+      {
+        experimentalForceLongPolling: true,
+        ignoreUndefinedProperties: true
+      },
+      databaseId
+    );
+  } catch {
+    return databaseId ? getFirestore(app, databaseId) : getFirestore(app);
+  }
+})();
 
 // Connection test as required by Firebase integration guidelines
 export async function testFirestoreConnection(): Promise<boolean> {
   try {
-    await getDocFromServer(doc(db, 'test', 'connection'));
+    const testPromise = getDocFromServer(doc(db, 'test', 'connection'));
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('connection timeout')), 4000)
+    );
+    await Promise.race([testPromise, timeoutPromise]);
     return true;
   } catch (error) {
-    if (error instanceof Error && error.message.includes('the client is offline')) {
-      console.warn('Firebase client is offline, check connection.');
+    if (error instanceof Error && (error.message.includes('the client is offline') || error.message.includes('timeout'))) {
+      console.warn('Firebase client operates in offline mode when backend is unreachable.');
     }
     return false;
   }
